@@ -1,0 +1,29 @@
+const themeToggle = document.getElementById("themeToggle") as HTMLInputElement;
+
+function setTheme(theme) {
+document.documentElement.setAttribute("data-theme", theme);
+localStorage.setItem("theme", theme);
+}
+
+function handleThemeToggle() {
+if (themeToggle.checked) {
+setTheme("dark");
+} else {
+setTheme("light");
+}
+}
+
+themeToggle.addEventListener("change", handleThemeToggle);
+
+// Check local storage for the saved theme and update the checkbox state
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+setTheme(savedTheme);
+if (savedTheme === "dark") {
+themeToggle.checked = true;
+} else {
+themeToggle.checked = false;
+}
+} else {
+setTheme("light");
+}

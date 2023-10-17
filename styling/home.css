@@ -1,0 +1,22 @@
+.home-heading {
+	font-weight: 700;
+	font-size: xx-large;
+}
+
+.home-text {
+	font-weight: 400;
+}
+
+ul.socials {
+	display: flex; 
+	list-style: none;
+	padding: 0;
+	gap: 1rem;
+	margin: 2rem 0 0 0 ;
+}
+
+@media screen and (max-width: 576px) {
+	.home-heading {
+		font-size: larger;
+	}	
+}

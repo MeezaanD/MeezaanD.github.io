@@ -1,0 +1,15 @@
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 20rem;
+}
+
+
+ul.navbar {
+	display: flex;
+	padding: 0;
+	list-style: none;
+	gap: 20px;
+}

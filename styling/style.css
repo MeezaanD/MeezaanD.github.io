@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	scroll-behavior: smooth;
+}
+
+/* Light Mode */
+:root {
+	--bg-color: white;
+	--text-color: #101010;
+	--active-state: #424242;
+}
+
+[data-theme="light"] {
+	--bg-color: rgb(255, 255, 255);
+	--text-color: #101010;
+
+	.nav-item, a {
+		color: #101010;
+	}
+	.btn {
+		border: 1px solid #005AA7;
+		background: white;
+	}
+
+	.btn:hover {
+		background: #005AA7;
+		color: white;
+	}
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+	--bg-color: #101010;
+	--text-color: white;
+
+	.nav-item, a {
+		color: white;
+	}
+
+	.btn {
+		border: 1px solid white;
+		background: #005AA7;
+	}
+
+	.btn:hover {
+		background: white;
+		color: black;
+	}
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+/* SWITCH FOR MODES */
+
+.toggle-switch {
+	position: relative;
+	display: flex;
+	margin-left: auto !important;
+	padding-left: 20px;
+	margin: 1rem;
+	width: 60px;
+	height: 30px;
+	--light: #d8dbe0;
+	--dark: #28292c;
+	--link: rgb(27, 129, 112);
+	--link-hover: rgb(24, 94, 82);
+}
+
+.switch-label {
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	background-color: var(--dark);
+	border-radius: 15px;
+	cursor: pointer;
+	border: 1px solid var(--dark);
+}
+
+.checkbox {
+	position: absolute;
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.checkbox:checked~.slider {
+	background-color: var(--light);
+}
+
+.slider::before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	-webkit-box-shadow: inset 8px -2px 0px 0px var(--light);
+	box-shadow: inset 8px -2px 0px 0px var(--light);
+	background-color: var(--dark);
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.checkbox:checked~.slider::before {
+	-webkit-transform: translateX(30px);
+	-ms-transform: translateX(30px);
+	transform: translateX(30px);
+	background-color: var(--dark);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+#home,
+#about,
+#work,
+#other {
+	min-height: 90vh;
+	border: 1px dashed #101010;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 60rem;
+	width: 100%;
+	margin: auto;
+	padding: 0 0 0 5px;
+}
+
+a {
+	text-decoration: none;
+}
+
+span {
+	color: #005AA7;
+}
+
+.btn {
+	padding: 1rem;
+	border-radius: 10px;
+}
