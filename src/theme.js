@@ -12,7 +12,6 @@ function handleThemeToggle() {
     }
 }
 themeToggle.addEventListener("change", handleThemeToggle);
-// Check local storage for the saved theme and update the checkbox state
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme) {
     setTheme(savedTheme);

@@ -8,56 +8,6 @@
 	scroll-behavior: smooth;
 }
 
-/* Light Mode */
-:root {
-	--bg-color: white;
-	--text-color: #101010;
-	--active-state: #424242;
-}
-
-[data-theme="light"] {
-	--bg-color: rgb(255, 255, 255);
-	--text-color: #101010;
-
-	.nav-item, a {
-		color: #101010;
-	}
-	.btn {
-		border: 1px solid #005AA7;
-		background: white;
-	}
-
-	.btn:hover {
-		background: #005AA7;
-		color: white;
-	}
-}
-
-/* Dark Mode */
-[data-theme="dark"] {
-	--bg-color: #101010;
-	--text-color: white;
-
-	.nav-item, a {
-		color: white;
-	}
-
-	.btn {
-		border: 1px solid white;
-		background: #005AA7;
-	}
-
-	.btn:hover {
-		background: white;
-		color: black;
-	}
-}
-
-body {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-}
-
 /* SWITCH FOR MODES */
 
 .toggle-switch {
@@ -141,12 +91,16 @@ body {
 	padding: 0 0 0 5px;
 }
 
+footer {
+	text-align: center;
+}
+
 a {
 	text-decoration: none;
 }
 
 span {
-	color: #005AA7;
+	color: #2467a0;
 }
 
 .btn {
