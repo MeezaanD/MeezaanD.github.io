@@ -9,9 +9,11 @@
 	--bg-color: rgb(255, 255, 255);
 	--text-color: #101010;
 
-	.nav-item, a {
+	.nav-item,
+	a {
 		color: #101010;
 	}
+
 	.btn {
 		border: 1px solid #2467a0;
 		background: white;
@@ -28,7 +30,8 @@
 	--bg-color: #101010;
 	--text-color: white;
 
-	.nav-item, a {
+	.nav-item,
+	a {
 		color: white;
 	}
 
