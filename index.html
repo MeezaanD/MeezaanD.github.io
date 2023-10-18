@@ -17,12 +17,13 @@
 <body>
 	<header>
 		<nav>
-			<ul class="navbar">
+			<img class="logo" src="/assets/icon.jpeg" alt="">
+			<!-- <ul class="navbar">
 				<li><a class="nav-item" href="/">Home</a></li>
 				<li><a class="nav-item" href="/pages/about.html">About</a></li>
 				<li><a class="nav-item" href="/pages/work.html">Work</a></li>
 				<li><a class="nav-item" href="/pages/other.html">Other</a></li>
-			</ul>
+			</ul> -->
 			<div class="toggle-switch">
 				<label class="switch-label">
 					<input type="checkbox" class="checkbox" id="themeToggle">
@@ -33,26 +34,28 @@
 	</header>
 	<!-------------------------------------------------------------------------- -->
 	<section id="home">
-		<h1 class="home-heading">
-			Hello, I'm <span>Meezaan</span> Davids, a software <span>developer</span> passionate about creating
-			innovative solutions for <span>complex</span>
-			challenges.
-		</h1>
-		<p class="home-text">
-			Welcome to my portfolio! Scroll through to explore my diverse range of projects, showcasing my dedication and expertise across various domains. Delve into my work, and please don't hesitate to reach out with questions or feedback. Enjoy your visit!
-		</p>
-		<ul class="socials">
-			<li>
-				<a class="btn" target="_blank" href="https://github.com/MeezaanD">
-					Connect via <i class="fab fa-github"></i>
-				</a>
-			</li>
-			<li>
-				<a class="btn" target="_blank" href="https://www.linkedin.com/in/meezaan-davids-4a7aa8265/">
-					Connect via <i class="fab fa-linkedin"></i>
-				</a>
-			</li>
-		</ul>
+		<div class="home-grid">
+			<div class="row-1 row-margin">
+			  <div class="col-about">
+				<a class="home-heading" href="#">About</a>
+			  </div>
+			  <div class="col-work">
+				<a class="home-heading" href="#">Work</a>
+			  </div>
+			</div>
+			<div class="row-2 row-margin">
+			  <div class="col-more">
+				<a class="home-heading" href="#">More</a>
+			  </div>
+			  <div class="col-socials">
+				<ul class="socials">
+				  <li><a class="home-heading" href="https://github.com/MeezaanD" target="_blank"><i class="fab fa-github"></i></a></li>
+				  <li><a class="home-heading" href="https://www.linkedin.com/in/meezaan-davids-4a7aa8265/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+				  <li><a class="home-heading" href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
 	</section>
 	<!-------------------------------------------------------------------------- -->
 	<footer>
