@@ -80,12 +80,12 @@
 #about,
 #work,
 #other {
-	min-height: 85vh;
+	min-height: 90vh;
 	/* border: 1px dashed #101010; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	max-width: 60rem;
+	max-width: 100rem;
 	width: 100%;
 	margin: auto;
 }
