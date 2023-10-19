@@ -2,6 +2,7 @@ h3 {
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 700;
+	text-align: center;
 }
 
 .home-heading {
@@ -111,8 +112,13 @@ ul.socials {
 }
 
 @media screen and (max-width: 576px) {
+
+	h3 {
+		font-size: 20px;
+	}
+
 	.home-heading {
-		font-size: larger;
+		font-size: xx-large;
 	}
 
 	.row-1,
@@ -122,5 +128,9 @@ ul.socials {
 
 	.row-margin {
 		margin: 0;
+	}
+
+	.col {
+		margin: 5px 0;
 	}
 }
