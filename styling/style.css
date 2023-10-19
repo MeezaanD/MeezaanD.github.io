@@ -81,7 +81,7 @@
 #work,
 #other {
 	min-height: 85vh;
-	border: 1px dashed #101010;
+	/* border: 1px dashed #101010; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -107,7 +107,7 @@ span {
 
 .btn {
 	padding: 1rem;
-	border-radius: 10px;
+	border-radius: 1rem;
 }
 
 .fa-figma {

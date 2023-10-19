@@ -15,12 +15,11 @@
 	}
 
 	.btn {
-		border: 1px solid #2467a0;
-		background: white;
+		border: 1px solid #101010;
 	}
 
 	.btn:hover {
-		background: #2467a0;
+		background: #101010;
 		color: white;
 	}
 
@@ -40,13 +39,12 @@
 	}
 
 	.btn {
-		border: 1px solid white;
-		background: #2467a0;
+		border: 1px solid var(--span-color);
 	}
 
 	.btn:hover {
-		background: white;
-		color: black;
+		background: var(--span-color);
+		color: white;
 	}
 
 	.col {

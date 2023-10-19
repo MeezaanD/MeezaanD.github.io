@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/jpeg" href="/assets/icon.jpeg">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	<link rel="stylesheet" href="/styling/style.css">
-	<link rel="stylesheet" href="/styling/theme.css">
-	<link rel="stylesheet" href="/styling/navbar.css">
-	<link rel="stylesheet" href="/styling/about.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/jpeg" href="/assets/icon.jpeg" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/styling/style.css" />
+	<link rel="stylesheet" href="/styling/theme.css" />
+	<link rel="stylesheet" href="/styling/navbar.css" />
+	<link rel="stylesheet" href="/styling/about.css" />
 	<title>Meezaan Dev</title>
 </head>
 
@@ -18,7 +18,9 @@
 	<header>
 		<nav class="pages-nav">
 			<ul class="pages-navbar">
-				<li><a href="/"><img class="logo" src="/assets/icon.jpeg" alt=""></a></li>
+				<li>
+					<a href="/"><img class="logo" src="/assets/icon.jpeg" alt="" /></a>
+				</li>
 				<li><a class="nav-item" href="/pages/about.html">About</a></li>
 				<li><a class="nav-item" href="/pages/work.html">Work</a></li>
 				<li><a class="nav-item" href="/pages/other.html">Other</a></li>
@@ -27,7 +29,7 @@
 				<div>Switch<span> Theme</span></div>
 				<div class="toggle-switch">
 					<label class="switch-label">
-						<input type="checkbox" class="checkbox" id="themeToggle">
+						<input type="checkbox" class="checkbox" id="themeToggle" />
 						<span class="slider"></span>
 					</label>
 				</div>
@@ -36,52 +38,60 @@
 	</header>
 	<!-------------------------------------------------------------------------- -->
 	<section id="about">
-		<!-- <div class="about-heading">
-			Get to Know Me
-		</div>
-		<p>I'm Meezaan Davids, a dedicated software developer with a strong passion for crafting innovative solutions to tackle complex challenges. Welcome to my portfolio, where you can explore my diverse range of projects that showcase my expertise across various domains. I'm deeply invested in learning and staying up-to-date with the latest advancements in the software and web industry. My journey is fueled by a constant curiosity, driving me to seek new ways to solve problems and create user-friendly, cutting-edge solutions. I thrive on the ever-evolving nature of this field, always eager to embrace new technologies and approaches.</p>
-		<div class="about-heading">
-			Tech Stack
-		</div> -->
 		<div class="home-grid">
 			<div class="row-1 row-margin">
-				<div class="col-about-me col" loading="lazy">
-					<div class="about-heading">
-						Get to Know Me
+				<div class="col-about-me">
+					<div class="col-tech col">
+						<div class="about-heading">Get to Know Me</div>
+						<p class="about-text">
+							I'm <span>Meezaan Davids</span>, a dedicated software developer with a strong
+							passion for crafting innovative solutions to tackle complex
+							challenges. Welcome to my <span>portfolio</span>, where you can explore my
+							diverse range of projects that showcase my expertise across
+							various domains. I'm deeply invested in <span>learning</span> and staying
+							up-to-date with the latest advancements in the <span>software</span> and web
+							industry. My journey is fueled by a constant curiosity, driving me
+							to seek new ways to solve problems and create <span>user-friendly</span>,
+							cutting-edge solutions. I thrive on the <span></span> nature of
+							this field, always eager to embrace <span>new technologies</span> and
+							approaches.
+						</p>
 					</div>
-					<p class="about-text">I'm Meezaan Davids, a dedicated software developer with a strong passion for crafting innovative solutions to tackle complex challenges. Welcome to my portfolio, where you can explore my diverse range of projects that showcase my expertise across various domains. I'm deeply invested in learning and staying up-to-date with the latest advancements in the software and web industry. My journey is fueled by a constant curiosity, driving me to seek new ways to solve problems and create user-friendly, cutting-edge solutions. I thrive on the ever-evolving nature of this field, always eager to embrace new technologies and approaches.</p>
+					<div class="row-margin"></div>
+					<div class="col-tech col">
+						<div class="about-heading">Tech Stack</div>
+						<div class="tech-heading">Frontend</div>
+						<div class="tech-text">
+							<ul class="frontend-list">
+								<li class="btn">HTML</li>
+								<li class="btn">CSS</li>
+								<li class="btn">BOOTSTRAP</li>
+								<li class="btn">JAVASCRIPT</li>
+								<li class="btn">TYPESCRIPT</li>
+								<li class="btn">JQUERY</li>
+								<li class="btn">VUE JS</li>
+							</ul>
+						</div>
+						<div class="tech-heading">Backend</div>
+						<div class="tech-text">
+							<ul class="backend-list">
+								<li class="btn">NODE JS</li>
+								<li class="btn">MYSQL</li>
+								<li class="btn">GOLANG</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div class="col-journey col" loading="lazy">
-					<div class="about-heading">
-						My Journey
-					</div>
-				</div>
-			</div>
-			<div class="row-2 row-margin">
-				<div class="col-tech col" loading="lazy">
-					<div class="about-heading">
-						Tech Stack
-					</div>
-					<div class="tech-heading">
-						Frontend
-					</div>
-					<div class="tech-text">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet dignissimos vero, sequi unde corrupti incidunt officia dolorum fugit facilis! Tempore iste numquam qui fugit sapiente id illo veniam eveniet dolorum.
-					</div>
-					<div class="tech-heading">
-						Backend
-					</div>
-					<div class="tech-text">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet dignissimos vero, sequi unde corrupti incidunt officia dolorum fugit facilis! Tempore iste numquam qui fugit sapiente id illo veniam eveniet dolorum.
-					</div>
+				<div class="col-journey col">
+					<div class="about-heading">My Journey</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-------------------------------------------------------------------------- -->
 	<footer>
-		<h4>&copy; 
-			Designed by 
+		<h4>
+			&copy; Designed by
 			<span>
 				Meezaan
 				<a href="#" target="_blank">
@@ -90,8 +100,11 @@
 			</span>
 		</h4>
 	</footer>
+	<!-------------------------------------------------------------------------- -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<script> AOS.init(); </script>
+	<script>
+		AOS.init();
+	</script>
 	<script src="/src/about.js"></script>
 	<script src="/src/theme.js"></script>
 </body>

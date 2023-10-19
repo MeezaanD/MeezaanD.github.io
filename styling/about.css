@@ -10,13 +10,23 @@
 .about-text, .tech-text {
 	font-size: 1rem;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 .tech-heading {
 	font-size: 25px;
 	font-style: normal;
 	font-weight: 700;
+}
+
+.frontend-list, .backend-list {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content: start;
+	padding: 0;
+	margin: 1rem;
+	gap: 1rem;
 }
 
 .col-about-me, .col-journey, .col-tech {
@@ -37,13 +47,14 @@
 
 .col-about-me {
 	position: relative;
+	width: 100%;
 	flex: 4;
-	padding: 1rem;
 	overflow: hidden;
 }
 
 .col-journey {
 	position: relative;
+	width: 100%;
 	flex: 2;
 	padding: 1rem;
 	overflow: hidden;
@@ -51,6 +62,26 @@
 
 .col-tech {
 	position: relative;
+	width: 100%;
 	padding: 1rem;
 	overflow: hidden;
+}
+
+@media screen and (max-width: 576px) {
+
+	.frontend-list, .backend-list {
+		width: 100%;
+	}
+	.row-1,
+	.row-2 {
+		display: block;
+	}
+
+	.row-margin {
+		margin: 0;
+	}
+
+	.col {
+		margin: 5px 0;
+	}
 }
