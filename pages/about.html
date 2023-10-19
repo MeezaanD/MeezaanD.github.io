@@ -16,28 +16,79 @@
 
 <body>
 	<header>
-		<nav>
-			<ul class="navbar">
-				<li><a class="nav-item" href="/">Home</a></li>
+		<nav class="pages-nav">
+			<ul class="pages-navbar">
+				<li><a href="/"><img class="logo" src="/assets/icon.jpeg" alt=""></a></li>
 				<li><a class="nav-item" href="/pages/about.html">About</a></li>
 				<li><a class="nav-item" href="/pages/work.html">Work</a></li>
 				<li><a class="nav-item" href="/pages/other.html">Other</a></li>
 			</ul>
-			<div class="toggle-switch">
-				<label class="switch-label">
-					<input type="checkbox" class="checkbox" id="themeToggle">
-					<span class="slider"></span>
-				</label>
+			<div class="switch-theme">
+				<div>Switch<span> Theme</span></div>
+				<div class="toggle-switch">
+					<label class="switch-label">
+						<input type="checkbox" class="checkbox" id="themeToggle">
+						<span class="slider"></span>
+					</label>
+				</div>
 			</div>
 		</nav>
 	</header>
 	<!-------------------------------------------------------------------------- -->
 	<section id="about">
-		(ABOUT PAGE)
+		<!-- <div class="about-heading">
+			Get to Know Me
+		</div>
+		<p>I'm Meezaan Davids, a dedicated software developer with a strong passion for crafting innovative solutions to tackle complex challenges. Welcome to my portfolio, where you can explore my diverse range of projects that showcase my expertise across various domains. I'm deeply invested in learning and staying up-to-date with the latest advancements in the software and web industry. My journey is fueled by a constant curiosity, driving me to seek new ways to solve problems and create user-friendly, cutting-edge solutions. I thrive on the ever-evolving nature of this field, always eager to embrace new technologies and approaches.</p>
+		<div class="about-heading">
+			Tech Stack
+		</div> -->
+		<div class="home-grid">
+			<div class="row-1 row-margin">
+				<div class="col-about-me col" loading="lazy">
+					<div class="about-heading">
+						Get to Know Me
+					</div>
+					<p class="about-text">I'm Meezaan Davids, a dedicated software developer with a strong passion for crafting innovative solutions to tackle complex challenges. Welcome to my portfolio, where you can explore my diverse range of projects that showcase my expertise across various domains. I'm deeply invested in learning and staying up-to-date with the latest advancements in the software and web industry. My journey is fueled by a constant curiosity, driving me to seek new ways to solve problems and create user-friendly, cutting-edge solutions. I thrive on the ever-evolving nature of this field, always eager to embrace new technologies and approaches.</p>
+				</div>
+				<div class="col-journey col" loading="lazy">
+					<div class="about-heading">
+						My Journey
+					</div>
+				</div>
+			</div>
+			<div class="row-2 row-margin">
+				<div class="col-tech col" loading="lazy">
+					<div class="about-heading">
+						Tech Stack
+					</div>
+					<div class="tech-heading">
+						Frontend
+					</div>
+					<div class="tech-text">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet dignissimos vero, sequi unde corrupti incidunt officia dolorum fugit facilis! Tempore iste numquam qui fugit sapiente id illo veniam eveniet dolorum.
+					</div>
+					<div class="tech-heading">
+						Backend
+					</div>
+					<div class="tech-text">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet dignissimos vero, sequi unde corrupti incidunt officia dolorum fugit facilis! Tempore iste numquam qui fugit sapiente id illo veniam eveniet dolorum.
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 	<!-------------------------------------------------------------------------- -->
 	<footer>
-		(Where Footer will Go)
+		<h4>&copy; 
+			Designed by 
+			<span>
+				Meezaan
+				<a href="#" target="_blank">
+					<i class="fab fa-figma"></i>
+				</a>
+			</span>
+		</h4>
 	</footer>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script> AOS.init(); </script>

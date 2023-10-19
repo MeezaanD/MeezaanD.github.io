@@ -16,18 +16,21 @@
 
 <body>
 	<header>
-		<nav>
-			<ul class="navbar">
-				<li><a class="nav-item" href="/">Home</a></li>
+		<nav class="pages-nav">
+			<ul class="pages-navbar">
+				<li><a href="/"><img class="logo" src="/assets/icon.jpeg" alt=""></a></li>
 				<li><a class="nav-item" href="/pages/about.html">About</a></li>
 				<li><a class="nav-item" href="/pages/work.html">Work</a></li>
 				<li><a class="nav-item" href="/pages/other.html">Other</a></li>
 			</ul>
-			<div class="toggle-switch">
-				<label class="switch-label">
-					<input type="checkbox" class="checkbox" id="themeToggle">
-					<span class="slider"></span>
-				</label>
+			<div class="switch-theme">
+				<div>Switch<span> Theme</span></div>
+				<div class="toggle-switch">
+					<label class="switch-label">
+						<input type="checkbox" class="checkbox" id="themeToggle">
+						<span class="slider"></span>
+					</label>
+				</div>
 			</div>
 		</nav>
 	</header>
@@ -37,7 +40,15 @@
 	</section>
 	<!-------------------------------------------------------------------------- -->
 	<footer>
-		(Where Footer will Go)
+		<h4>&copy; 
+			Designed by 
+			<span>
+				Meezaan
+				<a href="#" target="_blank">
+					<i class="fab fa-figma"></i>
+				</a>
+			</span>
+		</h4>
 	</footer>
 	<!-------------------------------------------------------------------------- -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

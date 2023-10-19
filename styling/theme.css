@@ -2,7 +2,7 @@
 :root {
 	--bg-color: white;
 	--text-color: #101010;
-	--active-state: #424242;
+	--span-color: #dc3545;
 }
 
 [data-theme="light"] {
@@ -22,6 +22,10 @@
 	.btn:hover {
 		background: #2467a0;
 		color: white;
+	}
+
+	.col {
+		border: 1px solid #101010;
 	}
 }
 
@@ -43,6 +47,10 @@
 	.btn:hover {
 		background: white;
 		color: black;
+	}
+
+	.col {
+		border: 1px solid white;
 	}
 }
 

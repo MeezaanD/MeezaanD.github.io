@@ -1,0 +1,56 @@
+.about-heading {
+	position: relative;
+	z-index: 2;
+	font-weight: 700;
+	font-size: 40px;
+	font-style: normal;
+	transition: text-shadow 0.3s;
+}
+
+.about-text, .tech-text {
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.tech-heading {
+	font-size: 25px;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.col-about-me, .col-journey, .col-tech {
+	text-align: start;
+}
+
+.row-1, .row-2 {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	gap: 10px;
+	width: 100%;
+}
+
+.row-margin {
+	margin: 10px 0;
+}
+
+.col-about-me {
+	position: relative;
+	flex: 4;
+	padding: 1rem;
+	overflow: hidden;
+}
+
+.col-journey {
+	position: relative;
+	flex: 2;
+	padding: 1rem;
+	overflow: hidden;
+}
+
+.col-tech {
+	position: relative;
+	padding: 1rem;
+	overflow: hidden;
+}

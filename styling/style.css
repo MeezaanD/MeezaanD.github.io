@@ -90,11 +90,24 @@
 	margin: auto;
 }
 
+a {
+	text-decoration: none;
+}
+
+span {
+	color: var(--span-color);
+}
+
 .logo {
 	width: 60px;
 	height: 60px;
 	flex-shrink: 0;
 	border-radius: 50px;
+}
+
+.btn {
+	padding: 1rem;
+	border-radius: 10px;
 }
 
 .fa-figma {
@@ -106,17 +119,4 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-a {
-	text-decoration: none;
-}
-
-span {
-	color: #2467a0;
-}
-
-.btn {
-	padding: 1rem;
-	border-radius: 10px;
 }
