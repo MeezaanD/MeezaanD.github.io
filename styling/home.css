@@ -17,20 +17,19 @@ h3 {
 	content: '';
 	position: absolute;
 	bottom: 0;
-	left: 50%;
-	/* Position it at the horizontal center */
-	width: 40px;
-	/* Adjust the width as needed */
+	left: 20%;
+	width: 45px;
 	height: 5px;
-	/* Adjust the height as needed */
 	background-color: white;
-	/* Adjust the color as needed */
 	transform: translateX(-50%);
-	/* Center the underline horizontally */
 }
 
-.home-text {
-	font-weight: 400;
+.home-socials {
+	position: relative;
+	z-index: 2;
+	font-weight: 700;
+	font-size: 40px;
+	color: white !important;
 }
 
 ul.socials {
@@ -68,7 +67,6 @@ ul.socials {
 }
 
 .col-about {
-	border: 1px solid black;
 	background: url(/assets/about.jpg);
 	filter: grayscale(100%);
 	background-position: center;
@@ -78,7 +76,6 @@ ul.socials {
 }
 
 .col-work {
-	border: 1px solid black;
 	background: url(/assets/work.jpg);
 	filter: grayscale(100%);
 	background-position: center;
@@ -96,7 +93,6 @@ ul.socials {
 }
 
 .col-more {
-	border: 1px solid black;
 	background: url(/assets/other.jpg);
 	filter: grayscale(100%);
 	background-position: center;
@@ -106,7 +102,6 @@ ul.socials {
 }
 
 .col-socials {
-	border: 1px solid black;
 	background: url(/assets/socials.jpg);
 	filter: grayscale(100%);
 	background-position: center;
