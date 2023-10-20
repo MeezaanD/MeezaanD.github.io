@@ -1,0 +1,161 @@
+h3 {
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.other-heading {
+	position: relative;
+	z-index: 2;
+	font-weight: 700;
+	font-size: 40px;
+	font-style: normal;
+}
+
+.other-heading:hover::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 3%;
+	width: 45px;
+	height: 5px;
+	background-color: white;
+	transform: translateX(-50%);
+}
+
+.row-margin {
+	margin: 10px 0;
+}
+
+.row-1, .row-2 {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	gap: 10px;
+	width: 100%;
+}
+
+.col-fpl {
+	position: relative;
+	flex: 4;
+	padding: 8rem;
+	overflow: hidden;
+}
+
+.col-spotify {
+	position: relative;
+	flex: 1;
+	padding: 8rem;
+	overflow: hidden;
+}
+
+.col-lbx {
+	position: relative;
+	flex: 1;
+	padding: 8rem;
+	overflow: hidden;
+}
+
+.col-fpl::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(/assets/fpl.png);
+	background-position: center;
+	background-size: cover;
+	transition: transform 0.3s;
+	transform-origin: 0 0;
+	filter: grayscale(100%);
+	z-index: 1;
+}
+
+.col-spotify::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(/assets/spotify.png);
+	background-position: center;
+	background-size: cover;
+	transition: transform 0.3s;
+	transform-origin: 0 0;
+	filter: grayscale(100%);
+	z-index: 1;
+}
+
+.col-lbx::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(/assets/letterboxd.jpg);
+	background-position: center;
+	background-size: cover;
+	transition: transform 0.3s;
+	transform-origin: 0 0;
+	filter: grayscale(100%);
+	z-index: 1;
+}
+
+.col-fpl::before,
+.col-fpl::after,
+.col-spotify::before,
+.col-spotify:after,
+.col-lbx::before,
+.col-lbx::after{
+	opacity: 1;
+}
+
+.col-fpl:hover::before,
+.col-spotify:hover::before,
+.col-lbx:hover::before {
+	transform: scale(1.1);
+}
+
+.col-fpl::after,
+.col-spotify::after,
+.col-lbx::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	pointer-events: none;
+}
+
+@media screen and (max-width: 576px) {
+
+	h3 {
+		font-size: 1rem;
+		text-align: center;
+	}
+
+	.other-heading {
+		font-size: xx-large;
+	}
+
+	.row-1,
+	.row-2 {
+		/* display: block; */
+		flex-wrap: wrap;
+	}
+
+	/* .row-margin {
+		margin: 0;
+	} */
+
+	.col {
+		margin: 5px 0;
+		border: none !important;
+	}
+}

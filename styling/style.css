@@ -90,6 +90,10 @@
 	margin: auto;
 }
 
+#other {
+	max-width: 45rem;
+}
+
 a {
 	text-decoration: none;
 }
