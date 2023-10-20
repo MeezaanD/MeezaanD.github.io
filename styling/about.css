@@ -7,16 +7,20 @@
 	transition: text-shadow 0.3s;
 }
 
-.about-text, .tech-text {
+.tech-heading, .education-link {
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+}
+
+.about-text, .tech-text, .education-text {
 	font-size: 1rem;
 	font-style: normal;
 	font-weight: 600;
 }
 
-.tech-heading {
-	font-size: 25px;
-	font-style: normal;
-	font-weight: 700;
+.education-date {
+	font-weight: 300;
 }
 
 .frontend-list, .backend-list {
@@ -27,6 +31,15 @@
 	padding: 0;
 	margin: 1rem;
 	gap: 1rem;
+}
+
+ul.my-journey {
+	padding: 0;
+	list-style: none;
+}
+
+ul.my-journey > li {
+	margin: 10px 0;
 }
 
 .col-about-me, .col-journey, .col-tech {
