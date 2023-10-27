@@ -1,5 +1,75 @@
 /* JUST UNTIL I ADD THE PROJECTS */
 
 #work {
+	/* overflow: scroll; */
 	text-align: center;
+}
+
+.links {
+	color: var(--span-color) !important;
+}
+
+.project-heading {
+	position: relative;
+	z-index: 2;
+	font-weight: 700;
+	font-size: 40px;
+	font-style: normal;
+	transition: text-shadow 0.3s;
+}
+
+/* .tech-heading, .education-link {
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+} */
+
+.project-text {
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.project-top-list {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content: start;
+	padding: 0;
+	margin: 1rem;
+	gap: 1rem;
+}
+
+/* .container {
+	border: 1px solid black;
+} */
+
+.row {
+	display: flex;
+	min-height: 30vh;
+	/* align-items: center; */
+	/* flex-wrap: wrap; */
+	/* justify-content: space-evenly; */
+}
+
+.col {
+	/* padding: 5rem; */
+	display: flex;
+	flex-direction: column;
+	border: 1px dashed transparent !important;
+	margin: auto;
+	height: max-content;
+	text-align: start;
+	padding: 5px;
+	width: 100%;
+}
+
+.project-img {
+	width: 100%;
+}
+
+@media screen and (max-width: 576px) {
+	.row {
+		flex-wrap: wrap;
+	}
 }

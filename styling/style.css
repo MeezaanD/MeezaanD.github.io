@@ -78,20 +78,16 @@
 
 #home,
 #about,
-#work,
-#other {
+#work {
 	min-height: 85vh;
 	border: 1px dashed transparent;
+	/* border: 1px dashed black; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	max-width: 85rem;
 	width: 100%;
 	margin: auto;
-}
-
-#other {
-	max-width: 45rem;
 }
 
 a {
