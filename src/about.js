@@ -1,10 +1,10 @@
 const education = [
-    {
-        title: 'South Peninsula High School ',
-        description: 'Graduated and passed Matric with bachelors.',
-        date: 'January 2017 - December 2021',
-        url: 'https://sphigh.org/',
-    },
+    // {
+    // 	title: 'South Peninsula High School ',
+    // 	description: 'Graduated and passed Matric with bachelors.',
+    // 	date: 'January 2017 - December 2021',
+    // 	url: 'https://sphigh.org/',
+    // },
     {
         title: 'IT Academy ',
         description: 'Completed Software Fundamentals Course.',

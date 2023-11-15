@@ -23,7 +23,7 @@
 	font-weight: 300;
 }
 
-.frontend-list, .backend-list {
+.tech-stack{
 	display: flex;
 	flex-wrap: wrap;
 	list-style: none;
@@ -84,7 +84,7 @@ ul.my-journey > li {
 
 @media screen and (max-width: 576px) {
 
-	.frontend-list, .backend-list {
+	.tech-stack {
 		width: 100%;
 	}
 	.row-1,
