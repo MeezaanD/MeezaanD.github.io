@@ -9,7 +9,7 @@ const projects: ProjectItem[] = [
 	{
 		img: "/assets/ET-preview.png",
 		code: "https://github.com/MeezaanD/MD-Tracker.git",
-		liveLink: "https://e-tracker-45df7.web.app/",
+		liveLink: "https://my-etracker.netlify.app/",
 		description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools. With E-Tracker, you can effortlessly create custom budgets tailored to your specific financial goals. The app offers a comprehensive suite of features, including the ability to add, edit, and delete expenses with ease.E-Tracker's intuitive interface ensures that you maintain a clear overview of your finances, as it automatically calculates both the percentage spent and the remaining budget. Whether you're managing personal finances or tracking expenses for a special project, E-Tracker simplifies the budgeting process and helps you stay in control of your money.",
 	},
 ];
