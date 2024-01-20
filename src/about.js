@@ -18,7 +18,7 @@ const education = [
         url: 'https://lifechoicesacademy.com/',
     },
     {
-        title: 'Life Choices Studio ',
+        title: 'Life Choices Academy ',
         description: 'Assistant Lecturer recruited internally after course at Life Choices Academy.',
         date: 'April 2023 - June 2023',
         url: 'https://lcstudio.co.za/',
@@ -26,7 +26,7 @@ const education = [
     {
         title: 'IMQS Software ',
         description: 'Recruited as an Intern Software Developer.',
-        date: 'July 2023 - Current',
+        date: 'July 2023 - Present',
         url: 'https://www.imqs.co.za/',
     },
 ];
