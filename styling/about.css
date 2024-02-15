@@ -62,14 +62,14 @@ ul.my-journey > li {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	flex: 3;
+	flex: 4;
 	overflow: hidden;
 }
 
 .col-journey {
 	position: relative;
 	width: 100%;
-	flex: 3;
+	flex: 2;
 	padding: 1rem;
 	overflow: hidden;
 }
@@ -87,6 +87,7 @@ ul.my-journey > li {
 	.tech-stack {
 		width: 100%;
 	}
+	
 	.row-1,
 	.row-2 {
 		display: block;
