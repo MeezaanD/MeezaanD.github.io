@@ -27,7 +27,7 @@ const education: EducationItem[] = [
 	{
 		title: 'IMQS Software ',
 		description: 'Recruited as an Intern Software Developer.',
-		date: 'July 2023 - Present',
+		date: 'July 2023 - July 2024',
 		url: 'https://www.imqs.co.za/',
 	},
 ];
