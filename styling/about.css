@@ -11,6 +11,8 @@
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 600;
+	text-decoration: underline 1px;
+	margin: 2px 0;
 }
 
 .about-text, .tech-text, .education-text {
@@ -72,6 +74,7 @@ ul.my-journey > li {
 	flex: 2;
 	padding: 1rem;
 	overflow: hidden;
+	padding-bottom: 40px;
 }
 
 .col-tech {
@@ -80,6 +83,7 @@ ul.my-journey > li {
 	height: auto;
 	padding: 1rem;
 	overflow: hidden;
+	padding-bottom: 40px;
 }
 
 @media screen and (max-width: 576px) {

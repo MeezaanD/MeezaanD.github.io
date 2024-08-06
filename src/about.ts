@@ -14,21 +14,27 @@ const education: EducationItem[] = [
 	},
 	{
 		title: 'Life Choices Academy ',
-		description: 'Completed a Bootcamp FullStack Developer Coding Course.',
+		description: 'Completed a Bootcamp FullStack Coding Course.',
 		date: 'September 2022 - March 2023',
 		url: 'https://lifechoicesacademy.com/',
 	},
 	{
 		title: 'Life Choices Academy ',
-		description: 'Assistant Lecturer recruited internally after course at Life Choices Academy.',
+		description: 'Assistant Lecturer',
 		date: 'April 2023 - June 2023',
 		url: 'https://lcstudio.co.za/',
 	},
 	{
 		title: 'IMQS Software ',
-		description: 'Recruited as an Intern Software Developer.',
+		description: 'Intern Software Developer.',
 		date: 'July 2023 - July 2024',
 		url: 'https://www.imqs.co.za/',
+	},
+	{
+		title: 'Silux Control ',
+		description: 'Junior Software Developer.',
+		date: 'August 2024 - Present',
+		url: 'https://www.siluxcontrol.co.uk/',
 	},
 ];
 
