@@ -30,12 +30,12 @@ const education: EducationItem[] = [
 		date: 'July 2023 - July 2024',
 		url: 'https://www.imqs.co.za/',
 	},
-	{
-		title: 'Silux Control ',
-		description: 'Junior Software Developer.',
-		date: 'August 2024 - Present',
-		url: 'https://www.siluxcontrol.co.uk/',
-	},
+	// {
+	// 	title: 'Silux Control ',
+	// 	description: 'Junior Software Developer.',
+	// 	date: 'August 2024 - Present',
+	// 	url: 'https://www.siluxcontrol.co.uk/',
+	// },
 ];
 
 const ul = document.querySelector('.my-journey');

@@ -12,6 +12,12 @@ const projects: ProjectItem[] = [
 		liveLink: "https://my-etracker.netlify.app/",
 		description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools. With E-Tracker, you can effortlessly create custom budgets tailored to your specific financial goals. The app offers a comprehensive suite of features, including the ability to add, edit, and delete expenses with ease.E-Tracker's intuitive interface ensures that you maintain a clear overview of your finances, as it automatically calculates both the percentage spent and the remaining budget. Whether you're managing personal finances or tracking expenses for a special project, E-Tracker simplifies the budgeting process and helps you stay in control of your money.",
 	},
+	{
+		img: "/assets/tm2.png",
+		code: "https://github.com/MeezaanD/tenant-management",
+		liveLink: "https://tenant-management.vercel.app/",
+		description: "This project is a Tenant Management System designed to make it easy for landlords and tenants to manage payments and user information online.",
+	},
 ];
 
 const projectContainer = document.querySelector('.project-container');
@@ -43,7 +49,7 @@ if (projectContainer) {
 		projectTopList.classList.add('project-top-list');
 
 		const yearLi = document.createElement('li');
-		yearLi.textContent = '2023';
+		// yearLi.textContent = '2023';
 
 		const codeLi = document.createElement('li');
 		const codeLink = document.createElement('a');
