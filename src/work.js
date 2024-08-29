@@ -3,18 +3,20 @@ const projects = [
         img: "/assets/ET-preview.png",
         code: "https://github.com/MeezaanD/MD-Tracker.git",
         liveLink: "https://my-etracker.netlify.app/",
-        description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools. With E-Tracker, you can effortlessly create custom budgets tailored to your specific financial goals. The app offers a comprehensive suite of features, including the ability to add, edit, and delete expenses with ease.E-Tracker's intuitive interface ensures that you maintain a clear overview of your finances, as it automatically calculates both the percentage spent and the remaining budget. Whether you're managing personal finances or tracking expenses for a special project, E-Tracker simplifies the budgeting process and helps you stay in control of your money.",
+        description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools. With E-Tracker, you can effortlessly create custom budgets tailored to your specific financial goals...",
+        title: "E-Tracker", // Add the title for this project
     },
     {
         img: "/assets/tm2.png",
         code: "https://github.com/MeezaanD/tenant-management",
         liveLink: "https://tenant-management.vercel.app/",
         description: "This project is a Tenant Management System designed to make it easy for landlords and tenants to manage payments and user information online.",
+        title: "Tenant Management System", // Add the title for this project
     },
 ];
 const projectContainer = document.querySelector('.project-container');
 if (projectContainer) {
-    projects.forEach((item) => {
+    projects.forEach((item, index) => {
         const row = document.createElement('div');
         row.classList.add('row');
         const col1 = document.createElement('div');
@@ -30,10 +32,11 @@ if (projectContainer) {
         col1.appendChild(imgLink);
         const col2 = document.createElement('div');
         col2.classList.add('col');
+        const projectTitle = document.createElement('h3'); // Create title element
+        projectTitle.classList.add('project-title');
+        projectTitle.textContent = item.title;
         const projectTopList = document.createElement('ul');
         projectTopList.classList.add('project-top-list');
-        const yearLi = document.createElement('li');
-        // yearLi.textContent = '2023';
         const codeLi = document.createElement('li');
         const codeLink = document.createElement('a');
         codeLink.href = item.code;
@@ -54,16 +57,23 @@ if (projectContainer) {
         liveLinkIcon.classList.add('fas', 'fa-external-link-alt');
         liveLinkA.appendChild(liveLinkIcon);
         liveLinkLi.appendChild(liveLinkA);
-        projectTopList.appendChild(yearLi);
         projectTopList.appendChild(codeLi);
         projectTopList.appendChild(liveLinkLi);
         const projectText = document.createElement('p');
         projectText.classList.add('project-text');
         projectText.textContent = item.description;
+        col2.appendChild(projectTitle); // Append the title to col2
         col2.appendChild(projectTopList);
         col2.appendChild(projectText);
-        row.appendChild(col1);
-        row.appendChild(col2);
+        // Alternate the layout based on the index
+        if (index % 2 === 0) {
+            row.appendChild(col1);
+            row.appendChild(col2);
+        }
+        else {
+            row.appendChild(col2);
+            row.appendChild(col1);
+        }
         projectContainer.appendChild(row);
     });
 }
