@@ -4,6 +4,7 @@ type ProjectItem = {
 	liveLink: string;
 	description: string;
 	title: string;
+	techStack: string;
 };
 
 const projects: ProjectItem[] = [
@@ -12,14 +13,16 @@ const projects: ProjectItem[] = [
 		code: "https://github.com/MeezaanD/MD-Tracker.git",
 		liveLink: "https://my-etracker.netlify.app/",
 		description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools. With E-Tracker, you can effortlessly create custom budgets tailored to your specific financial goals...",
-		title: "E-Tracker",  // Add the title for this project
+		title: "E-Tracker",
+		techStack: "Vue · Typescript · Bootstrap",
 	},
 	{
 		img: "/assets/tm2.png",
 		code: "https://github.com/MeezaanD/tenant-management",
 		liveLink: "https://tenant-management.vercel.app/",
 		description: "This project is a Tenant Management System designed to make it easy for landlords and tenants to manage payments and user information online.",
-		title: "Tenant Management System",  // Add the title for this project
+		title: "Tenant Management System",
+		techStack: "Vue · Typescript · Golang · MySQL · Element UI",
 	},
 ];
 
@@ -53,6 +56,10 @@ if (projectContainer) {
 		projectTitle.classList.add('project-title');
 		projectTitle.textContent = item.title;
 
+		const techStack = document.createElement('p');
+		techStack.classList.add('tech-stack');
+		techStack.textContent = item.techStack;
+
 		const projectTopList = document.createElement('ul');
 		projectTopList.classList.add('project-top-list');
 
@@ -85,7 +92,8 @@ if (projectContainer) {
 		projectText.classList.add('project-text');
 		projectText.textContent = item.description;
 
-		col2.appendChild(projectTitle);  // Append the title to col2
+		col2.appendChild(projectTitle);
+		col2.appendChild(techStack);
 		col2.appendChild(projectTopList);
 		col2.appendChild(projectText);
 
