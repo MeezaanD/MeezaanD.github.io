@@ -36,6 +36,12 @@ const education: EducationItem[] = [
 	// 	date: 'August 2024 - Present',
 	// 	url: 'https://www.siluxcontrol.co.uk/',
 	// },
+	{
+		title: 'QTZ Concrete, Essentials Cpt ',
+		description: 'Web Developer / IT team member',
+		date: 'August 2024 - Present',
+		url: ''
+	}
 ];
 
 const ul = document.querySelector('.my-journey');
