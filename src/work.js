@@ -1,6 +1,6 @@
 const projects = [
     {
-        img: "/assets/ET-preview.png",
+        img: "/assets/projects/ET-preview.png",
         code: "https://github.com/MeezaanD/MD-Tracker.git",
         liveLink: "https://my-etracker.netlify.app/",
         description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools. With E-Tracker, you can effortlessly create custom budgets tailored to your specific financial goals...",
@@ -8,7 +8,7 @@ const projects = [
         techStack: "Vue · Typescript · Bootstrap",
     },
     {
-        img: "/assets/tm2.png",
+        img: "/assets/projects/tm2.png",
         code: "https://github.com/MeezaanD/tenant-management",
         liveLink: "https://tenant-management.vercel.app/",
         description: "This project is a Tenant Management System designed to make it easy for landlords and tenants to manage payments and user information online.",
