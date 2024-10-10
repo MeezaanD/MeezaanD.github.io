@@ -25,14 +25,73 @@
 	font-weight: 300;
 }
 
-.tech-stack{
+.tech-slider-wrapper, .course-wrapper {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.tech-slider {
 	display: flex;
-	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	white-space: nowrap;
+	animation: scroll 20s linear infinite;
+}
+
+.tech-stack {
+	display: flex;
+	gap: 2rem;
 	list-style: none;
-	justify-content: start;
 	padding: 0;
-	margin: 1rem;
-	gap: 1rem;
+	margin: 0;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+/* Adjust the speed and loop duration */
+.tech-slider:hover {
+	animation-play-state: paused;
+	/* Pause on hover */
+}
+
+.btn {
+	padding: 10px 20px;
+	background-color: #333;
+	color: #fff;
+	border-radius: 5px;
+	white-space: nowrap;
+	transition: background-color 0.3s;
+}
+
+.btn:hover {
+	background-color: #555;
+}
+
+/* For mobile screens */
+/* Responsive Fix for Mobile */
+@media screen and (max-width: 576px) {
+	.slider-container {
+		width: 100%;
+		/* Ensure the slider container fits mobile screens */
+		overflow: hidden;
+		/* Hide overflowing content */
+	}
+
+	.tech-stack-slider {
+		justify-content: flex-start;
+		/* Align items to the start on mobile */
+		gap: 10px;
+		/* Add smaller gaps on mobile */
+	}
 }
 
 ul.my-journey {
@@ -42,6 +101,71 @@ ul.my-journey {
 
 ul.my-journey > li {
 	margin: 10px 0;
+}
+
+.course-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.course-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 1rem;
+	gap: 1rem;
+	width: 100%;
+}
+
+.course-item {
+	width: 15rem;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 0.3s;
+}
+
+.course-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+.course-image {
+	width: 100%;
+	/* Make image responsive */
+	height: auto;
+	/* Maintain aspect ratio */
+}
+
+.course-title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin: 10px 0 0;
+	padding: 5px;
+}
+
+.course-institution {
+	font-size: 0.9rem;
+	color: #555;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+/* Media query for medium screens */
+@media (max-width: 768px) {
+	.course-item {
+		flex: 1 1 calc(45% - 20px);
+		/* Two items per row */
+	}
+}
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+	.course-item {
+		flex: 1 1 calc(100% - 20px);
+		/* Full width on small screens */
+	}
 }
 
 .col-about-me, .col-journey, .col-tech {
@@ -78,6 +202,15 @@ ul.my-journey > li {
 }
 
 .col-tech {
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 1rem;
+	overflow: hidden;
+	padding-bottom: 40px;
+}
+
+.col-course {
 	position: relative;
 	width: 100%;
 	height: auto;
