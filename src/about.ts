@@ -8,7 +8,7 @@ type EducationItem = {
 const education: EducationItem[] = [
 	{
 		title: 'IT Academy ',
-		description: 'Completed Software Fundamentals Course.',
+		description: 'Completed Software Development/ MTA Fundamentals Course.',
 		date: 'March 2022 - March 2023',
 		url: 'https://itacademy.co.za/',
 	},
@@ -20,7 +20,7 @@ const education: EducationItem[] = [
 	},
 	{
 		title: 'Life Choices Academy ',
-		description: 'Assistant Lecturer',
+		description: 'Assistant Coding Lecturer',
 		date: 'April 2023 - June 2023',
 		url: 'https://lcstudio.co.za/',
 	},
@@ -35,6 +35,12 @@ const education: EducationItem[] = [
 		description: 'Web Developer / IT team member',
 		date: 'August 2024 - Present',
 		url: ''
+	},
+	{
+		title: 'Zaio ',
+		description: 'Fullstack Web Development Bootcamp / NQF 5',
+		date: 'October 2024 - Present',
+		url: 'https://www.zaio.io/'
 	}
 ];
 
@@ -75,7 +81,7 @@ if (ul) {
 type CourseItem = {
 	title: string;
 	institution: string;
-	image: string;  // URL for the course image
+	image: string;
 	url: string;
 };
 
