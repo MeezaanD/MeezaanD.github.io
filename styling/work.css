@@ -1,7 +1,4 @@
-/* JUST UNTIL I ADD THE PROJECTS */
-
 #work {
-	/* overflow: scroll; */
 	text-align: center;
 }
 
@@ -16,18 +13,26 @@
 	font-size: 40px;
 	font-style: normal;
 	transition: text-shadow 0.3s;
+	margin-bottom: 1rem;
 }
 
-/* .tech-heading, .education-link {
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 600;
-} */
+/* Filter dropdown styling */
+#filter-container {
+	margin: 1rem 0;
+}
 
-.project-text {
+#filter {
+	padding: 0.5rem;
 	font-size: 1rem;
-	font-style: normal;
-	font-weight: 400;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+/* Responsive styles for filter container */
+@media screen and (max-width: 576px) {
+	#filter {
+		width: 100%;
+	}
 }
 
 .project-top-list {
@@ -40,20 +45,13 @@
 	gap: 1rem;
 }
 
-/* .container {
-	border: 1px solid black;
-} */
-
 .row {
 	display: flex;
 	min-height: 30vh;
-	/* align-items: center; */
-	/* flex-wrap: wrap; */
-	/* justify-content: space-evenly; */
+	margin-bottom: 1.5rem;
 }
 
 .col {
-	/* padding: 5rem; */
 	display: flex;
 	flex-direction: column;
 	border: 1px dashed transparent !important;
