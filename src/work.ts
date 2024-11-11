@@ -27,6 +27,15 @@ const projects: ProjectItem[] = [
 		techStack: "Vue · Typescript · Golang · MySQL · Element UI",
 		type: "personal",
 	},
+	{
+		img: "/assets/projects/product-management.png",
+		code: "https://github.com/MeezaanD/laravel-product-management",
+		liveLink: "",
+		description: "A Laravel application for managing products, including features for creating, editing, and deleting products, as well as managing their details such as name, price, description, and stock quantity.",
+		title: "Product Management System",
+		techStack: "Laravel · React · Inertia · Tailwind Css · SQLite",
+		type: "personal",
+	},
 	// Add some freelance projects
 	// {
 	// 	img: "/assets/projects/freelance1.png",
