@@ -26,6 +26,15 @@ const projects = [
         techStack: "Laravel · React · Inertia · Tailwind Css · SQLite",
         type: "personal",
     },
+    {
+        img: "/assets/projects/az-comms.png",
+        code: "https://github.com/MeezaanD/az-comms-services",
+        liveLink: "https://az-comms-services.vercel.app/",
+        description: "Freelance project web application developed for a client to manage their self employed business",
+        title: "AZ Comms & Services",
+        techStack: "React · Javascript · Tailwind Css",
+        type: "freelance",
+    },
     // Add some freelance projects
     // {
     // 	img: "/assets/projects/freelance1.png",
