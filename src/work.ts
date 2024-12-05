@@ -63,7 +63,7 @@ const filterSelect = document.getElementById('filter') as HTMLSelectElement;
 
 function renderProjects(filter: 'personal' | 'freelance' | 'all') {
 	if (projectContainer) {
-		projectContainer.innerHTML = '';  // Clear existing projects
+		projectContainer.innerHTML = ''; // Clear existing projects
 		const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.type === filter);
 
 		filteredProjects.forEach((item: ProjectItem, index: number) => {
@@ -74,8 +74,9 @@ function renderProjects(filter: 'personal' | 'freelance' | 'all') {
 			col1.classList.add('col');
 
 			const imgLink = document.createElement('a');
-			imgLink.href = item.liveLink;
-			imgLink.target = '_blank';
+			imgLink.href = item.liveLink || '#'; // Fallback if no liveLink
+			imgLink.target = item.liveLink ? '_blank' : '_self'; // Open in a new tab only if liveLink exists
+			if (!item.liveLink) imgLink.classList.add('inactive-link'); // Add inactive style if no liveLink
 
 			const projectImg = document.createElement('img');
 			projectImg.src = item.img;
@@ -101,10 +102,11 @@ function renderProjects(filter: 'personal' | 'freelance' | 'all') {
 
 			const codeLi = document.createElement('li');
 			const codeLink = document.createElement('a');
-			codeLink.href = item.code;
-			codeLink.target = '_blank';
+			codeLink.href = item.code || '#'; // Fallback if no code link
+			codeLink.target = item.code ? '_blank' : '_self'; // Open in a new tab only if code exists
 			codeLink.textContent = 'Code ';
 			codeLink.classList.add('links');
+			if (!item.code) codeLink.classList.add('inactive-link'); // Add inactive style if no code link
 			const codeIcon = document.createElement('i');
 			codeIcon.classList.add('fab', 'fa-github');
 			codeLink.appendChild(codeIcon);
@@ -112,10 +114,11 @@ function renderProjects(filter: 'personal' | 'freelance' | 'all') {
 
 			const liveLinkLi = document.createElement('li');
 			const liveLinkA = document.createElement('a');
-			liveLinkA.href = item.liveLink;
-			liveLinkA.target = '_blank';
+			liveLinkA.href = item.liveLink || '#'; // Fallback if no liveLink
+			liveLinkA.target = item.liveLink ? '_blank' : '_self'; // Open in a new tab only if liveLink exists
 			liveLinkA.textContent = 'Visit Site ';
 			liveLinkA.classList.add('links');
+			if (!item.liveLink) liveLinkA.classList.add('inactive-link'); // Add inactive style if no liveLink
 			const liveLinkIcon = document.createElement('i');
 			liveLinkIcon.classList.add('fas', 'fa-external-link-alt');
 			liveLinkA.appendChild(liveLinkIcon);
