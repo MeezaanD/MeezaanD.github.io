@@ -31,7 +31,7 @@ const education: EducationItem[] = [
 		url: 'https://www.imqs.co.za/',
 	},
 	{
-		title: 'QTZ Concrete, Essentials Cpt ',
+		title: 'QTZ Concrete ',
 		description: 'Web Developer / IT team member',
 		date: 'August 2024 - Present',
 		url: ''
