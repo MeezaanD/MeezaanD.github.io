@@ -33,7 +33,7 @@ const education: EducationItem[] = [
 	{
 		title: 'QTZ Concrete ',
 		description: 'Web Developer / IT team member',
-		date: 'August 2024 - Present',
+		date: 'August 2024 - December 2024',
 		url: ''
 	},
 	{
@@ -41,6 +41,12 @@ const education: EducationItem[] = [
 		description: 'Fullstack Web Development Bootcamp / NQF 5',
 		date: 'October 2024 - Present',
 		url: 'https://www.zaio.io/'
+	},
+	{
+		title: 'Flash Components CC ',
+		description: 'Web Developer',
+		date: 'December 2024 - Present',
+		url: 'https://flash.za.com/'
 	}
 ];
 
@@ -49,26 +55,26 @@ const ul = document.querySelector('.my-journey');
 if (ul) {
 	education.forEach((item: EducationItem) => {
 		const li = document.createElement('li');
-		li.classList.add('education-item'); // Add a class to the <li> element
+		li.classList.add('education-item');
 
 		const a = document.createElement('a');
 		a.href = item.url;
 		a.target = "_blank";
-		a.textContent = item.title; // Set the text content directly
+		a.textContent = item.title;
 		a.classList.add('education-link');
 
 		const icon = document.createElement('i');
-		icon.classList.add('fas', 'fa-external-link-alt'); // Add classes for the arrow icon
+		icon.classList.add('fas', 'fa-external-link-alt');
 
 		const pDescription = document.createElement('p');
 		pDescription.textContent = item.description;
-		pDescription.classList.add('education-text'); // Add a class to the <p> element
+		pDescription.classList.add('education-text');
 
 		const pDate = document.createElement('p');
 		pDate.textContent = item.date;
-		pDate.classList.add('education-date'); // Add a class to the <p> element
+		pDate.classList.add('education-date');
 
-		a.appendChild(icon); // Append the icon to the <a> element
+		a.appendChild(icon);
 
 		li.appendChild(a);
 		li.appendChild(pDescription);
@@ -78,82 +84,3 @@ if (ul) {
 	});
 }
 
-type CourseItem = {
-	title: string;
-	institution: string;
-	image: string;
-	url: string;
-};
-
-const courses: CourseItem[] = [
-	{
-		title: 'TypeScript: Developer\'s Guide',
-		institution: 'Udemy',
-		image: '/assets/content/typescript.jpg',
-		url: 'https://www.udemy.com/certificate/UC-f6e95682-0010-4526-9199-07bcff8bcb45/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com',
-	},
-	{
-		title: 'Master Go Programming',
-		institution: 'Udemy',
-		image: '/assets/content/master-go.jpg',
-		url: 'https://www.udemy.com/certificate/UC-32e8a94a-28d1-43f6-a4e0-614b93e88400/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com',
-	},
-	{
-		title: 'Building Modern Web Applications with Go (Golang)',
-		institution: 'Udemy',
-		image: '/assets/content/web-go.jpg',
-		url: 'https://www.udemy.com/certificate/UC-c069902a-bda0-4269-ab6a-19bc996ab867/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com',
-	},
-	{
-		title: 'Linux Tutorial',
-		institution: 'Great Learning',
-		image: '/assets/content/linux-tutorial.jpg',
-		url: 'https://olympus.mygreatlearning.com/courses/52823/certificate',
-	},
-	{
-		title: 'Machine Learning Algorithms',
-		institution: 'Great Learning',
-		image: '/assets/content/machine-learn.jpg',
-		url: 'https://olympus.mygreatlearning.com/courses/57914/certificate',
-	},
-	{
-		title: 'Data Science Foundation',
-		institution: 'Great Learning',
-		image: '/assets/content/data-science.jpg',
-		url: 'https://olympus.mygreatlearning.com/courses/13680/certificate',
-	},
-];
-
-const courseList = document.querySelector('.course-list');
-
-if (courseList) {
-	courses.forEach((course: CourseItem) => {
-		const li = document.createElement('li');
-		li.classList.add('course-item'); // Add a class to the <li> element
-
-		const a = document.createElement('a');
-		a.href = course.url;
-		a.target = "_blank";
-		a.classList.add('course-link');
-
-		const img = document.createElement('img');
-		img.src = course.image; // Set the image source
-		img.alt = course.title; // Set alt text
-		img.classList.add('course-image'); // Add a class to the <img> element
-
-		const title = document.createElement('div');
-		title.textContent = course.title;
-		title.classList.add('course-title');
-
-		const institution = document.createElement('div');
-		institution.textContent = course.institution;
-		institution.classList.add('course-institution');
-
-		a.appendChild(img); // Append the image to the <a> element
-		a.appendChild(title); // Append the title to the <a> element
-		a.appendChild(institution); // Append the institution to the <a> element
-
-		li.appendChild(a); // Append the <a> element to the <li> element
-		courseList.appendChild(li); // Append the <li> element to the course list
-	});
-}

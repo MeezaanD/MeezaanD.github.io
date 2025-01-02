@@ -112,78 +112,55 @@
 	}
 }
 
-ul.my-journey {
-	padding: 0;
-	list-style: none;
-}
-
-ul.my-journey > li {
-	margin: 10px 0;
-}
-
-.course-wrapper {
+.my-journey {
 	display: flex;
 	flex-wrap: wrap;
-}
-
-.course-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top: 1rem;
 	gap: 1rem;
+	padding: 0;
+	margin-top: 10px;
+	list-style: none;
 	width: 100%;
 }
 
-.course-item {
-	width: 15rem;
-	border: 1px solid #ccc;
+.education-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	border: 1px solid #ddd;
 	border-radius: 8px;
-	overflow: hidden;
-	transition: transform 0.3s;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+	transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.course-link {
-	text-decoration: none;
-	color: inherit;
-	display: block;
+.education-item:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-.course-image {
-	width: 100%;
-	/* Make image responsive */
-	height: auto;
-	/* Maintain aspect ratio */
-}
-
-.course-title {
+.education-link {
 	font-size: 1.2rem;
 	font-weight: bold;
-	margin: 10px 0 0;
-	padding: 5px;
+	text-decoration: none;
+	margin-bottom: 0.5rem;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
-.course-institution {
+.education-link:hover {
+	text-decoration: underline;
+}
+
+.education-text {
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.education-date {
 	font-size: 0.9rem;
-	color: #555;
-	margin-bottom: 10px;
-	padding: 5px;
-}
-
-/* Media query for medium screens */
-@media (max-width: 768px) {
-	.course-item {
-		flex: 1 1 calc(45% - 20px);
-		/* Two items per row */
-	}
-}
-
-/* Media query for small screens */
-@media (max-width: 576px) {
-	.course-item {
-		flex: 1 1 calc(100% - 20px);
-		/* Full width on small screens */
-	}
+	font-style: italic;
 }
 
 .col-about-me, .col-journey, .col-tech {
@@ -220,15 +197,6 @@ ul.my-journey > li {
 }
 
 .col-tech {
-	position: relative;
-	width: 100%;
-	height: auto;
-	padding: 1rem;
-	overflow: hidden;
-	padding-bottom: 40px;
-}
-
-.col-course {
 	position: relative;
 	width: 100%;
 	height: auto;
