@@ -80,6 +80,7 @@
 #about,
 #work {
 	min-height: 85vh;
+	padding: 20px;
 	border: 1px dashed transparent;
 	/* border: 1px dashed black; */
 	display: flex;

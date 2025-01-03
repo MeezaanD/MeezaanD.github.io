@@ -71,7 +71,7 @@ function renderProjects(filter: 'personal' | 'freelance' | 'all') {
 			row.classList.add('row');
 
 			const col1 = document.createElement('div');
-			col1.classList.add('col');
+			col1.classList.add('col-work');
 
 			const imgLink = document.createElement('a');
 			imgLink.href = item.liveLink || '#'; // Fallback if no liveLink
@@ -87,7 +87,7 @@ function renderProjects(filter: 'personal' | 'freelance' | 'all') {
 			col1.appendChild(imgLink);
 
 			const col2 = document.createElement('div');
-			col2.classList.add('col');
+			col2.classList.add('col-work');
 
 			const projectTitle = document.createElement('h3');
 			projectTitle.classList.add('project-title');
