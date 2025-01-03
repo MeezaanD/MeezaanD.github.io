@@ -56,7 +56,7 @@ function renderProjects(filter) {
             const row = document.createElement('div');
             row.classList.add('row');
             const col1 = document.createElement('div');
-            col1.classList.add('col');
+            col1.classList.add('col-work');
             const imgLink = document.createElement('a');
             imgLink.href = item.liveLink || '#'; // Fallback if no liveLink
             imgLink.target = item.liveLink ? '_blank' : '_self'; // Open in a new tab only if liveLink exists
@@ -69,7 +69,7 @@ function renderProjects(filter) {
             imgLink.appendChild(projectImg);
             col1.appendChild(imgLink);
             const col2 = document.createElement('div');
-            col2.classList.add('col');
+            col2.classList.add('col-work');
             const projectTitle = document.createElement('h3');
             projectTitle.classList.add('project-title');
             projectTitle.textContent = item.title;
