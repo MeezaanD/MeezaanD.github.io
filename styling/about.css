@@ -115,9 +115,11 @@
 .my-journey {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10px;
 	padding: 0;
-	margin-top: 10px;
+	margin: 15px 0;
 	list-style: none;
 	width: 100%;
 }
@@ -126,7 +128,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 100%;
+	width: 24rem;
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -190,7 +192,7 @@
 .col-journey {
 	position: relative;
 	width: 100%;
-	flex: 2;
+	/* flex: 2; */
 	padding: 1rem;
 	overflow: hidden;
 	padding-bottom: 40px;

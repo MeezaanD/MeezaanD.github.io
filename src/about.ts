@@ -1,6 +1,7 @@
 type EducationItem = {
 	title: string;
 	description: string;
+	additionalText?: string;
 	date: string;
 	url: string;
 };
@@ -15,14 +16,9 @@ const education: EducationItem[] = [
 	{
 		title: 'Life Choices Academy ',
 		description: 'Completed a Bootcamp FullStack Coding Course.',
+		additionalText: 'Assistant Coding Lecturer',
 		date: 'September 2022 - March 2023',
 		url: 'https://lifechoicesacademy.com/',
-	},
-	{
-		title: 'Life Choices Academy ',
-		description: 'Assistant Coding Lecturer',
-		date: 'April 2023 - June 2023',
-		url: 'https://lcstudio.co.za/',
 	},
 	{
 		title: 'IMQS Software ',
@@ -70,6 +66,10 @@ if (ul) {
 		pDescription.textContent = item.description;
 		pDescription.classList.add('education-text');
 
+		const additionalText = document.createElement('p');
+		additionalText.textContent = item.additionalText;
+		additionalText.classList.add('education-text');
+
 		const pDate = document.createElement('p');
 		pDate.textContent = item.date;
 		pDate.classList.add('education-date');
@@ -78,6 +78,7 @@ if (ul) {
 
 		li.appendChild(a);
 		li.appendChild(pDescription);
+		li.appendChild(additionalText);
 		li.appendChild(pDate);
 
 		ul.appendChild(li);
