@@ -13,7 +13,11 @@
 	font-size: 40px;
 	font-style: normal;
 	transition: text-shadow 0.3s;
-	margin-bottom: 1rem;
+	margin: 1rem;
+}
+
+.project-container {
+	padding: 1rem;
 }
 
 /* Filter dropdown styling */

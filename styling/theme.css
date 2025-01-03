@@ -25,6 +25,7 @@
 
 	.col {
 		border: 1px solid #101010;
+		border-radius: 5px;
 	}
 }
 
@@ -49,6 +50,7 @@
 
 	.col {
 		border: 1px solid white;
+		border-radius: 5px;
 	}
 }
 
