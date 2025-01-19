@@ -38,12 +38,21 @@ const projects: ProjectItem[] = [
 	},
 	{
 		img: "/assets/projects/az-comms.png",
-		code: "https://github.com/MeezaanD/az-comms-services",
+		code: "https://github.com/MeezaanD/resume-builder",
 		liveLink: "https://az-comms-services.vercel.app/",
 		description: "Freelance project web application developed for a client to manage their self employed business",
 		title: "AZ Comms & Services",
 		techStack: "React · Javascript · Tailwind Css",
 		type: "freelance",
+	},
+	{
+		img: "/assets/projects/resume-builder.png",
+		code: "https://github.com/MeezaanD/resume-builder",
+		liveLink: "https://resume-builder-md.vercel.app/",
+		description: "This is a basic tool designed to help you create professional resumes quickly and easily.",
+		title: "Resume Builder",
+		techStack: "Vue 3 · Node.js · Element UI",
+		type: "personal",
 	},
 	// Add some freelance projects
 	// {

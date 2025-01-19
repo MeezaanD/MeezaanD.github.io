@@ -9,7 +9,7 @@ const education = [
         title: 'Life Choices Academy ',
         description: 'Completed a Bootcamp FullStack Coding Course.',
         additionalText: 'Assistant Coding Lecturer',
-        date: 'September 2022 - March 2023',
+        date: 'September 2022 - June 2023',
         url: 'https://lifechoicesacademy.com/',
     },
     {
