@@ -1,3 +1,4 @@
+/* General Heading Styles */
 .about-heading {
 	position: relative;
 	z-index: 2;
@@ -7,7 +8,8 @@
 	transition: text-shadow 0.3s;
 }
 
-.tech-heading, .education-link {
+.tech-heading,
+.education-link {
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 600;
@@ -15,12 +17,15 @@
 	margin: 2px 0;
 }
 
-.about-text, .tech-text, .education-text {
+.about-text,
+.tech-text,
+.education-text {
 	font-size: 1rem;
 	font-style: normal;
 	font-weight: 600;
 }
 
+/* About Me Section */
 .about-me {
 	display: flex;
 	justify-content: space-between;
@@ -35,83 +40,80 @@
 	border-radius: 50%;
 }
 
+/* Education Section */
 .education-date {
 	font-weight: 300;
 }
 
-.tech-slider-wrapper, .course-wrapper {
+/* Tech Stack Container */
+.tech-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-evenly;
 	width: 100%;
-	overflow: hidden;
-	position: relative;
+	margin: 15px 0;
 }
 
 .tech-stack {
 	display: flex;
-	gap: 2rem;
+	flex-wrap: wrap;
+	gap: 1rem;
 	list-style: none;
-	padding: 0;
 	margin: 0;
+	justify-content: center;
+	gap: 20px;
+	width: 100%;
 }
 
-.tech-slider {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	white-space: nowrap;
-	animation: scroll 10s linear infinite;
+.skills-btn {
+	border-radius: 50% !important;
+	border: none !important;
 }
 
-@keyframes scroll {
-	0% {
-		transform: translateX(0);
-	}
-
-	100% {
-		transform: translateX(-100%);
-	}
+/* SVG Icon Styling */
+.icon {
+	width: 50px;
+	/* Uniform width */
+	height: 50px;
+	transition: filter 0.3s, transform 0.3s;
+	/* Smooth transitions */
 }
 
-/* Adjust the speed and loop duration */
-.tech-slider:hover {
-	animation-play-state: paused;
-	/* Pause on hover */
+/* Hide text by default */
+.skills-btn span {
+	display: none;
 }
 
+/* Button Styling */
 .btn {
 	padding: 10px 20px;
-	background-color: #333;
+	/* background-color: #333; */
 	color: #fff;
 	border-radius: 5px;
 	white-space: nowrap;
 	transition: background-color 0.3s;
+	display: flex;
+	align-items: center;
 }
 
 .btn:hover {
 	background-color: #555;
 }
 
-/* For mobile screens */
-/* Responsive Fix for Mobile */
+/* Mobile Screens */
 @media screen and (max-width: 576px) {
-	.slider-container {
-		width: 100%;
-		/* Ensure the slider container fits mobile screens */
-		overflow: hidden;
-		/* Hide overflowing content */
+	.tech-container {
+		flex-direction: column;
+		align-items: center;
 	}
 
-	.tech-stack-slider {
-		justify-content: flex-start;
-		/* Align items to the start on mobile */
-		gap: 10px;
-		/* Add smaller gaps on mobile */
-	}
-
-	.duplicate {
-		display: none;
+	.tech-stack {
+		justify-content: center;
 	}
 }
 
+/* My Journey Section */
 .my-journey {
 	display: flex;
 	flex-wrap: wrap;
@@ -120,10 +122,10 @@
 	gap: 10px;
 	padding: 0;
 	margin: 10px 0;
-	/* list-style: none; */
 	width: 100%;
 }
 
+/* Education Items */
 .education-item {
 	display: flex;
 	flex-direction: column;
@@ -166,11 +168,15 @@
 	font-style: italic;
 }
 
-.col-about-me, .col-journey, .col-tech {
+/* Column Layouts */
+.col-about-me,
+.col-journey,
+.col-tech {
 	text-align: start;
 }
 
-.row-1, .row-2 {
+.row-1,
+.row-2 {
 	display: flex;
 	justify-content: center;
 	text-align: center;
@@ -193,27 +199,28 @@
 .col-journey {
 	position: relative;
 	width: 100%;
-	/* flex: 2; */
 	padding: 1rem;
 	overflow: hidden;
 	padding-bottom: 40px;
 }
 
-.col-tech {
+/* .col-tech {
 	position: relative;
 	width: 100%;
 	height: auto;
 	padding: 1rem;
 	overflow: hidden;
 	padding-bottom: 40px;
+} */
+
+.btn-container {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
 }
 
 @media screen and (max-width: 576px) {
 
-	.tech-stack {
-		width: 100%;
-	}
-	
 	.row-1,
 	.row-2 {
 		display: block;
@@ -225,5 +232,9 @@
 
 	.col {
 		margin: 5px 0;
+	}
+
+	.btn-container {
+		flex-direction: column;
 	}
 }

@@ -16,11 +16,16 @@
 
 	.btn {
 		border: 1px solid #101010;
+		color: var(--text-color);
 	}
 
 	.btn:hover {
 		background: #101010;
 		color: white;
+	}
+
+	.icon {
+		filter: brightness(0) invert(0);
 	}
 
 	.col {
@@ -41,11 +46,16 @@
 
 	.btn {
 		border: 1px solid var(--span-color);
+		color: var(--text-color);
 	}
 
 	.btn:hover {
 		background: var(--span-color);
 		color: white;
+	}
+
+	.icon {
+		filter: brightness(0) invert(1);
 	}
 
 	.col {

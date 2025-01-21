@@ -1,63 +1,22 @@
-const projects = [
-    {
-        img: "/assets/projects/ET-preview.png",
-        code: "https://github.com/MeezaanD/MD-Tracker.git",
-        liveLink: "https://my-etracker.netlify.app/",
-        description: "E-Tracker is a versatile mobile web app designed to empower users with efficient and user-friendly budget management tools...",
-        title: "E-Tracker",
-        techStack: "Vue · Typescript · Bootstrap",
-        type: "personal",
-    },
-    {
-        img: "/assets/projects/tm2.png",
-        code: "https://github.com/MeezaanD/tenant-management",
-        liveLink: "https://tenant-management.vercel.app/",
-        description: "This project is a Tenant Management System designed to make it easy for landlords and tenants to manage payments and user information online.",
-        title: "Tenant Management System",
-        techStack: "Vue · Typescript · Golang · MySQL · Element UI",
-        type: "personal",
-    },
-    {
-        img: "/assets/projects/product-management.png",
-        code: "https://github.com/MeezaanD/laravel-product-management",
-        liveLink: "",
-        description: "A Laravel application for managing products, including features for creating, editing, and deleting products, as well as managing their details such as name, price, description, and stock quantity.",
-        title: "Product Management System",
-        techStack: "Laravel · React · Inertia · Tailwind Css · SQLite",
-        type: "personal",
-    },
-    {
-        img: "/assets/projects/az-comms.png",
-        code: "https://github.com/MeezaanD/resume-builder",
-        liveLink: "https://az-comms-services.vercel.app/",
-        description: "Freelance project web application developed for a client to manage their self employed business",
-        title: "AZ Comms & Services",
-        techStack: "React · Javascript · Tailwind Css",
-        type: "freelance",
-    },
-    {
-        img: "/assets/projects/resume-builder.png",
-        code: "https://github.com/MeezaanD/resume-builder",
-        liveLink: "https://resume-builder-md.vercel.app/",
-        description: "This is a basic tool designed to help you create professional resumes quickly and easily.",
-        title: "Resume Builder",
-        techStack: "Vue 3 · Node.js · Element UI",
-        type: "personal",
-    },
-    // Add some freelance projects
-    // {
-    // 	img: "/assets/projects/freelance1.png",
-    // 	code: "https://github.com/MeezaanD/freelance-project1",
-    // 	liveLink: "https://freelance-project1.vercel.app/",
-    // 	description: "Freelance Project 1 is a custom web application developed for a client to manage their online store...",
-    // 	title: "Freelance Project 1",
-    // 	techStack: "React · Node.js · Bootstrap",
-    // 	type: "freelance",
-    // },
-];
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+function fetchProjects() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch('./../data/projects.json');
+        const data = yield response.json();
+        return data;
+    });
+}
 const projectContainer = document.querySelector('.project-container');
 const filterSelect = document.getElementById('filter');
-function renderProjects(filter) {
+function renderProjects(projects, filter) {
     if (projectContainer) {
         projectContainer.innerHTML = ''; // Clear existing projects
         const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.type === filter);
@@ -133,11 +92,13 @@ function renderProjects(filter) {
         });
     }
 }
-// Initial rendering with all projects
-renderProjects('all');
-// Event listener for filter selection
-if (filterSelect) {
-    filterSelect.addEventListener('change', () => {
-        renderProjects(filterSelect.value);
-    });
-}
+// Fetch and render projects on load
+fetchProjects().then(projects => {
+    renderProjects(projects, 'all');
+    // Event listener for filter selection
+    if (filterSelect) {
+        filterSelect.addEventListener('change', () => {
+            renderProjects(projects, filterSelect.value);
+        });
+    }
+});
