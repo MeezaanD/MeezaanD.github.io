@@ -50,9 +50,11 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
-	justify-content: space-evenly;
+	justify-content: center;
 	width: 100%;
-	margin: 15px 0;
+	max-width: 600px;
+	margin: auto;
+	border: 1px solid var(--bg-color);
 }
 
 .tech-stack {
@@ -69,6 +71,7 @@
 .skills-btn {
 	border-radius: 50% !important;
 	border: none !important;
+	padding: 10px;
 }
 
 /* SVG Icon Styling */
@@ -119,7 +122,7 @@
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: center;
-	gap: 10px;
+	gap: 20px;
 	padding: 0;
 	margin: 10px 0;
 	width: 100%;
