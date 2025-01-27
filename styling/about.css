@@ -8,53 +8,158 @@
 	transition: text-shadow 0.3s;
 }
 
-.tech-heading,
-.education-link {
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 600;
-	text-decoration: underline 1px;
-	margin: 2px 0;
-}
-
-.about-text,
-.tech-text,
-.education-text {
-	font-size: 1rem;
-	font-style: normal;
-	font-weight: 600;
-}
-
-/* About Me Section */
-.about-me {
+.hero-section {
 	display: flex;
-	justify-content: space-between;
-	width: 100%;
 	align-items: center;
-	list-style: none;
-	padding: 10px;
+	justify-content: center;
+	margin: auto;
+	padding: 50px 20px;
+	background-color: var(--bg-color);
+	color: var(--text-color);
 }
 
-.about-me img {
-	height: 4rem;
+.hero-content {
+	display: flex;
+	justify-content: center;
+	flex-direction: column-reverse;
+	align-items: center;
+	text-align: center;
+	gap: 30px;
+}
+
+.hero-text {
+	width: 100%;
+}
+
+.hero-text h1 {
+	font-size: 1.7rem;
+	margin-bottom: 20px;
+}
+
+.hero-text p {
+	font-size: 1.1rem;
+	margin-bottom: 20px;
+}
+
+.cta-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.btn {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	transition: background-color 0.3s;
+}
+
+.btn:hover {
+	background-color: #555;
+}
+
+.social-icons {
+	display: flex;
+	gap: 20px;
+	margin: 10px 0;
+}
+
+.social-icons a {
+	color: var(--text-color);
+	font-size: 1.5rem;
+	transition: color 0.3s;
+}
+
+.social-icons a:hover {
+	color: var(--span-color);
+}
+
+.hero-image img {
+	width: 150px;
+	height: 150px;
 	border-radius: 50%;
+	object-fit: cover;
 }
 
-/* Education Section */
-.education-date {
-	font-weight: 300;
+@media screen and (min-width: 768px) {
+	.hero-content {
+		flex-direction: row;
+		text-align: left;
+	}
+
+	.hero-text {
+		text-align: left;
+	}
+
+	.hero-content .hero-text {
+		max-width: 50%;
+	}
+
+	.hero-content .hero-image {
+		max-width: 50%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.hero-image img {
+		width: 200px;
+		height: 200px;
+	}
 }
 
-/* Tech Stack Container */
+@media screen and (max-width: 576px) {
+	.cta-buttons, .social-icons {
+		justify-content: center;
+	}
+
+	.tech-container {
+		width: 100%;
+		max-width: 100%;
+		padding: 10px;
+	}
+}
+
+/* Skills and Journey Section */
+.skills-journey-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	gap: 40px;
+	justify-content: center;
+	width: 100%;
+	margin: auto;
+	padding: 40px 20px;
+	background-color: var(--bg-color);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+.skills-section,
+.journey-section {
+	flex: 1;
+	min-width: 300px;
+}
+
+.skills-section h2,
+.journey-section h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
 .tech-container {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
 	justify-content: center;
-	width: 100%;
-	max-width: 600px;
 	margin: auto;
-	border: 1px solid var(--bg-color);
+	padding: 20px 0;
+	max-width: 650px;
+	width: 100%;
 }
 
 .tech-stack {
@@ -62,73 +167,54 @@
 	flex-wrap: wrap;
 	gap: 1rem;
 	list-style: none;
+	padding: 0;
 	margin: 0;
 	justify-content: center;
-	gap: 20px;
 	width: 100%;
 }
 
-.skills-btn {
-	border-radius: 50% !important;
-	border: none !important;
-	padding: 10px;
-}
-
-/* SVG Icon Styling */
 .icon {
-	width: 50px;
-	/* Uniform width */
-	height: 50px;
-	transition: filter 0.3s, transform 0.3s;
-	/* Smooth transitions */
+	padding: 15px 20px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hide text by default */
-.skills-btn span {
+.icon img {
+	width: 24px;
+	height: 24px;
+	filter: grayscale(100%);
+	transition: filter 0.3s;
+}
+
+.icon:hover img {
+	filter: grayscale(0%);
+}
+
+.icon span {
 	display: none;
 }
 
-/* Button Styling */
-.btn {
-	padding: 10px 20px;
-	/* background-color: #333; */
-	color: #fff;
-	border-radius: 5px;
-	white-space: nowrap;
-	transition: background-color 0.3s;
-	display: flex;
-	align-items: center;
-}
-
-.btn:hover {
-	background-color: #555;
-}
-
-/* Mobile Screens */
-@media screen and (max-width: 576px) {
-	.tech-container {
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.tech-stack {
-		justify-content: center;
+@media screen and (min-width: 768px) {
+	.icon span {
+		display: inline;
 	}
 }
 
-/* My Journey Section */
 .my-journey {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: center;
 	gap: 20px;
-	padding: 0;
+	padding: 10px;
 	margin: 10px 0;
 	width: 100%;
 }
 
-/* Education Items */
 .education-item {
 	display: flex;
 	flex-direction: column;
@@ -169,75 +255,4 @@
 .education-date {
 	font-size: 0.9rem;
 	font-style: italic;
-}
-
-/* Column Layouts */
-.col-about-me,
-.col-journey,
-.col-tech {
-	text-align: start;
-}
-
-.row-1,
-.row-2 {
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	gap: 10px;
-	width: 100%;
-}
-
-.row-margin {
-	margin: 10px 0;
-}
-
-.col-about-me {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	flex: 4;
-	overflow: hidden;
-}
-
-.col-journey {
-	position: relative;
-	width: 100%;
-	padding: 1rem;
-	overflow: hidden;
-	padding-bottom: 40px;
-}
-
-/* .col-tech {
-	position: relative;
-	width: 100%;
-	height: auto;
-	padding: 1rem;
-	overflow: hidden;
-	padding-bottom: 40px;
-} */
-
-.btn-container {
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-}
-
-@media screen and (max-width: 576px) {
-
-	.row-1,
-	.row-2 {
-		display: block;
-	}
-
-	.row-margin {
-		margin: 0;
-	}
-
-	.col {
-		margin: 5px 0;
-	}
-
-	.btn-container {
-		flex-direction: column;
-	}
 }
