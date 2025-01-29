@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 function fetchEducation() {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch('./../data/education.json');
+        const response = yield fetch('./../data/journey.json');
         const data = yield response.json();
         return data;
     });

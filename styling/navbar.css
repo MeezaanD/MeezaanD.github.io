@@ -46,7 +46,6 @@ ul.pages-navbar {
 
 @media screen and (max-width: 576px) {
 	.pages-nav {
-		display: block;
 		padding: 0 10px 0 10px;
 	}
 }
