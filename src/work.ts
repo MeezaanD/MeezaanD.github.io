@@ -9,9 +9,9 @@ type ProjectItem = {
 };
 
 async function fetchProjects(): Promise<ProjectItem[]> {
-	const response = await fetch('./../data/projects.json');
+	const response = await fetch('https://MeezaanD.github.io/config/config.json');
 	const data = await response.json();
-	return data;
+	return data.projects;
 }
 
 const projectContainer = document.querySelector('.project-container');

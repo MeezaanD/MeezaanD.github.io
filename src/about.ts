@@ -7,9 +7,9 @@ type EducationItem = {
 };
 
 async function fetchEducation(): Promise<EducationItem[]> {
-	const response = await fetch('./../data/journey.json');
+	const response = await fetch('https://meezaand.github.io/config/config.json');
 	const data = await response.json();
-	return data;
+	return data.experience;
 }
 
 fetchEducation().then(education => {
