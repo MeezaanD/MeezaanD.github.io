@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 function fetchProjects() {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch('./../data/projects.json');
+        const response = yield fetch('https://MeezaanD.github.io/config/config.json');
         const data = yield response.json();
-        return data;
+        return data.projects;
     });
 }
 const projectContainer = document.querySelector('.project-container');
