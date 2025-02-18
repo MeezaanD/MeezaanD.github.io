@@ -89,15 +89,12 @@
 @media screen and (min-width: 768px) {
 	.hero-content {
 		flex-direction: row;
-		text-align: left;
+		text-align: start;
 	}
 
 	.hero-text {
 		text-align: left;
-	}
-
-	.hero-content .hero-text {
-		max-width: 50%;
+		max-width: 60%;
 	}
 
 	.hero-content .hero-image {
@@ -189,14 +186,15 @@
 	border-radius: 5px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 10px;
 	transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .icon img {
-	width: 24px;
-	height: 24px;
+	width: 40px;
+	height: 40px;
 	filter: grayscale(100%);
 	transition: filter 0.3s;
 }

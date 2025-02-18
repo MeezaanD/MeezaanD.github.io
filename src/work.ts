@@ -25,14 +25,16 @@ function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance
 		filteredProjects.forEach((item: ProjectItem, index: number) => {
 			const row = document.createElement('div');
 			row.classList.add('row');
+			row.setAttribute('data-aos', index % 2 === 0 ? 'fade-left' : 'fade-right');
+			row.setAttribute('data-aos-duration', '1000');
 
 			const col1 = document.createElement('div');
 			col1.classList.add('col-work');
 
 			const imgLink = document.createElement('a');
 			imgLink.href = item.liveLink || '#'; // Fallback if no liveLink
-			imgLink.target = item.liveLink ? '_blank' : '_self'; // Open in a new tab only if liveLink exists
-			if (!item.liveLink) imgLink.classList.add('inactive-link'); // Add inactive style if no liveLink
+			imgLink.target = item.liveLink ? '_blank' : '_self';
+			if (!item.liveLink) imgLink.classList.add('inactive-link');
 
 			const projectImg = document.createElement('img');
 			projectImg.src = item.img;
@@ -58,11 +60,11 @@ function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance
 
 			const codeLi = document.createElement('li');
 			const codeLink = document.createElement('a');
-			codeLink.href = item.code || '#'; // Fallback if no code link
-			codeLink.target = item.code ? '_blank' : '_self'; // Open in a new tab only if code exists
+			codeLink.href = item.code || '#';
+			codeLink.target = item.code ? '_blank' : '_self';
 			codeLink.textContent = 'Code ';
 			codeLink.classList.add('links');
-			if (!item.code) codeLink.classList.add('inactive-link'); // Add inactive style if no code link
+			if (!item.code) codeLink.classList.add('inactive-link');
 			const codeIcon = document.createElement('i');
 			codeIcon.classList.add('fab', 'fa-github');
 			codeLink.appendChild(codeIcon);
@@ -70,11 +72,11 @@ function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance
 
 			const liveLinkLi = document.createElement('li');
 			const liveLinkA = document.createElement('a');
-			liveLinkA.href = item.liveLink || '#'; // Fallback if no liveLink
-			liveLinkA.target = item.liveLink ? '_blank' : '_self'; // Open in a new tab only if liveLink exists
+			liveLinkA.href = item.liveLink || '#';
+			liveLinkA.target = item.liveLink ? '_blank' : '_self';
 			liveLinkA.textContent = 'Visit Site ';
 			liveLinkA.classList.add('links');
-			if (!item.liveLink) liveLinkA.classList.add('inactive-link'); // Add inactive style if no liveLink
+			if (!item.liveLink) liveLinkA.classList.add('inactive-link');
 			const liveLinkIcon = document.createElement('i');
 			liveLinkIcon.classList.add('fas', 'fa-external-link-alt');
 			liveLinkA.appendChild(liveLinkIcon);
@@ -105,6 +107,7 @@ function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance
 		});
 	}
 }
+
 
 // Fetch and render projects on load
 fetchProjects().then(projects => {
