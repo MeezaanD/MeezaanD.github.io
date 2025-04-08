@@ -85,8 +85,8 @@
 }
 
 .hero-image img {
-	width: 80px;
-	height: 80px;
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
 	object-fit: cover;
 	border: 3px solid var(--span-color);
@@ -116,12 +116,18 @@
 	}
 
 	.hero-image img {
-		width: 150px;
-		height: 150px;
+		width: 200px;
+		height: 200px;
 	}
 }
 
 @media screen and (max-width: 576px) {
+
+	.hero-text h1 {
+		font-size: 1rem;
+		margin-bottom: 20px;
+	}
+
 	.cta-buttons,
 	.social-icons {
 		justify-content: center;
@@ -247,7 +253,7 @@
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
-	max-width: 45rem;
+	max-width: 50rem;
 	min-height: 10rem;
 	text-align: center;
 	border: 1px solid #ddd;
