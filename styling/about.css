@@ -8,6 +8,7 @@
 	transition: text-shadow 0.3s;
 }
 
+/* Hero Section */
 .hero-section {
 	display: flex;
 	align-items: center;
@@ -99,57 +100,6 @@
 	transform: scale(1.05);
 }
 
-/* Larger Screens */
-@media screen and (min-width: 768px) {
-	.hero-content {
-		flex-direction: column;
-		text-align: center;
-	}
-
-	.hero-text {
-		text-align: center;
-		max-width: 100%;
-	}
-
-	.hero-content .hero-image {
-		max-width: 100%;
-		justify-content: center;
-	}
-
-	.hero-image img {
-		width: 200px;
-		height: 200px;
-	}
-}
-
-@media screen and (max-width: 576px) {
-
-	.hero-text h1 {
-		font-size: 1rem;
-		margin-bottom: 20px;
-	}
-
-	.cta-buttons,
-	.social-icons {
-		justify-content: center;
-	}
-
-	.tech-container {
-		width: 100%;
-		max-width: 100%;
-		padding: 10px;
-	}
-
-	.skills-journey-container {
-		padding: 20px 10px;
-	}
-
-	.skills-section,
-	.journey-section {
-		min-width: 100%;
-	}
-}
-
 /* Skills and Journey Section */
 .skills-journey-container {
 	display: flex;
@@ -220,16 +170,11 @@
 	filter: grayscale(0%);
 }
 
-.icon span {
+/* .icon span {
 	display: none;
-}
+} */
 
-@media screen and (min-width: 768px) {
-	.icon span {
-		display: inline;
-	}
-}
-
+/* Bio & Journey */
 .bio-text {
 	text-align: center;
 	max-width: 800px;
@@ -293,4 +238,133 @@
 .education-date {
 	font-size: 0.9rem;
 	font-style: italic;
+}
+
+/* -------------------------------------------- */
+/* Responsive Fixes: Larger Screens */
+@media screen and (min-width: 768px) {
+	.hero-content {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.hero-text {
+		text-align: center;
+		max-width: 100%;
+	}
+
+	.hero-content .hero-image {
+		max-width: 100%;
+		justify-content: center;
+	}
+
+	.hero-image img {
+		width: 200px;
+		height: 200px;
+	}
+
+	.icon span {
+		display: inline;
+	}
+}
+
+/* -------------------------------------------- */
+/* Responsive Fixes: Mobile Screens */
+@media screen and (max-width: 576px) {
+	.about-heading {
+		font-size: 28px;
+		padding: 0 1rem;
+		text-align: center;
+	}
+
+	.hero-section {
+		padding: 30px 15px;
+		flex-direction: column;
+	}
+
+	.hero-content {
+		margin-top: 50px;
+		gap: 20px;
+	}
+
+	.hero-text h1 {
+		font-size: 1.25rem;
+	}
+
+	.hero-text p {
+		font-size: 0.95rem;
+		padding: 0 1rem;
+	}
+
+	.hero-image img {
+		width: 120px;
+		height: 120px;
+	}
+
+	.cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.btn {
+		justify-content: center;
+		width: 100%;
+		max-width: 300px;
+	}
+
+	.social-icons {
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+
+	.tech-container {
+		width: 100%;
+		max-width: 100%;
+		padding: 10px;
+	}
+
+	.skills-journey-container {
+		padding: 30px 10px;
+	}
+
+	.skills-section,
+	.journey-section {
+		min-width: 100%;
+	}
+
+	.tech-stack {
+		gap: 1rem;
+	}
+
+	.icon {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.icon img {
+		width: 24px;
+		height: 24px;
+	}
+
+	.bio-text {
+		padding: 0 1rem;
+		font-size: 0.95rem;
+	}
+
+	.education-item {
+		padding: 1rem;
+		margin: 0 1rem;
+	}
+
+	.education-link {
+		font-size: 1rem;
+	}
+
+	.education-text {
+		font-size: 0.95rem;
+	}
+
+	.education-date {
+		font-size: 0.85rem;
+	}
 }

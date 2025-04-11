@@ -81,7 +81,38 @@
 }
 
 @media screen and (max-width: 576px) {
+	.project-heading {
+		font-size: 28px;
+	}
+
+	#filter-container {
+		text-align: left;
+		padding: 0 1rem;
+	}
+
 	.row {
-		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.col-work {
+		width: 100%;
+		text-align: center;
+		align-items: center;
+	}
+
+	.project-top-list {
+		justify-content: center;
+	}
+
+	.tech-stack, .project-text {
+		padding: 0 1rem;
+	}
+
+	.project-img {
+		max-width: 100%;
+		height: auto;
 	}
 }
+
