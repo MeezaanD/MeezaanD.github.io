@@ -183,6 +183,38 @@
 	line-height: 1.6;
 }
 
+.education-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px 0;
+	width: 100%;
+}
+
+.institution-list {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding: 0;
+	list-style: none;
+}
+  
+.education-image {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+	/* border: 3px solid var(--span-color); */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	transition: transform 0.3s ease;
+}
+  
+.education-image:hover {
+	transform: scale(1.05);
+}
+  
 .my-journey {
 	display: flex;
 	flex-direction: column;
@@ -315,6 +347,11 @@
 	.social-icons {
 		flex-wrap: wrap;
 		gap: 15px;
+	}
+
+	.institution-list {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.tech-container {
