@@ -52,7 +52,7 @@ function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance
 			projectTitle.textContent = item.title;
 
 			const techStack = document.createElement('p');
-			techStack.classList.add('tech-stack');
+			techStack.classList.add('tech-stack-text');
 			techStack.textContent = item.techStack;
 
 			const projectTopList = document.createElement('ul');

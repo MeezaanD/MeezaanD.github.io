@@ -44,7 +44,7 @@ function renderProjects(projects, filter) {
             projectTitle.classList.add('project-title');
             projectTitle.textContent = item.title;
             const techStack = document.createElement('p');
-            techStack.classList.add('tech-stack');
+            techStack.classList.add('tech-stack-text');
             techStack.textContent = item.techStack;
             const projectTopList = document.createElement('ul');
             projectTopList.classList.add('project-top-list');

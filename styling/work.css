@@ -106,8 +106,9 @@
 		justify-content: center;
 	}
 
-	.tech-stack, .project-text {
+	.tech-stack-text, .project-text {
 		padding: 0 1rem;
+		text-align: start;
 	}
 
 	.project-img {
