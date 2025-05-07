@@ -5,7 +5,7 @@ type ProjectItem = {
 	description: string;
 	title: string;
 	techStack: string;
-	type: 'personal' | 'freelance';
+	type: 'personal' | 'freelance' | 'project';
 };
 
 async function fetchProjects(): Promise<ProjectItem[]> {
@@ -17,7 +17,7 @@ async function fetchProjects(): Promise<ProjectItem[]> {
 const projectContainer = document.querySelector('.project-container');
 const filterSelect = document.getElementById('filter') as HTMLSelectElement;
 
-function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance' | 'all') {
+function renderProjects(projects: ProjectItem[], filter: 'personal' | 'freelance' | 'all' | 'project') {
 	if (projectContainer) {
 		projectContainer.innerHTML = ''; // Clear existing projects
 		const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.type === filter);
@@ -116,7 +116,7 @@ fetchProjects().then(projects => {
 	// Event listener for filter selection
 	if (filterSelect) {
 		filterSelect.addEventListener('change', () => {
-			renderProjects(projects, filterSelect.value as 'personal' | 'freelance' | 'all');
+			renderProjects(projects, filterSelect.value as 'personal' | 'freelance' | 'all' | 'project');
 		});
 	}
 });
