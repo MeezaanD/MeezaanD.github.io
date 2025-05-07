@@ -58,8 +58,7 @@
 	border: none;
 	border-radius: 5px;
 	text-decoration: none;
-	display: flex;
-	align-items: center;
+	text-align: center;
 	gap: 5px;
 	transition: background-color 0.3s;
 }
@@ -214,6 +213,15 @@
 .education-image:hover {
 	transform: scale(1.05);
 }
+
+.section-title {
+	text-align: center;
+}
+
+.view-journey-button {
+	text-align: center;
+	padding-top: 20px;
+}
   
 .my-journey {
 	display: flex;
@@ -340,7 +348,7 @@
 
 	.btn {
 		justify-content: center;
-		width: 100%;
+		/* width: 100%; */
 		max-width: 300px;
 	}
 
