@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "tsc -w & lite-server",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "tsc -w & lite-server"
+		"start": "concurrently \"tsc -w\" \"lite-server\"",
+		"dev": "concurrently \"tsc -w\" \"lite-server\"",
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,5 +15,8 @@
 		"aos": "^2.3.4",
 		"lite-server": "^2.6.1",
 		"typescript": "^5.2.2"
+	},
+	"devDependencies": {
+		"concurrently": "^9.1.2"
 	}
 }
