@@ -13,7 +13,7 @@
 	font-size: 40px;
 	font-style: normal;
 	transition: text-shadow 0.3s;
-	margin: 1rem;
+	margin: 0 1rem;
 }
 
 .project-container {
@@ -45,7 +45,7 @@
 	list-style: none;
 	justify-content: start;
 	padding: 0;
-	margin: 1rem;
+	margin: 1rem 0;
 	gap: 1rem;
 }
 
@@ -108,7 +108,7 @@
 
 	.tech-stack-text, .project-text {
 		padding: 0 1rem;
-		text-align: start;
+		text-align: center;
 	}
 
 	.project-img {
