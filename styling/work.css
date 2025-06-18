@@ -1,164 +1,119 @@
 #work {
-    text-align: center;
-    padding: 2rem 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+	text-align: center;
+}
+
+.links {
+	color: var(--span-color) !important;
 }
 
 .project-heading {
-    position: relative;
-    z-index: 2;
-    font-weight: 700;
-    font-size: 40px;
-    margin: 0 1rem 2rem;
-    color: var(--text-color);
+	position: relative;
+	z-index: 2;
+	font-weight: 700;
+	font-size: 40px;
+	font-style: normal;
+	transition: text-shadow 0.3s;
+	margin: 0 1rem;
 }
 
 .project-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-}
-
-.project-card {
-    background: var(--bg-color);
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensure all cards take full height */
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.project-img-container {
-    height: 200px;
-    overflow: hidden;
-    border-bottom: 1px solid var(--text-color);
-    flex-shrink: 0; /* Prevent image container from shrinking */
-}
-
-.project-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-img {
-    transform: scale(1.05);
-}
-
-.project-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Allow content to grow and push buttons down */
-}
-
-.project-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: var(--text-color);
-}
-
-.tech-stack-text {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    margin-bottom: 1rem;
-}
-
-.project-text {
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-    opacity: 0.9;
-    flex-grow: 1; /* Push buttons to the bottom */
-}
-
-.project-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: auto; /* Push to bottom of card */
-    padding-top: 1rem; /* Add some spacing above buttons */
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid var(--span-color);
-    color: var(--text-color);
-    flex-grow: 1; /* Make buttons expand equally */
-    justify-content: center; /* Center button content */
-}
-
-.project-link:hover {
-    background: var(--span-color);
-    color: white;
-}
-
-.project-link.inactive-link {
-    cursor: not-allowed;
-    opacity: 0.6;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    background: transparent;
-}
-
-.project-link.inactive-link:hover {
-    background: transparent;
-    color: var(--text-color);
+	padding: 1rem;
 }
 
 /* Filter dropdown styling */
 #filter-container {
-    margin: 1rem 0 2rem;
+	margin: 1rem 0;
 }
 
 #filter {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: 1px solid var(--text-color);
-    border-radius: 5px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+	padding: 0.5rem;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .project-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
+/* Responsive styles for filter container */
+@media screen and (max-width: 576px) {
+	#filter {
+		width: 100%;
+	}
+}
+
+.project-top-list {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content: start;
+	padding: 0;
+	margin: 1rem 0;
+	gap: 1rem;
+}
+
+.row {
+	display: flex;
+	min-height: 30vh;
+	margin-bottom: 1.5rem;
+}
+
+.col-work {
+	display: flex;
+	flex-direction: column;
+	border: 1px dashed transparent !important;
+	margin: auto;
+	height: max-content;
+	text-align: start;
+	padding: 5px;
+	width: 100%;
+}
+
+.project-img {
+	width: 100%;
+}
+
+.inactive-link {
+	cursor: not-allowed;
+	pointer-events: none;
+	/* Prevents clicking */
+	color: gray;
+	/* Grayed-out text */
+	opacity: 0.6;
+	/* Makes it semi-transparent */
 }
 
 @media screen and (max-width: 576px) {
-    .project-heading {
-        font-size: 28px;
-    }
-    
-    #filter {
-        width: 100%;
-    }
-    
-    .project-links {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .project-link {
-        justify-content: center;
-    }
+	.project-heading {
+		font-size: 28px;
+	}
+
+	#filter-container {
+		text-align: left;
+		padding: 0 1rem;
+	}
+
+	.row {
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.col-work {
+		width: 100%;
+		text-align: center;
+		align-items: center;
+	}
+
+	.project-top-list {
+		justify-content: center;
+	}
+
+	.tech-stack-text, .project-text {
+		padding: 0 1rem;
+		text-align: center;
+	}
+
+	.project-img {
+		max-width: 100%;
+		height: auto;
+	}
 }
+
