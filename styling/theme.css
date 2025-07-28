@@ -1,79 +1,90 @@
 /* Light Mode */
 :root {
-	--bg-color: white;
-	--text-color: #101010;
-	--span-color: #dc3545;
+  --bg-color: white;
+  --text-color: #101010;
+  --span-color: #dc3545;
+  --border-color: #e0e0e0;
 }
 
 [data-theme="light"] {
-	--bg-color: rgb(255, 255, 255);
-	--text-color: #101010;
+  --bg-color: rgb(255, 255, 255);
+  --text-color: #101010;
+  --border-color: #e0e0e0;
 
-	.nav-item,
-	a {
-		color: #101010;
-	}
+  .nav-item,
+  a {
+    color: #101010;
+  }
 
-	.btn {
-		border: 1px solid #101010;
-		color: var(--text-color);
-	}
+  .btn {
+    border: 1px solid #101010;
+    color: var(--text-color);
+  }
 
-	.btn:hover {
-		background: #101010;
-		color: white;
-	}
+  .btn:hover {
+    background: #101010;
+    color: white;
+  }
 
-	.icon {
-		filter: brightness(0) invert(0);
-	}
+  .col {
+    border: 1px solid #101010;
+    border-radius: 5px;
+    padding: 10px;
+  }
 
-	.col {
-		border: 1px solid #101010;
-		border-radius: 5px;
-		padding: 10px;
-	}
+  .icon img {
+    filter: grayscale(100%);
+  }
+
+  .icon:hover img {
+    filter: grayscale(0%);
+  }
 }
 
 /* Dark Mode */
 [data-theme="dark"] {
-	--bg-color: #101010;
-	--text-color: white;
+  --bg-color: #101010;
+  --text-color: white;
+  --border-color: #333;
 
-	.nav-item,
-	a {
-		color: white;
-	}
+  .nav-item,
+  a {
+    color: white;
+  }
 
-	.btn {
-		border: 1px solid var(--span-color);
-		color: var(--text-color);
-	}
+  .btn {
+    border: 1px solid var(--span-color);
+    color: var(--text-color);
+  }
 
-	.btn:hover {
-		background: var(--span-color);
-		color: white;
-	}
+  .btn:hover {
+    background: var(--span-color);
+    color: white;
+  }
 
-	.icon {
-		filter: brightness(0) invert(1);
-	}
+  .col {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+  }
 
-	.col {
-		border: 1px solid white;
-		border-radius: 5px;
-		padding: 10px;
-	}
+  .icon img {
+    filter: grayscale(100%) brightness(0) invert(1);
+  }
+
+  .icon:hover img {
+    filter: grayscale(0%) brightness(0) invert(1);
+  }
 }
 
 body {
-	background-color: var(--bg-color);
-	color: var(--text-color);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: auto;
-	padding: 20px;
-	width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
+  width: 100%;
 }
