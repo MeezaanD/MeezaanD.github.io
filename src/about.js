@@ -46,49 +46,52 @@ fetchEducation().then((education) => {
     education.forEach((item) => {
       const li = document.createElement("li");
       li.classList.add("education-item");
-
-      // Date on the left
-      const dateDiv = document.createElement("div");
-      dateDiv.classList.add("education-date");
-      dateDiv.textContent = item.date;
-
-      // Content on the right
-      const contentDiv = document.createElement("div");
-      contentDiv.classList.add("education-content");
-
-      // Title as inline span link
-      const titleSpan = document.createElement("span");
-      const titleLink = document.createElement("a");
-      titleLink.href = item.url;
-      titleLink.target = "_blank";
-      titleLink.classList.add("education-link");
-      titleLink.textContent = item.title;
-
+      const a = document.createElement("a");
+      a.href = item.url;
+      a.target = "_blank";
+      a.textContent = item.title;
+      a.classList.add("education-link");
       const icon = document.createElement("i");
       icon.classList.add("fas", "fa-external-link-alt");
-      titleLink.appendChild(icon);
-      titleSpan.appendChild(titleLink);
-
-      // Description
-      const descriptionP = document.createElement("p");
-      descriptionP.textContent = item.description;
-      descriptionP.classList.add("education-text");
-
-      // Additional text
-      const additionalP = document.createElement("p");
-      additionalP.textContent = item.additionalText;
-      additionalP.classList.add("education-additional");
-
-      // Assemble the content
-      contentDiv.appendChild(titleSpan);
-      contentDiv.appendChild(descriptionP);
-      contentDiv.appendChild(additionalP);
-
-      // Assemble the item
-      li.appendChild(dateDiv);
-      li.appendChild(contentDiv);
-
+      const pDescription = document.createElement("p");
+      pDescription.textContent = item.description;
+      pDescription.classList.add("education-text");
+      const additionalText = document.createElement("p");
+      additionalText.textContent = item.additionalText;
+      additionalText.classList.add("education-text");
+      const pDate = document.createElement("p");
+      pDate.textContent = item.date;
+      pDate.classList.add("education-date");
+      a.appendChild(icon);
+      li.appendChild(a);
+      li.appendChild(pDescription);
+      li.appendChild(additionalText);
+      li.appendChild(pDate);
       ul.appendChild(li);
     });
   }
 });
+
+// Dynamically scale hero-inner to fit 100vh
+function scaleHeroToFit() {
+  const heroSection = document.querySelector(".hero-section");
+  const heroInner = document.querySelector(".hero-inner");
+  if (!heroSection || !heroInner) return;
+
+  // Reset scale
+  heroInner.style.transform = "scale(1)";
+  heroInner.style.transformOrigin = "center";
+
+  // Get available height
+  const availableHeight = heroSection.clientHeight;
+  const contentHeight = heroInner.scrollHeight;
+
+  // If content is too tall, scale down
+  if (contentHeight > availableHeight) {
+    const scale = availableHeight / contentHeight;
+    heroInner.style.transform = `scale(${scale})`;
+  }
+}
+
+window.addEventListener("load", scaleHeroToFit);
+window.addEventListener("resize", scaleHeroToFit);
