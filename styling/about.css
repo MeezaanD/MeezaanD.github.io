@@ -8,9 +8,9 @@
 
 /* HERO SECTION: Proportional scaling for all large screens */
 .hero-section {
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
+  height: 75vh;
+  min-height: 75vh;
+  max-height: 75vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -54,11 +54,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.25rem, 1vw, 1rem);
+  gap: clamp(0.11rem, 0.43vw, 0.43rem);
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(0.25rem, 1vw, 0.75rem);
+  padding: clamp(0.11rem, 0.43vw, 0.36rem);
   box-sizing: border-box;
   flex: 1;
 }
@@ -71,39 +71,39 @@
 }
 
 .hero-text h1 {
-  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-size: clamp(0.81rem, 2.16vw, 1.8rem);
   font-weight: 700;
-  margin-bottom: clamp(0.25rem, 0.75vw, 0.75rem);
+  margin-bottom: clamp(0.11rem, 0.36vw, 0.36rem);
   color: var(--text-color, #333);
   transition: color 0.3s ease;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .hero-text p {
-  font-size: clamp(0.875rem, 1.8vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(0.47rem, 0.94vw, 0.72rem);
+  line-height: 1.3;
   color: var(--text-color, #666);
   transition: color 0.3s ease;
-  margin-bottom: clamp(0.125rem, 0.5vw, 0.5rem);
+  margin-bottom: clamp(0.05rem, 0.22vw, 0.22rem);
 }
 
 .cta-buttons {
   display: flex;
-  gap: 1rem;
-  margin-bottom: clamp(0.25rem, 0.75vw, 0.75rem);
+  gap: 0.54rem;
+  margin-bottom: clamp(0.14rem, 0.43vw, 0.43rem);
   flex-wrap: wrap;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 12px 24px;
+  gap: 0.29rem;
+  padding: 7px 14px;
   background-color: #0070f3;
   color: white;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.65rem;
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -116,22 +116,22 @@
 
 .social-icons {
   display: flex;
-  gap: 1rem;
-  margin-top: clamp(0.125rem, 0.5vw, 0.5rem);
+  gap: 0.54rem;
+  margin-top: clamp(0.07rem, 0.29vw, 0.29rem);
 }
 
 .social-icons a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background-color: #f5f5f5;
   color: #333;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 0.72rem;
 }
 
 .social-icons a:hover {
@@ -142,8 +142,8 @@
 }
 
 .hero-image img {
-  width: clamp(80px, 20vw, 200px);
-  height: clamp(80px, 20vw, 200px);
+  width: clamp(36px, 9.8vw, 98px);
+  height: clamp(36px, 9.8vw, 98px);
   border-radius: 50%;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -159,15 +159,15 @@
 .hero-skills {
   width: 100%;
   max-width: 100%;
-  padding: clamp(0.0625rem, 0.25vw, 0.25rem);
-  margin-top: clamp(0.0625rem, 0.25vw, 0.25rem);
+  padding: clamp(0.05rem, 0.2vw, 0.2rem);
+  margin-top: clamp(0.05rem, 0.2vw, 0.2rem);
   box-sizing: border-box;
 }
 
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.25rem, 1vw, 0.75rem);
+  gap: clamp(0.14rem, 0.58vw, 0.43rem);
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -185,8 +185,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(0.25rem, 1vw, 0.75rem);
-  min-width: clamp(50px, 12vw, 80px);
+  padding: clamp(0.14rem, 0.58vw, 0.43rem);
+  min-width: clamp(32px, 7.9vw, 50px);
   background-color: var(--bg-color);
   border: 1px solid var(--border-color, #e0e0e0);
   border-radius: 12px;
@@ -202,9 +202,9 @@
 }
 
 .icon img {
-  width: clamp(16px, 4vw, 24px);
-  height: clamp(16px, 4vw, 24px);
-  margin-bottom: clamp(0.125rem, 0.5vw, 0.5rem);
+  width: clamp(10px, 2.5vw, 16px);
+  height: clamp(10px, 2.5vw, 16px);
+  margin-bottom: clamp(0.07rem, 0.29vw, 0.29rem);
   transition: transform 0.3s ease;
 }
 
@@ -213,12 +213,12 @@
 }
 
 .icon span {
-  font-size: clamp(0.5rem, 1.5vw, 0.75rem);
+  font-size: clamp(0.32rem, 0.94vw, 0.5rem);
   font-weight: 600;
   text-align: center;
   color: var(--text-color, #333);
   transition: color 0.3s ease;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 /* About Section */
@@ -428,17 +428,17 @@
 /* Responsive Fixes: Larger Screens */
 @media screen and (min-width: 768px) {
   .hero-section {
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
+    height: 70vh;
+    min-height: 70vh;
+    max-height: 70vh;
     overflow: hidden;
   }
 
   .hero-content {
     flex-direction: column;
     text-align: center;
-    gap: clamp(0.5rem, 1.5vw, 1.5rem);
-    padding: clamp(0.5rem, 1.5vw, 1.5rem);
+    gap: clamp(0.3rem, 1vw, 1rem);
+    padding: clamp(0.3rem, 1vw, 1rem);
   }
 
   .hero-text {
@@ -447,13 +447,13 @@
   }
 
   .hero-text h1 {
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    margin-bottom: clamp(0.25rem, 0.75vw, 0.75rem);
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    margin-bottom: clamp(0.15rem, 0.5vw, 0.5rem);
   }
 
   .hero-text p {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    margin-bottom: clamp(0.125rem, 0.5vw, 0.5rem);
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    margin-bottom: clamp(0.08rem, 0.3vw, 0.3rem);
   }
 
   .hero-content .hero-image {
@@ -462,13 +462,13 @@
   }
 
   .hero-image img {
-    width: clamp(120px, 20vw, 180px);
-    height: clamp(120px, 20vw, 180px);
+    width: clamp(100px, 18vw, 160px);
+    height: clamp(100px, 18vw, 160px);
   }
 
   .hero-skills {
-    padding: clamp(0.125rem, 0.5vw, 0.5rem);
-    margin-top: clamp(0.125rem, 0.5vw, 0.5rem);
+    padding: clamp(0.08rem, 0.3vw, 0.3rem);
+    margin-top: clamp(0.08rem, 0.3vw, 0.3rem);
   }
 
   .tech-stack {
@@ -494,35 +494,35 @@
 /* Additional desktop/laptop optimizations */
 @media screen and (min-width: 1024px) {
   .hero-section {
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
+    height: 65vh;
+    min-height: 65vh;
+    max-height: 65vh;
     overflow: hidden;
   }
 
   .hero-content {
-    gap: clamp(0.75rem, 2vw, 2rem);
-    padding: clamp(0.75rem, 2vw, 1.5rem);
+    gap: clamp(0.5rem, 1.3vw, 1.3rem);
+    padding: clamp(0.5rem, 1.3vw, 1rem);
   }
 
   .hero-text h1 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    margin-bottom: clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    margin-bottom: clamp(0.3rem, 0.7vw, 0.7rem);
   }
 
   .hero-text p {
-    font-size: clamp(1.1rem, 1.8vw, 1.25rem);
-    margin-bottom: clamp(0.25rem, 0.75vw, 0.75rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    margin-bottom: clamp(0.15rem, 0.5vw, 0.5rem);
   }
 
   .hero-image img {
-    width: clamp(140px, 22vw, 200px);
-    height: clamp(140px, 22vw, 200px);
+    width: clamp(120px, 20vw, 180px);
+    height: clamp(120px, 20vw, 180px);
   }
 
   .hero-skills {
-    padding: clamp(0.25rem, 0.75vw, 0.75rem);
-    margin-top: clamp(0.25rem, 0.75vw, 0.75rem);
+    padding: clamp(0.15rem, 0.5vw, 0.5rem);
+    margin-top: clamp(0.15rem, 0.5vw, 0.5rem);
   }
 
   .tech-stack {
