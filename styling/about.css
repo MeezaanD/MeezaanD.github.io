@@ -23,6 +23,17 @@
   background-color: var(--bg-color);
   transition: all 0.3s ease;
   box-sizing: border-box;
+  background-image: radial-gradient(
+      circle at 30% 70%,
+      rgba(220, 53, 69, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(220, 53, 69, 0.05) 0%,
+      transparent 50%
+    );
+  position: relative;
 }
 
 .hero-inner {
@@ -162,7 +173,11 @@
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(220, 53, 69, 0.1);
 }
 
 .icon {
@@ -174,14 +189,16 @@
   min-width: clamp(50px, 12vw, 80px);
   background-color: var(--bg-color);
   border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 8px;
+  border-radius: 12px;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .icon:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.15);
+  border-color: var(--span-color);
 }
 
 .icon img {
@@ -277,11 +294,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem;
-  margin: 1rem 0;
+  gap: 2rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   overflow: visible;
 }
@@ -291,64 +308,115 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1.5rem 2rem;
-  border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  border: 2px solid var(--border-color, #e0e0e0);
+  border-radius: 20px;
   background-color: var(--bg-color, #fff);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible;
+  position: relative;
+}
+
+.education-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--span-color),
+    #ff6b6b,
+    var(--span-color)
+  );
+  border-radius: 20px 20px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.education-item:hover::before {
+  transform: scaleX(1);
 }
 
 .education-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
   border-color: var(--span-color, #dc3545);
 }
 
 .education-date {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--span-color, #dc3545);
-  min-width: 120px;
+  min-width: 140px;
   text-align: left;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(220, 53, 69, 0.2);
 }
 
 .education-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-left: 2rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border-left: 3px solid var(--span-color);
+  padding-left: 1rem;
 }
 
 .education-link {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   text-decoration: none;
   color: var(--text-color, #333);
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline;
+  position: relative;
+}
+
+.education-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--span-color);
+  transition: width 0.3s ease;
+}
+
+.education-link:hover::after {
+  width: 100%;
 }
 
 .education-link:hover {
   color: var(--span-color, #dc3545);
-  text-decoration: underline;
 }
 
 .education-text {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-color, #666);
   margin: 0;
+  font-weight: 500;
 }
 
 .education-additional {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--text-color, #888);
   margin: 0;
   font-style: italic;
+  opacity: 0.9;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  border-left: 2px solid var(--span-color);
 }
 
 .fa-external-link-alt {

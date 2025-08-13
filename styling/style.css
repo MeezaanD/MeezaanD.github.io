@@ -8,11 +8,63 @@
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--span-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c82333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--span-color),
+    transparent
+  );
+  border-radius: 2px;
+}
+
 html,
 body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -90,9 +142,10 @@ body {
 
 #about,
 #work,
-#journey {
+#journey,
+#websites {
   min-height: 85vh;
-  padding: 30px;
+  padding: 60px 30px;
   border: 1px dashed transparent;
   /* border: 1px dashed black; */
   display: flex;
@@ -101,8 +154,28 @@ body {
   max-width: 90%;
   width: 100%;
   margin: auto;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-x: hidden;
+  position: relative;
+}
+
+#about::after,
+#work::after,
+#journey::after,
+#websites::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-color),
+    transparent
+  );
 }
 
 #home {
@@ -164,10 +237,18 @@ span {
 
 footer {
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   font-size: 1.1rem;
   font-weight: 500;
   transition: color 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(220, 53, 69, 0.05) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+  border-radius: 20px 20px 0 0;
 }
 
 @media screen and (max-width: 768px) {

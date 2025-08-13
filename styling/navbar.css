@@ -19,15 +19,21 @@
   justify-content: center;
   gap: 10px;
 
-  padding: 2px 16px;
+  padding: 2px 20px;
   background-color: var(--nav-bg, #fff);
   border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
   width: auto;
   max-width: 100%;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pages-nav:hover {
+  box-shadow: 0 12px 40px rgba(220, 53, 69, 0.15);
+  transform: translateX(-50%) translateY(-2px);
 }
 
 /* Navbar items */
@@ -98,6 +104,35 @@
   color: var(--text-color);
   text-decoration: none;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--span-color);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.nav-social-link:hover::before {
+  transform: scale(1);
+}
+
+.nav-social-link:hover {
+  color: white;
+  transform: translateY(-2px);
+}
   transition: all 0.3s ease;
   background-color: transparent;
   border: 1px solid transparent;
