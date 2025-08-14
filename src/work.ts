@@ -33,9 +33,8 @@ function renderProjects(projects: Project[], filter: string): void {
     row.setAttribute("data-aos", index % 2 === 0 ? "fade-left" : "fade-right");
     row.setAttribute("data-aos-duration", "1000");
 
-    // Left column (image)
-    const col1 = document.createElement("div");
-    col1.classList.add("col-work");
+    const colImg = document.createElement("div");
+    colImg.classList.add("col-work");
 
     const imgLink = document.createElement("a");
     imgLink.href = item.liveLink || "#";
@@ -48,11 +47,10 @@ function renderProjects(projects: Project[], filter: string): void {
     projectImg.classList.add("project-img");
 
     imgLink.appendChild(projectImg);
-    col1.appendChild(imgLink);
+    colImg.appendChild(imgLink);
 
-    // Right column (text)
-    const col2 = document.createElement("div");
-    col2.classList.add("col-work");
+    const colText = document.createElement("div");
+    colText.classList.add("col-work");
 
     const projectTitle = document.createElement("h3");
     projectTitle.classList.add("project-title");
@@ -65,7 +63,6 @@ function renderProjects(projects: Project[], filter: string): void {
     const projectTopList = document.createElement("ul");
     projectTopList.classList.add("project-top-list");
 
-    // Code link
     const codeLi = document.createElement("li");
     const codeLink = document.createElement("a");
     codeLink.href = item.code || "#";
@@ -73,13 +70,11 @@ function renderProjects(projects: Project[], filter: string): void {
     codeLink.textContent = "Code ";
     codeLink.classList.add("links");
     if (!item.code) codeLink.classList.add("inactive-link");
-
     const codeIcon = document.createElement("i");
     codeIcon.classList.add("fab", "fa-github");
     codeLink.appendChild(codeIcon);
     codeLi.appendChild(codeLink);
 
-    // Live link
     const liveLinkLi = document.createElement("li");
     const liveLinkA = document.createElement("a");
     liveLinkA.href = item.liveLink || "#";
@@ -87,7 +82,6 @@ function renderProjects(projects: Project[], filter: string): void {
     liveLinkA.textContent = "Visit Site ";
     liveLinkA.classList.add("links");
     if (!item.liveLink) liveLinkA.classList.add("inactive-link");
-
     const liveLinkIcon = document.createElement("i");
     liveLinkIcon.classList.add("fas", "fa-external-link-alt");
     liveLinkA.appendChild(liveLinkIcon);
@@ -100,17 +94,20 @@ function renderProjects(projects: Project[], filter: string): void {
     projectText.classList.add("project-text");
     projectText.textContent = item.description;
 
-    // Append elements to col2
-    col2.appendChild(projectTitle);
-    col2.appendChild(techStack);
-    col2.appendChild(projectTopList);
-    col2.appendChild(projectText);
+    colText.appendChild(projectTitle);
+    colText.appendChild(techStack);
+    colText.appendChild(projectTopList);
+    colText.appendChild(projectText);
 
-    // Add columns to row
-    row.appendChild(col2);
-    row.appendChild(col1);
+    // Alternate layout
+    if (index % 2 === 0) {
+      row.appendChild(colImg);
+      row.appendChild(colText);
+    } else {
+      row.appendChild(colText);
+      row.appendChild(colImg);
+    }
 
-    // Append row to container
     projectContainer.appendChild(row);
   });
 }

@@ -26,9 +26,8 @@ function renderProjects(projects, filter) {
         row.classList.add("row");
         row.setAttribute("data-aos", index % 2 === 0 ? "fade-left" : "fade-right");
         row.setAttribute("data-aos-duration", "1000");
-        // Left column (image)
-        const col1 = document.createElement("div");
-        col1.classList.add("col-work");
+        const colImg = document.createElement("div");
+        colImg.classList.add("col-work");
         const imgLink = document.createElement("a");
         imgLink.href = item.liveLink || "#";
         imgLink.target = item.liveLink ? "_blank" : "_self";
@@ -39,10 +38,9 @@ function renderProjects(projects, filter) {
         projectImg.alt = "project-img";
         projectImg.classList.add("project-img");
         imgLink.appendChild(projectImg);
-        col1.appendChild(imgLink);
-        // Right column (text)
-        const col2 = document.createElement("div");
-        col2.classList.add("col-work");
+        colImg.appendChild(imgLink);
+        const colText = document.createElement("div");
+        colText.classList.add("col-work");
         const projectTitle = document.createElement("h3");
         projectTitle.classList.add("project-title");
         projectTitle.textContent = item.title;
@@ -51,7 +49,6 @@ function renderProjects(projects, filter) {
         techStack.textContent = item.techStack;
         const projectTopList = document.createElement("ul");
         projectTopList.classList.add("project-top-list");
-        // Code link
         const codeLi = document.createElement("li");
         const codeLink = document.createElement("a");
         codeLink.href = item.code || "#";
@@ -64,7 +61,6 @@ function renderProjects(projects, filter) {
         codeIcon.classList.add("fab", "fa-github");
         codeLink.appendChild(codeIcon);
         codeLi.appendChild(codeLink);
-        // Live link
         const liveLinkLi = document.createElement("li");
         const liveLinkA = document.createElement("a");
         liveLinkA.href = item.liveLink || "#";
@@ -82,15 +78,19 @@ function renderProjects(projects, filter) {
         const projectText = document.createElement("p");
         projectText.classList.add("project-text");
         projectText.textContent = item.description;
-        // Append elements to col2
-        col2.appendChild(projectTitle);
-        col2.appendChild(techStack);
-        col2.appendChild(projectTopList);
-        col2.appendChild(projectText);
-        // Add columns to row
-        row.appendChild(col2);
-        row.appendChild(col1);
-        // Append row to container
+        colText.appendChild(projectTitle);
+        colText.appendChild(techStack);
+        colText.appendChild(projectTopList);
+        colText.appendChild(projectText);
+        // Alternate layout
+        if (index % 2 === 0) {
+            row.appendChild(colImg);
+            row.appendChild(colText);
+        }
+        else {
+            row.appendChild(colText);
+            row.appendChild(colImg);
+        }
         projectContainer.appendChild(row);
     });
 }
