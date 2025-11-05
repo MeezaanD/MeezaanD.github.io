@@ -17,30 +17,45 @@ function fetchEducation() {
 fetchEducation().then(education => {
     const ul = document.querySelector('.my-journey');
     if (ul) {
+        education.reverse();
         education.forEach((item) => {
             const li = document.createElement('li');
             li.classList.add('education-item');
+            // Company Link
             const a = document.createElement('a');
             a.href = item.url;
             a.target = "_blank";
-            a.textContent = item.title;
+            a.textContent = item.company;
             a.classList.add('education-link');
             const icon = document.createElement('i');
             icon.classList.add('fas', 'fa-external-link-alt');
-            const pDescription = document.createElement('p');
-            pDescription.textContent = item.description;
-            pDescription.classList.add('education-text');
-            const additionalText = document.createElement('p');
-            additionalText.textContent = item.additionalText;
-            additionalText.classList.add('education-text');
+            a.appendChild(icon);
+            // Meta row: Title | Date
+            const metaDiv = document.createElement('div');
+            metaDiv.classList.add('education-meta');
+            const pTitle = document.createElement('p');
+            pTitle.textContent = item.title;
+            pTitle.classList.add('education-title');
             const pDate = document.createElement('p');
             pDate.textContent = item.date;
             pDate.classList.add('education-date');
-            a.appendChild(icon);
+            metaDiv.appendChild(pTitle);
+            metaDiv.appendChild(pDate);
+            // Description below meta row
+            const pDescription = document.createElement('p');
+            pDescription.textContent = item.description;
+            pDescription.classList.add('education-text');
+            // Build card
             li.appendChild(a);
+            li.appendChild(metaDiv);
             li.appendChild(pDescription);
-            li.appendChild(additionalText);
-            li.appendChild(pDate);
+            // Additional Text (below meta row)
+            if (item.additionalText) {
+                const additionalText = document.createElement('p');
+                additionalText.textContent = item.additionalText;
+                additionalText.classList.add('education-additional');
+                li.appendChild(additionalText);
+            }
             ul.appendChild(li);
         });
     }

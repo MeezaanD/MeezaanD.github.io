@@ -305,8 +305,10 @@
 
 .education-item {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.75rem;
   width: 100%;
   padding: 2rem 2.5rem;
   border: 2px solid var(--border-color, #e0e0e0);
@@ -324,12 +326,6 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--span-color),
-    #ff6b6b,
-    var(--span-color)
-  );
   border-radius: 20px 20px 0 0;
   transform: scaleX(0);
   transition: transform 0.3s ease;
@@ -341,32 +337,8 @@
 
 .education-item:hover {
   transform: translateY(-4px);
+  border: 2px solid var(--border-color, #e0e0e0);
   border-color: var(--span-color, #dc3545);
-}
-
-.education-date {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--span-color, #dc3545);
-  min-width: 140px;
-  text-align: left;
-  background: rgba(220, 53, 69, 0.1);
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  border: 1px solid rgba(220, 53, 69, 0.2);
-}
-
-.education-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-left: 2rem;
-  padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  border-left: 3px solid var(--span-color);
-  padding-left: 1rem;
 }
 
 .education-link {
@@ -375,7 +347,8 @@
   text-decoration: none;
   color: var(--text-color, #333);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline;
+  display: block;
+  margin-bottom: 0.25rem;
   position: relative;
 }
 
@@ -398,12 +371,53 @@
   color: var(--span-color, #dc3545);
 }
 
+.education-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-color, #444);
+}
+
+.education-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.education-date {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--span-color, #666);
+}
+
+.education-date::before {
+  content: "|";
+  margin: 0 0.5rem;
+  color: var(--text-color, #666);
+  opacity: 0.6;
+}
+
+.education-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-left: 0;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border-left: 3px solid var(--span-color);
+  padding-left: 1rem;
+}
+
 .education-text {
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-color, #666);
   margin: 0;
   font-weight: 500;
+  text-align: left;
 }
 
 .education-additional {
@@ -787,40 +801,56 @@
 @media screen and (max-width: 768px) {
   .education-item {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding: 1rem 1.5rem;
     gap: 1rem;
     overflow: visible;
+  }
+
+  /* Stack Title above Date on mobile */
+  .education-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .education-date::before {
+    content: none;
+  }
+
+  .education-title,
+  .education-date {
+    display: block;
   }
 
   .education-date {
     min-width: auto;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
-    text-align: center;
+    text-align: left;
   }
 
   .education-content {
     margin-left: 0;
     width: 100%;
     overflow: visible;
-    text-align: center;
+    text-align: left;
   }
 
   .education-link {
     font-size: 1.1rem;
-    text-align: center;
+    text-align: left;
   }
 
   .education-text {
     font-size: 0.9rem;
-    text-align: center;
+    text-align: left;
   }
 
   .education-additional {
-    font-size: 0.8rem;
-    text-align: center;
+    font-size: 0.7rem;
+    text-align: left;
   }
 
   .my-journey {
@@ -870,11 +900,10 @@
 
 @media screen and (max-width: 480px) {
   .education-item {
-    padding: 0.5rem 0.75rem;
     gap: 0.5rem;
     overflow: visible;
     align-items: center;
-    text-align: center;
+    text-align: start;
   }
 
   .education-date {
@@ -889,7 +918,7 @@
 
   .education-text {
     font-size: 0.8rem;
-    text-align: center;
+    text-align: start;
   }
 
   .education-additional {
