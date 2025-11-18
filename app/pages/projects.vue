@@ -1,6 +1,5 @@
 <template>
 	<div class="min-h-screen bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0f0f0f] text-text">
-		<Navbar />
 		<section class="max-w-6xl mx-auto px-6 py-24">
 			<h2 class="text-4xl md:text-5xl font-bold mb-12 text-white-400 text-center">
 				Projects
@@ -13,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from '~/components/Navbar.vue'
 import ProjectCard from '~/components/Projects.vue'
 import { useConfig } from '~/composables/useConfig'
 

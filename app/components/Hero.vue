@@ -3,14 +3,21 @@ const techStacks = [
 	{ name: 'React', icon: 'logos:react' },
 	{ name: 'Vue', icon: 'logos:vue' },
 	{ name: 'Nuxt', icon: 'logos:nuxt-icon' },
+	{ name: 'Next', icon: 'logos:nextjs-icon' },
 	{ name: 'Typescript', icon: 'logos:typescript-icon' },
 	{ name: 'Javascript', icon: 'logos:javascript' },
+	{ name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' },
+	{ name: 'Flutter', icon: 'logos:flutter' },
 	{ name: 'Node.js', icon: 'logos:nodejs-icon' },
+	{ name: 'Python', icon: 'logos:python' },
+	{ name: 'Golang', icon: 'logos:go' },
 	{ name: 'MongoDB', icon: 'logos:mongodb-icon' },
 	{ name: 'Firebase', icon: 'logos:firebase' },
 	{ name: 'MySQL', icon: 'logos:mysql-icon' },
-	{ name: 'Python', icon: 'logos:python' },
-	{ name: 'Golang', icon: 'logos:go' },
+	{ name: 'PostgreSQL', icon: 'logos:postgresql' },
+	{ name: 'Docker', icon: 'logos:docker-icon' },
+	{ name: 'Git', icon: 'logos:git-icon' },
+	{ name: 'Linux', icon: 'logos:linux-tux' },
 ]
 </script>
 
@@ -24,44 +31,40 @@ const techStacks = [
 
 		<!-- Portrait -->
 		<img src="/portrait.jpg" alt="Meezaan Davids"
-			class="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-green-500/50 shadow-xl mb-6 animate-fadeIn" />
+			class="mt-25 w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-green-500/50 shadow-xl mb-6 animate-fadeIn" />
 
 		<!-- Headline -->
-		<h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center animate-fadeIn">
-			<span class="text-green-500">Hi, I’m </span>
+		<h1 class="text-2xl sm:text-5xl md:text-5xl font-extrabold mb-4 text-center animate-fadeIn">
+			<span class="text-white-500">Hi, I’m </span>
 			<span class="text-green-500">Meezaan Davids</span>
 		</h1>
 
 		<!-- Subheadline / Bio -->
 		<p
-			class="text-base sm:text-lg md:text-xl max-w-md sm:max-w-3xl text-center text-gray-400 mb-10 leading-relaxed animate-fadeIn delay-100">
+			class="text-base sm:text-lg md:text-xl max-w-md sm:max-w-2xl text-center text-gray-400 mb-10 leading-relaxed animate-fadeIn delay-100">
 			Software Developer with 2+ years of experience building scalable web, mobile, and software solutions.
 			Passionate about full-stack engineering, clean UI, and turning ideas into high-quality, real-world products.
 		</p>
 
 		<!-- Tech Stack Icons -->
-		<div class="flex flex-wrap justify-center gap-6 sm:gap-10 mb-12 animate-fadeIn delay-200">
+		<div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-6 sm:gap-10 mb-12 animate-fadeIn delay-200">
 			<div v-for="tech in techStacks" :key="tech.name"
-				class="flex flex-col items-center w-20 sm:w-24 transition duration-300 hover:-translate-y-1 hover:scale-105">
+				class="flex flex-col items-center transition duration-300 hover:-translate-y-1 hover:scale-105">
 				<UIcon :name="tech.icon"
-					class="w-12 sm:w-16 h-12 sm:h-16 text-green-500/90 hover:text-green-400 transition-colors" />
-				<span class="mt-2 text-xs sm:text-sm text-gray-400 font-medium text-center">{{ tech.name }}</span>
+					class="w-12 sm:w-16 h-12 sm:h-10 text-green-500/90 hover:text-green-400 transition-colors" />
+				<span class="mt-2 text-xs sm:text-sm text-gray-400 font-medium text-center">
+					{{ tech.name }}
+				</span>
 			</div>
 		</div>
 
-		<!-- Contact Section (flex row for mobile & desktop) -->
+		<!-- Contact Section -->
 		<section id="contact"
-			class="mt-6 max-w-md sm:max-w-3xl w-full mx-auto flex flex-wrap justify-center gap-4 animate-fadeIn delay-300">
+			class="my-5 max-w-md sm:max-w-3xl w-full mx-auto flex flex-wrap justify-center gap-4 animate-fadeIn delay-300">
 			<a href="mailto:meezaandavids365@gmail.com"
 				class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-green-500 transition-colors">
 				<UIcon name="logos:google-gmail" class="w-5 h-5 sm:w-6 sm:h-6" />
 				<span>Email</span>
-			</a>
-
-			<a href="https://meezaand.github.io/" target="_blank"
-				class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-green-400 transition-colors">
-				<UIcon name="mdi:web" class="w-5 h-5 sm:w-6 sm:h-6" />
-				<span>Portfolio</span>
 			</a>
 
 			<a href="https://github.com/MeezaanD" target="_blank"
