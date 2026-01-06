@@ -1,54 +1,83 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { computed } from "vue";
+import { useRouter } from "#imports";
+import { useConfig } from "~/composables/useConfig";
 
-const props = defineProps<{
-	project: {
-		img: string
-		code: string
-		liveLink: string
-		description: string
-		title: string
-		techStack: string
-	}
-}>()
+const router = useRouter();
+const { projects, isLoading, error } = useConfig();
 
-const isOpen = ref(false)
-const selectedUrl = ref("")
+const slugify = (value: string) =>
+	value
+		.toLowerCase()
+		.trim()
+		.replace(/[^\w\s-]/g, "")
+		.replace(/\s+/g, "-");
 
-function openPreview() {
-	selectedUrl.value = props.project.liveLink
-	isOpen.value = true
-}
+const projectCards = computed(() =>
+	projects.value.map((project) => ({
+		...project,
+		slug: slugify(project.title),
+	})),
+);
+
+const handleOpenProject = (slug: string) => {
+	router.push(`/projects/${slug}`);
+};
 </script>
 
 <template>
-	<div class="w-full max-w-2xl mx-auto mb-6 bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0f0f0f]
-    backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition hover:shadow-xl hover:scale-[1.02]">
-		<!-- Header -->
-		<div class="p-4 border-b border-white/10">
-			<h3 class="font-bold text-lg md:text-xl text-green-400">{{ project.title }}</h3>
-			<p class="text-sm text-gray-400 mt-1">{{ project.techStack }}</p>
+	<section class="bg-linear-to-br from-[#0f0f0f] via-[#141414] to-[#0f0f0f] text-text py-24 px-6">
+		<div class="max-w-7xl mx-auto">
+			<header class="text-center mb-12">
+				<p class="text-sm uppercase tracking-[0.3em] text-green-400">
+					Featured Work
+				</p>
+				<h2 class="text-4xl md:text-5xl font-bold text-white mt-3">
+					Projects
+				</h2>
+			</header>
+
+			<div v-if="isLoading" class="flex items-center justify-center py-16 text-gray-300">
+				<span class="animate-pulse">Loading projects…</span>
+			</div>
+
+			<div v-else-if="error"
+				class="bg-red-500/10 border border-red-500/30 text-red-200 rounded-xl px-6 py-4 text-center">
+				{{ error }}
+			</div>
+
+			<div v-else>
+				<p v-if="!projectCards.length" class="text-center text-gray-400 py-10">
+					No projects available right now.
+				</p>
+
+				<div v-else class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+					<button v-for="project in projectCards" :key="project.slug" type="button"
+						@click="handleOpenProject(project.slug)"
+						class="group text-center overflow-hidden transition duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/80">
+						<div class="relative">
+							<img :src="project.previewImage" :alt="`${project.title} preview`"
+								class="h-60 w-full object-cover" loading="lazy" />
+						</div>
+						<div class="p-6">
+							<h3 class="text-xl text-center font-semibold text-white mb-2">
+								{{ project.title }}
+							</h3>
+							<p class="text-sm text-center text-gray-400 line-clamp-2">
+								{{ project.techStack }}
+							</p>
+						</div>
+					</button>
+				</div>
+			</div>
 		</div>
-
-		<!-- Description -->
-		<div class="p-4">
-			<p class="text-sm md:text-base text-gray-300">{{ project.description }}</p>
-		</div>
-
-		<!-- Actions -->
-		<div class="p-4 flex flex-wrap gap-3">
-			<a :href="project.code" target="_blank"
-				class="px-3 py-1 border border-green-400 text-green-400 rounded-lg hover:bg-green-400 hover:text-black transition">
-				Code
-			</a>
-
-			<a :href="project.liveLink" target="_blank"
-				class="px-3 py-1 border border-green-400 text-green-400 rounded-lg hover:bg-green-400 hover:text-black transition">
-				Live
-			</a>
-		</div>
-
-		<!-- Modal -->
-		<ModalPreview v-if="isOpen" :url="selectedUrl" @close="isOpen = false" />
-	</div>
+	</section>
 </template>
+
+<style scoped>
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+</style>

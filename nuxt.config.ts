@@ -1,11 +1,11 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@nuxt/icon'],
-  css: ['@/assets/css/tailwind.css'],
+  modules: ["@nuxt/ui", "@nuxt/icon"],
+  css: ["@/assets/css/tailwind.css"],
   components: true,
   alias: {
-    '#components': '/components',
+    "#components": "/components",
   },
   nitro: {
-    preset: 'static',
+    preset: "static",
   },
-})
+});

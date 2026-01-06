@@ -23,7 +23,7 @@ const techStacks = [
 
 <template>
 	<section class="relative flex flex-col justify-center items-center min-h-screen px-6
-    bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0f0f0f] text-white overflow-hidden">
+    bg-linear-to-br from-[#0f0f0f] via-[#141414] to-[#0f0f0f] text-white overflow-hidden">
 
 		<!-- Soft Glow Blobs -->
 		<div class="absolute -top-24 -left-24 w-80 h-80 bg-green-500/20 rounded-full blur-[140px]"></div>
@@ -42,7 +42,7 @@ const techStacks = [
 		<!-- Subheadline / Bio -->
 		<p
 			class="text-base sm:text-lg md:text-xl max-w-md sm:max-w-2xl text-center text-gray-400 mb-10 leading-relaxed animate-fadeIn delay-100">
-			Software Developer with 2+ years of experience building scalable web, mobile, and software solutions.
+			Software Developer with 3+ years of experience building scalable web, mobile, and software solutions.
 			Passionate about full-stack engineering, clean UI, and turning ideas into high-quality, real-world products.
 		</p>
 
