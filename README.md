@@ -1,4 +1,4 @@
-# MeezaanD.github.io
+# meezaan.dev
 # Meezaan Davids - Software Developer
 
 ## About Me
@@ -8,6 +8,6 @@ I'm Meezaan Davids, a passionate and dedicated software developer with a strong 
 If you'd like to get in touch with me or discuss potential collaborations, please feel free to reach out:
 
 - Email: [meezaandavids365@gmail.com]
-- LinkedIn: [(https://www.linkedin.com/in/meezaan-davids-4a7aa8265/)]
+- LinkedIn: [(https://www.linkedin.com/in/meezaan-davids/)]
 
 Let's connect and create innovative solutions together!

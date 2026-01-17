@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+	--color-foreground: #1a1a1a;
+	--color-background: #ffffff;
+
+	--font-sans: "Inter", sans-serif;
+	--font-display: "Playfair Display", serif;
+
+	--max-width-site: 1200px;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply font-sans text-foreground bg-background;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display font-semibold;
+	}
+}
+
+@layer components {
+	.container-site {
+		@apply max-w-site mx-auto px-8;
+	}
+
+	.section-padding {
+		@apply py-24;
+	}
+}

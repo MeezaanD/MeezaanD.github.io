@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnimatedSection from "../components/AnimatedSection.astro";
+---
+
+<Layout title="Coming Soon">
+  <section class="min-h-screen flex items-center justify-center pt-24">
+    <div class="container-site max-w-5xl mx-auto px-6">
+      <!-- Eyebrow -->
+      <p
+        class="interests-eyebrow text-[10px] md:text-xs tracking-[0.3em] uppercase mb-6 font-semibold"
+        style="color: #001489;"
+      >
+        Coming Soon
+      </p>
+
+      <!-- Main Heading -->
+      <h1 class="interests-heading font-display text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight">
+        Interests & Passions<span style="color: #001489;">.</span>
+      </h1>
+
+      <!-- Description -->
+      <p
+        class="interests-description text-foreground/60 text-base md:text-lg lg:text-xl max-w-3xl mb-10 leading-relaxed"
+      >
+        I'm working on a dedicated space to share the things that inspire me beyond code. Music, sports, and the passions that shape who I am. Check back soon!
+      </p>
+
+      <!-- Divider -->
+      <div class="interests-divider mb-16">
+        <div class="w-12 h-0.5" style="background-color: #001489;"></div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Staggered entrance animations */
+  .interests-eyebrow {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
+  }
+
+  .interests-heading {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
+  }
+
+  .interests-description {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s forwards;
+  }
+
+  .interests-divider {
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.5s forwards;
+  }
+
+  .interests-divider > div {
+    transform: scaleX(0);
+    animation: scaleInX 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.6s forwards;
+    transform-origin: left;
+  }
+
+  /* Keyframe Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleInX {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+</style>

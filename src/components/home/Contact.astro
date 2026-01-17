@@ -1,0 +1,131 @@
+---
+import AnimatedSection from "../AnimatedSection.astro";
+---
+
+<section
+  id="contact"
+  class="section-padding bg-foreground text-background contact-section flex items-center justify-center"
+>
+  <div class="container-site max-w-6xl mx-auto px-6">
+    <!-- Eyebrow -->
+    <p
+      class="contact-eyebrow text-[10px] md:text-xs tracking-[0.3em] uppercase mb-6 font-semibold"
+      style="color: hsl(0 100% 100% / 1);"
+    >
+      Get in Touch
+    </p>
+
+    <!-- Main Heading -->
+    <h2
+      class="contact-heading font-display text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight"
+    >
+      Let's build something together<span style="color: hsl(0 100% 100% / 1);">.</span>
+    </h2>
+
+    <!-- Content Paragraph -->
+    <p
+      class="contact-description text-background/70 text-base md:text-lg lg:text-xl max-w-3xl mb-10 leading-relaxed"
+    >
+      Whether you have a project in mind, a question, or just want to connect, I'd love to hear from you.
+    </p>
+
+    <!-- Divider -->
+    <div class="contact-divider mb-16">
+      <div class="w-12 h-0.5 bg-background"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+  }
+
+  .contact-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 70%
+    );
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.5;
+    }
+  }
+
+  /* Staggered entrance animations */
+  .contact-eyebrow {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
+  }
+
+  .contact-heading {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
+  }
+
+  .contact-description {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s forwards;
+  }
+
+  .contact-divider {
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.5s forwards;
+  }
+
+  .contact-divider > div {
+    transform: scaleX(0);
+    animation: scaleInX 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.6s forwards;
+  }
+
+  /* Keyframe Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleInX {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+</style>
