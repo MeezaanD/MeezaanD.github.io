@@ -1,5 +1,6 @@
 ---
 import AnimatedSection from "../AnimatedSection.astro";
+import data from '../../data/config.json';
 
 interface ExperienceItem {
   company: string;
@@ -8,25 +9,7 @@ interface ExperienceItem {
   url: string;
 }
 
-let timelineItems: ExperienceItem[] = [];
-
-try {
-  const response = await fetch("https://meezaand.github.io/config/config.json");
-  if (response.ok) {
-    const data = await response.json();
-    timelineItems = data.experience || [];
-  }
-} catch (error) {
-  console.error("Error fetching experience data:", error);
-  timelineItems = [
-    {
-      company: "Flash Components CC",
-      title: "Web Developer",
-      date: "December 2024 - Present",
-      url: "https://flash.za.com/",
-    },
-  ];
-}
+let timelineItems: ExperienceItem[] = data.experience || [];
 
 // Sort in descending order (most recent first)
 timelineItems.sort((a, b) => {

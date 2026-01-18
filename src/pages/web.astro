@@ -1,25 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import AnimatedSection from "../components/AnimatedSection.astro";
+import data from "../data/config.json";
 
 interface Project {
   title: string;
   liveLink: string;
 }
 
-const projects: Project[] = [
-  { title: "Flash South Africa", liveLink: "https://flash.za.com/" },
-  { title: "Flash Kenya", liveLink: "https://flash.ke/" },
-  { title: "Flash Botswana", liveLink: "https://flash.co.bw/" },
-  { title: "Flash Lighting Nigeria", liveLink: "https://flashlighting.ng/" },
-  {
-    title: "Flash Business Academy",
-    liveLink: "https://flashbusinessacademy.co.za/",
-  },
-  { title: "Royal Decking", liveLink: "https://royaldecking.co.za/" },
-  { title: "Domani Vista", liveLink: "https://domanivista.africa/" },
-  { title: "Solar Watt Africa", liveLink: "https://solarwattafrica.co.za/" },
-];
+const projects: Project[] = data.websites || [];
 
 const tools = {
   development: ["Astro JS", "WordPress", "Bricks Builder", "Elementor"],
@@ -48,15 +37,19 @@ const tools = {
       <h1
         class="web-heading font-display text-4xl md:text-5xl lg:text-5xl mb-8 leading-tight"
       >
-        Crafting experiences for <span class="italic" style="color: #001489;">real people.</span>
-        
+        Crafting experiences for <span class="italic" style="color: #001489;"
+          >real people.</span
+        >
       </h1>
 
       <!-- Philosophy Statement -->
       <p
         class="web-description text-foreground/60 text-base md:text-lg lg:text-xl max-w-3xl mb-10 leading-relaxed"
       >
-        Every website has a purpose and an audience. I build web experiences that prioritize the user — fast, accessible, and designed to convert. From business sites to creative portfolios, each project is tailored to its goals.
+        Every website has a purpose and an audience. I build web experiences
+        that prioritize the user — fast, accessible, and designed to convert.
+        From business sites to creative portfolios, each project is tailored to
+        its goals.
       </p>
 
       <!-- Divider -->
@@ -75,51 +68,53 @@ const tools = {
         </h2>
       </AnimatedSection>
 
-      {projects.length > 0 ? (
-        <div class="space-y-8">
-        {
-          projects.map((project, index) => (
-            <AnimatedSection delay={index * 100} className="web-project-item">
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block group border-b border-foreground/10 pb-6 transition-all hover:border-primary/50"
-              >
-                <div class="flex items-center justify-between gap-4">
-                  <h3 class="font-display text-xl md:text-2xl group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <svg
-                    class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </div>
-              </a>
+      {
+        projects.length > 0 ? (
+          <div class="space-y-8">
+            {projects.map((project, index) => (
+              <AnimatedSection delay={index * 100} className="web-project-item">
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block group border-b border-foreground/10 pb-6 transition-all hover:border-primary/50"
+                >
+                  <div class="flex items-center justify-between gap-4">
+                    <h3 class="font-display text-xl md:text-2xl group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <svg
+                      class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </AnimatedSection>
+            ))}
+          </div>
+        ) : (
+          <div class="py-24 text-center">
+            <AnimatedSection>
+              <div class="inline-block">
+                <div class="text-6xl mb-6 opacity-50">📭</div>
+                <h3 class="font-display text-2xl mb-4">No Projects Yet</h3>
+                <p class="text-foreground/60">
+                  Projects coming soon. Stay tuned!
+                </p>
+              </div>
             </AnimatedSection>
-          ))
-        }
-        </div>
-      ) : (
-        <div class="py-24 text-center">
-          <AnimatedSection>
-            <div class="inline-block">
-              <div class="text-6xl mb-6 opacity-50">📭</div>
-              <h3 class="font-display text-2xl mb-4">No Projects Yet</h3>
-              <p class="text-foreground/60">Projects coming soon. Stay tuned!</p>
-            </div>
-          </AnimatedSection>
-        </div>
-      )}
+          </div>
+        )
+      }
     </div>
   </section>
 
@@ -135,20 +130,22 @@ const tools = {
       <div class="space-y-8">
         <AnimatedSection delay={100}>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {Object.entries(tools).map(([category, items]) => (
-              <div class="web-tool-category">
-                <h3 class="font-display text-lg mb-4 text-foreground/80">
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </h3>
-                <ul class="space-y-2">
-                  {items.map((item: string) => (
-                    <li class="text-foreground/70 font-medium text-sm">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {
+              Object.entries(tools).map(([category, items]) => (
+                <div class="web-tool-category">
+                  <h3 class="font-display text-lg mb-4 text-foreground/80">
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </h3>
+                  <ul class="space-y-2">
+                    {items.map((item: string) => (
+                      <li class="text-foreground/70 font-medium text-sm">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
           </div>
         </AnimatedSection>
       </div>
