@@ -58,8 +58,8 @@
 			"title": "Cash Flow",
 			"techStack": "React · Typescript · Tailwind CSS · Shadcn UI · Firebase",
 			"type": "personal",
-			"previewImage": "../src/assets/images/cash-flow-1.png",
-			"additionalImage": "../src/assets/images/cash-flow-2.png"
+			"previewImage": "https://github.com/MeezaanD/MeezaanD.github.io/blob/main/src/assets/images/cash-flow-1.png?raw=true",
+			"additionalImage": "https://github.com/MeezaanD/MeezaanD.github.io/blob/main/src/assets/images/cash-flow-2.png?raw=true"
 		},
 		{
 			"code": "https://github.com/MeezaanD/excelerator",
@@ -68,8 +68,8 @@
 			"title": "Excelerator",
 			"techStack": "Nuxt 4 · Vue · Tailwind CSS",
 			"type": "personal",
-			"previewImage": "../src/assets/images/excelerator-1.png",
-			"additionalImage": "../src/assets/images/excelerator-2.png"
+			"previewImage": "https://github.com/MeezaanD/MeezaanD.github.io/blob/main/src/assets/images/excelerator-1.png?raw=true",
+			"additionalImage": "https://github.com/MeezaanD/MeezaanD.github.io/blob/main/src/assets/images/excelerator-2.png?raw=true"
 		},
 		{
 			"code": "https://github.com/MeezaanD/BTS",
@@ -78,8 +78,8 @@
 			"title": "BTS Comeback Countdown",
 			"techStack": "React · Typescript · Tailwind CSS",
 			"type": "personal",
-			"previewImage": "../src/assets/images/BTS-2.png",
-			"additionalImage": "../src/assets/images/BTS-1.png"
+			"previewImage": "https://github.com/MeezaanD/MeezaanD.github.io/blob/main/src/assets/images/BTS-2.png?raw=true",
+			"additionalImage": "https://github.com/MeezaanD/MeezaanD.github.io/blob/main/src/assets/images/BTS-1.png?raw=true"
 		}
 	],
 	"websites": [
