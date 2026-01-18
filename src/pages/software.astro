@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AnimatedSection from '../components/AnimatedSection.astro';
+import data from '../data/config.json';
 
 interface Project {
   code: string;
@@ -12,17 +13,7 @@ interface Project {
   additionalImage: string;
 }
 
-let projects: Project[] = [];
-
-try {
-  const response = await fetch('https://meezaand.github.io/config/config.json');
-  if (response.ok) {
-    const data = await response.json();
-    projects = data.projects || [];
-  }
-} catch (error) {
-  console.error('Error fetching projects data:', error);
-}
+const projects: Project[] = data.projects || [];
 
 const tools = {
   languages: ['React.js', 'Vue.js', 'Next.js', 'Nuxt.js', 'JavaScript', 'TypeScript', 'Python', 'Go', 'PHP'],
