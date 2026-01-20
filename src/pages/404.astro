@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Page Not Found">
+  <div
+    class="min-h-screen container-site section-padding flex items-center justify-center"
+  >
+    <div class="text-center max-w-2xl">
+      <div class="mb-8">
+        <h1 class="text-7xl font-bold text-foreground mb-4">404</h1>
+        <h2
+          class="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4"
+        >
+          Oops! Page Not Found
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          The page you're looking for doesn't exist. But don't worry, let's help
+          you get back on track!
+        </p>
+      </div>
+
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-sm font-medium hover:opacity-90 hover:gap-3 transition-all"
+      >
+        Back to Home
+      </a>
+    </div>
+  </div>
+</Layout>
