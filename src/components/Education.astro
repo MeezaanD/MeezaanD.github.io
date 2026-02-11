@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+const entries = (await getCollection("education")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section class="section-padding" id="education">
+  <div class="container-site">
+    <h2 class="font-display text-2xl mb-10">Education</h2>
+    <div class="space-y-8">
+      {
+        entries.map((entry) => (
+          <div class="border-l-2 border-foreground/10 pl-6">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <div>
+                <h3 class="font-display text-lg">{entry.data.title}</h3>
+                {entry.data.url ? (
+                  <a
+                    href={entry.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm text-primary hover:underline"
+                  >
+                    {entry.data.institution}
+                  </a>
+                ) : (
+                  <p class="text-sm text-primary">{entry.data.institution}</p>
+                )}
+              </div>
+              <p class="text-xs text-foreground/40 whitespace-nowrap">
+                {entry.data.date}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

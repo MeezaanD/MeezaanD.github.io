@@ -1,7 +1,6 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-import VideoIntro from "../components/VideoIntro.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -9,10 +8,8 @@ interface Props {
   description?: string;
 }
 
-const {
-  title,
-  description = "Meezaan Davids - Software & Web Developer building solutions that matter.",
-} = Astro.props;
+const { title, description = "Meezaan Davids — Software Developer" } =
+  Astro.props;
 ---
 
 <!doctype html>
@@ -24,12 +21,26 @@ const {
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" href="/logo.png" />
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
   </head>
-  <body class="overflow-x-hidden">
-    <VideoIntro />
+  <body>
     <Navigation />
-    <main class="page-transition">
+    <main>
       <slot />
     </main>
     <Footer />
@@ -37,21 +48,6 @@ const {
 </html>
 
 <style is:global>
-  .page-transition {
-    animation: pageIn 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-
-  @keyframes pageIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   html {
     scroll-behavior: smooth;
   }
@@ -59,14 +55,6 @@ const {
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
     }
   }
 </style>

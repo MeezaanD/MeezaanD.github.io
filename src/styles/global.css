@@ -3,40 +3,47 @@
 @import "tailwindcss";
 
 @theme {
-	--color-foreground: #1a1a1a;
-	--color-background: #ffffff;
+  --color-primary: #001489;
+  --color-foreground: #1a1a1a;
+  --color-background: #ffffff;
 
-	--font-sans: "Inter", sans-serif;
-	--font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Playfair Display", serif;
 
-	--max-width-site: 1200px;
+  --max-width-site: 1200px;
 }
 
 @layer base {
-	html {
-		scroll-behavior: smooth;
-	}
+  html {
+    scroll-behavior: smooth;
+  }
 
-	body {
-		@apply font-sans text-foreground bg-background;
-	}
+  body {
+    @apply font-sans text-foreground bg-background transition-colors duration-300;
+  }
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply font-display font-semibold;
-	}
+  .dark body {
+    --color-foreground: #e5e5e5;
+    --color-background: #0a0a0a;
+    --color-primary: #4d6aff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold;
+  }
 }
 
 @layer components {
-	.container-site {
-		@apply max-w-site mx-auto px-8;
-	}
+  .container-site {
+    @apply max-w-site mx-auto px-8;
+  }
 
-	.section-padding {
-		@apply py-24;
-	}
+  .section-padding {
+    @apply py-24;
+  }
 }

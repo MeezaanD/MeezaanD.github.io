@@ -1,18 +1,62 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/home/Hero.astro";
-import About from "../components/home/About.astro";
-import Timeline from "../components/home/Timeline.astro";
-import Philosophy from "../components/home/Philosophy.astro";
-import InterestsPreview from "../components/home/InterestsPreview.astro";
-import Contact from "../components/home/Contact.astro";
+import Hero from "../components/Hero.astro";
+import GitHubHeatmap from "../components/GitHubHeatmap.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
+import BottomCTA from "../components/BottomCTA.astro";
+import { getEntry } from "astro:content";
+
+const hero = await getEntry("hero", "index");
 ---
 
-<Layout title="dev">
+<Layout title="Meezaan Davids">
   <Hero />
-  <About />
-  <Timeline />
-  <Philosophy />
-  <InterestsPreview />
-  <Contact />
+  <div class="reveal">
+    <GitHubHeatmap username={hero!.data.github} />
+  </div>
+  <div class="reveal">
+    <Projects />
+  </div>
+  <div class="reveal">
+    <Experience />
+  </div>
+  <div class="reveal">
+    <Education />
+  </div>
+  <div class="reveal">
+    <BottomCTA />
+  </div>
 </Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+</script>
+
+<style is:global>
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+      transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
