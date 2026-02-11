@@ -16,7 +16,7 @@ const rendered = await Promise.all(
 <section class="section-padding" id="experience">
   <div class="container-site">
     <h2 class="font-display text-2xl mb-10">Experience</h2>
-    <div class="space-y-8">
+    <div class="space-y-5">
       {
         rendered.map(({ data, Content }) => (
           <div class="border-l-2 border-foreground/10 pl-6">
@@ -40,9 +40,9 @@ const rendered = await Promise.all(
                 {data.date}
               </p>
             </div>
-            <div class="text-sm text-foreground/50 leading-relaxed prose-sm">
+            {/* <div class="text-sm text-foreground/50 leading-relaxed prose-sm">
               <Content />
-            </div>
+            </div> */}
           </div>
         ))
       }

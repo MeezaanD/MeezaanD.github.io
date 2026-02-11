@@ -2,7 +2,7 @@
 import { getEntry } from "astro:content";
 
 const hero = await getEntry("hero", "index");
-const { name, headline, description, cta } = hero!.data;
+const { name, headline, description } = hero!.data;
 ---
 
 <section class="section-padding pt-40">

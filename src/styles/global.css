@@ -44,6 +44,6 @@
   }
 
   .section-padding {
-    @apply py-24;
+    @apply py-12;
   }
 }

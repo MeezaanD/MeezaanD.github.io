@@ -1,7 +1,7 @@
 ---
 company: Life Choices Academy
 title: Assistant Coding Lecturer
-date: March 2022 — June 2023
+date: April 2023 — June 2023
 url: https://lifechoicesacademy.com/
 order: 4
 ---
