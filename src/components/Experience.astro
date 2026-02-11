@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from "astro:content";
+
+const experiences = (await getCollection("experience")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const rendered = await Promise.all(
+  experiences.map(async (entry) => ({
+    data: entry.data,
+    Content: (await render(entry)).Content,
+  })),
+);
+---
+
+<section class="section-padding" id="experience">
+  <div class="container-site">
+    <h2 class="font-display text-2xl mb-10">Experience</h2>
+    <div class="space-y-8">
+      {
+        rendered.map(({ data, Content }) => (
+          <div class="border-l-2 border-foreground/10 pl-6">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+              <div>
+                <h3 class="font-display text-lg">{data.title}</h3>
+                {data.url ? (
+                  <a
+                    href={data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm text-primary hover:underline"
+                  >
+                    {data.company}
+                  </a>
+                ) : (
+                  <p class="text-sm text-primary">{data.company}</p>
+                )}
+              </div>
+              <p class="text-xs text-foreground/40 whitespace-nowrap">
+                {data.date}
+              </p>
+            </div>
+            <div class="text-sm text-foreground/50 leading-relaxed prose-sm">
+              <Content />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,169 @@
+---
+interface Props {
+  username: string;
+}
+
+const { username } = Astro.props;
+
+type Contribution = {
+  date: string;
+  count: number;
+  level: number;
+};
+
+let contributions: Contribution[] = [];
+let totalContributions = 0;
+
+try {
+  const res = await fetch(
+    `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+  );
+  if (res.ok) {
+    const data = await res.json();
+    contributions = data.contributions || [];
+    const totals = data.total || {};
+    totalContributions = Object.values(totals).reduce(
+      (sum: number, val: unknown) => sum + (typeof val === "number" ? val : 0),
+      0,
+    );
+  }
+} catch {
+  // silently fail — fallback to GitHub link
+}
+
+// Group contributions into weeks (7 days per column, Sun–Sat)
+const weeks: (Contribution | null)[][] = [];
+let currentWeek: (Contribution | null)[] = [];
+
+if (contributions.length > 0) {
+  const firstDayOfWeek = new Date(contributions[0].date + "T00:00:00").getDay();
+  for (let i = 0; i < firstDayOfWeek; i++) {
+    currentWeek.push(null);
+  }
+
+  for (const contrib of contributions) {
+    currentWeek.push(contrib);
+    if (currentWeek.length === 7) {
+      weeks.push(currentWeek);
+      currentWeek = [];
+    }
+  }
+
+  if (currentWeek.length > 0) {
+    while (currentWeek.length < 7) {
+      currentWeek.push(null);
+    }
+    weeks.push(currentWeek);
+  }
+}
+
+const cells = weeks.flat();
+---
+
+<section class="section-padding">
+  <div class="container-site">
+    <h2 class="font-display text-2xl mb-8">Contributions</h2>
+
+    {
+      contributions.length > 0 ? (
+        <>
+          <div class="overflow-x-auto pb-4">
+            <div class="heatmap-grid">
+              {cells.map((cell) => (
+                <div
+                  class="heatmap-cell"
+                  data-level={cell ? cell.level : -1}
+                  title={
+                    cell ? `${cell.date}: ${cell.count} contributions` : ""
+                  }
+                />
+              ))}
+            </div>
+          </div>
+          <p class="text-sm text-foreground/40 mt-4">
+            {totalContributions.toLocaleString()} contributions in the last year
+          </p>
+        </>
+      ) : (
+        <a
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-primary hover:underline"
+        >
+          View GitHub Profile &rarr;
+        </a>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .heatmap-grid {
+    display: grid;
+    grid-template-rows: repeat(7, 14px);
+    grid-auto-flow: column;
+    grid-auto-columns: 14px;
+    gap: 3px;
+    width: max-content;
+  }
+
+  .heatmap-cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background: #ebedf0;
+  }
+
+  .heatmap-cell[data-level="-1"] {
+    background: transparent;
+  }
+
+  .heatmap-cell[data-level="0"] {
+    background: #ebedf0;
+  }
+
+  .heatmap-cell[data-level="1"] {
+    background: #c6cae8;
+  }
+
+  .heatmap-cell[data-level="2"] {
+    background: #8b92d1;
+  }
+
+  .heatmap-cell[data-level="3"] {
+    background: #4953a9;
+  }
+
+  .heatmap-cell[data-level="4"] {
+    background: #001489;
+  }
+
+  :global(.dark) .heatmap-cell {
+    background: #161b22;
+  }
+
+  :global(.dark) .heatmap-cell[data-level="-1"] {
+    background: transparent;
+  }
+
+  :global(.dark) .heatmap-cell[data-level="0"] {
+    background: #161b22;
+  }
+
+  :global(.dark) .heatmap-cell[data-level="1"] {
+    background: #2a3560;
+  }
+
+  :global(.dark) .heatmap-cell[data-level="2"] {
+    background: #3d4f99;
+  }
+
+  :global(.dark) .heatmap-cell[data-level="3"] {
+    background: #5570cc;
+  }
+
+  :global(.dark) .heatmap-cell[data-level="4"] {
+    background: #4d6aff;
+  }
+</style>

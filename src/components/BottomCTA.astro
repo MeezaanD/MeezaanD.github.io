@@ -1,0 +1,19 @@
+---
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("cta", "index");
+const { headline, buttonText, buttonHref } = entry!.data;
+---
+
+<section class="section-padding">
+  <div class="container-site text-center">
+    <h2 class="font-display text-3xl md:text-4xl mb-8">{headline}</h2>
+    <a
+      href={buttonHref}
+      class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded hover:bg-primary/90 transition-colors"
+    >
+      {buttonText}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>

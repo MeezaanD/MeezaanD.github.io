@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section class="section-padding" id="projects">
+  <div class="container-site">
+    <h2 class="font-display text-2xl mb-10">Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        projects.map((project) => (
+          <div class="border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 transition-colors">
+            <h3 class="font-display text-lg mb-2">{project.data.title}</h3>
+            <p class="text-sm text-foreground/50 mb-4 leading-relaxed">
+              {project.data.description}
+            </p>
+            <p class="text-xs text-foreground/30 mb-4">
+              {project.data.techStack}
+            </p>
+            <div class="flex gap-4">
+              {project.data.liveLink && (
+                <a
+                  href={project.data.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-xs text-primary hover:underline"
+                >
+                  Live &rarr;
+                </a>
+              )}
+              {project.data.code && (
+                <a
+                  href={project.data.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-xs text-foreground/40 hover:text-foreground/60"
+                >
+                  Code &rarr;
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
