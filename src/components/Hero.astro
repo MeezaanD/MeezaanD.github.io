@@ -2,7 +2,7 @@
 import { getEntry } from "astro:content";
 
 const hero = await getEntry("hero", "index");
-const { name, headline, description } = hero!.data;
+const { name, headline, description, quote } = hero!.data;
 ---
 
 <section class="section-padding pt-40">
@@ -15,9 +15,18 @@ const { name, headline, description } = hero!.data;
     >
       {headline}
     </h1>
-    <p class="text-foreground/50 text-base max-w-3xl mb-10 leading-relaxed">
+    <p class="text-foreground/50 text-base max-w-3xl mb-6 leading-relaxed">
       {description}
     </p>
+    {
+      quote && (
+        <blockquote class="border-l-2 border-primary/50 pl-4 mb-10 max-w-2xl">
+          <p class="text-foreground/40 text-sm italic leading-relaxed">
+            "{quote}"
+          </p>
+        </blockquote>
+      )
+    }
     <a
       href="/Meezaan_Davids_CV.pdf"
       target="_blank"

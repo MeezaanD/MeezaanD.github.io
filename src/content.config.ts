@@ -12,6 +12,7 @@ const hero = defineCollection({
             href: z.string(),
         }),
         github: z.string(),
+        quote: z.string().optional(),
     }),
 });
 
