@@ -3,8 +3,8 @@ name: Meezaan Davids
 headline: Building software that matters.
 description: I believe in crafting digital experiences with intention, where every line of code serves a purpose, and every design decision tells a story. Not just building apps, but solving problems that matter.
 cta:
-  text: View My Work
-  href: "#projects"
+  text: "Don't reach out to me, I'll find you"
+  href: "#"
 github: MeezaanD
 quote: "Seek knowledge from the cradle to the grave."
 ---

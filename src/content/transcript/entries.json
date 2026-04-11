@@ -1,0 +1,151 @@
+[
+    {
+        "section": "Formal Degree",
+        "title": "Bachelor of Commerce in Information and Technology Management",
+        "institution": "MANCOSA · NQF Level 7",
+        "status": "In Progress",
+        "date": "January 2026 – November 2028 (Expected)",
+        "description": "Currently pursuing a Bachelor of Commerce with a specialisation in Information and Technology Management at NQF Level 7. The programme covers strategic IT management, business systems, data management, project management, and digital transformation.",
+        "tagLabel": "Focus Areas",
+        "tags": [
+            "IT Management",
+            "Business Systems",
+            "Data Management",
+            "Project Management",
+            "Digital Transformation",
+            "Strategic Management"
+        ],
+        "order": 1
+    },
+    {
+        "section": "Bootcamps & Institutions",
+        "title": "6-Month Full Stack Web Developer Bootcamp",
+        "institution": "Zaio",
+        "status": "Completed",
+        "date": "Completed 10 July 2025",
+        "description": "Successfully completed all requirements of the Zaio 6-month Full Stack Bootcamp. This program included practical projects in front-end and back-end development using modern frameworks, database management, deployment, and version control.",
+        "detail": "Certificate ID: 0305245105088",
+        "tagLabel": "Technologies",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "Node.js",
+            "Python",
+            "MongoDB",
+            "Firestore"
+        ],
+        "certificateImage": "/transcript/images/meezaan-zaio.png",
+        "certificateAlt": "Zaio Full Stack Bootcamp",
+        "order": 2
+    },
+    {
+        "section": "Bootcamps & Institutions",
+        "title": "Coding Course (Full-Stack)",
+        "institution": "Life Choices",
+        "status": "Completed",
+        "date": "September 2022 – March 2023",
+        "tagLabel": "Modules",
+        "tags": [
+            "Introduction to Computing",
+            "HTML / CSS / Bootstrap",
+            "JavaScript",
+            "Vue.js",
+            "Databases using MySQL",
+            "Node.js",
+            "Capstone Project",
+            "Life Skills",
+            "Personal & Professional Development"
+        ],
+        "certificateImage": "/transcript/images/fullstack-bootcamp.jpg",
+        "certificateAlt": "Life Choices - Full-Stack Coding Course",
+        "order": 3
+    },
+    {
+        "section": "Bootcamps & Institutions",
+        "title": "Software Development",
+        "institution": "IT Academy · Course Code: C01191",
+        "status": "Completed",
+        "date": "March 2022 – March 2023",
+        "tagLabel": "Subjects & Certifications",
+        "tags": [
+            "98-361: MTA Software Fundamentals",
+            "98-364: MTA Database Fundamentals",
+            "70-480: HTML5, JS & CSS3",
+            "70-486: ASP.NET MVC Web Apps",
+            "70-761: SQL Server 2016 Query",
+            "70-483: Programming in C#",
+            "70-357: Developing Mobile Apps",
+            "1Z0-815: Java SE 11 Programmer I",
+            "1Z0-816: Java SE 11 Programmer II",
+            "AZ-900: Microsoft Azure Fundamentals",
+            "AZ-204: Developing Solutions for Azure",
+            "AZ-400: Azure DevOps Solutions",
+            "70-487: Azure & Web Services",
+            "Python: Getting Started",
+            "Python: Complex Data Types",
+            "Python: Conditionals & Loops",
+            "BH0-010: Software Testing",
+            "SAA-C01: AWS Solutions Architect",
+            "DVA-001: AWS Certified Developer"
+        ],
+        "certificateImage": "/transcript/images/it-academy.jpg",
+        "certificateAlt": "IT Academy - Software Development",
+        "order": 4
+    },
+    {
+        "section": "Online Courses — Udemy",
+        "title": "Master Go Programming",
+        "institution": "Udemy",
+        "status": "Completed",
+        "certificateImage": "/transcript/images/udemy-master-go.jpg",
+        "certificateAlt": "Udemy - Master Go Programming",
+        "order": 5
+    },
+    {
+        "section": "Online Courses — Udemy",
+        "title": "TypeScript: The Complete Developer's Guide",
+        "institution": "Udemy",
+        "status": "Completed",
+        "certificateImage": "/transcript/images/udemy-typescript.jpg",
+        "certificateAlt": "Udemy - TypeScript: The Complete Developer's Guide",
+        "order": 6
+    },
+    {
+        "section": "Online Courses — Udemy",
+        "title": "Web Development with Go",
+        "institution": "Udemy",
+        "status": "Completed",
+        "certificateImage": "/transcript/images/udemy-web-go.jpg",
+        "certificateAlt": "Udemy - Web Development with Go",
+        "order": 7
+    },
+    {
+        "section": "Online Courses — Great Learning",
+        "title": "Data Science",
+        "institution": "Great Learning",
+        "status": "Completed",
+        "certificateImage": "/transcript/images/great-learning-data-science.jpg",
+        "certificateAlt": "Great Learning - Data Science",
+        "order": 8
+    },
+    {
+        "section": "Online Courses — Great Learning",
+        "title": "Linux Tutorial",
+        "institution": "Great Learning",
+        "status": "Completed",
+        "certificateImage": "/transcript/images/great-learning-linux-tutorial.jpg",
+        "certificateAlt": "Great Learning - Linux Tutorial",
+        "order": 9
+    },
+    {
+        "section": "Online Courses — Great Learning",
+        "title": "Machine Learning",
+        "institution": "Great Learning",
+        "status": "Completed",
+        "certificateImage": "/transcript/images/great-learning-machine-learn.jpg",
+        "certificateAlt": "Great Learning - Machine Learning",
+        "order": 10
+    }
+]
