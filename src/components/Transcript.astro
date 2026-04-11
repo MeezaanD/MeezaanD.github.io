@@ -1,0 +1,218 @@
+---
+import { getCollection } from "astro:content";
+
+type TranscriptItem = {
+  section: string;
+  title: string;
+  institution: string;
+  status: "Completed" | "In Progress";
+  date?: string;
+  description?: string;
+  detail?: string;
+  tagLabel?: string;
+  tags?: string[];
+  certificateImage?: string;
+  certificateAlt?: string;
+  order: number;
+};
+
+const rawCollections = await getCollection("transcript");
+const entries = rawCollections
+  .flatMap((entry) => entry.data as TranscriptItem[])
+  .sort((a, b) => a.order - b.order);
+
+const sectionOrder = [
+  "Formal Degree",
+  "Bootcamps & Institutions",
+  "Online Courses — Udemy",
+  "Online Courses — Great Learning",
+];
+
+const grouped = sectionOrder
+  .map((section) => ({
+    section,
+    items: entries.filter((entry) => entry.section === section),
+  }))
+  .filter((group) => group.items.length > 0);
+---
+
+<section class="section-padding pt-32" id="transcript">
+  <div class="container-site">
+    <div class="mb-10">
+      <p
+        class="text-base tracking-[0.3em] uppercase mb-4 text-primary font-bold"
+      >
+        Academic Transcript
+      </p>
+      <h1
+        class="font-display text-3xl md:text-4xl mb-3 leading-tight max-w-3xl"
+      >
+        Qualifications, Bootcamps, and Certifications
+      </h1>
+      <p class="text-foreground/50 text-base max-w-3xl leading-relaxed">
+        A complete in-app transcript of formal education and practical learning,
+        with locally hosted certificate previews.
+      </p>
+    </div>
+
+    {
+      grouped.map((group) => (
+        <div class="mb-12 last:mb-0">
+          <h2 class="font-display text-xl mb-6">{group.section}</h2>
+          <div class="space-y-5">
+            {group.items.map((item) => (
+              <article class="border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 transition-colors">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                  <div>
+                    <h3 class="font-display text-lg leading-snug">
+                      {item.title}
+                    </h3>
+                    <p class="text-sm text-primary">{item.institution}</p>
+                  </div>
+                  <div class="flex flex-col sm:items-end gap-1">
+                    <span
+                      class:list={[
+                        "text-[11px] uppercase tracking-[0.12em] rounded-full px-3 py-1 border",
+                        item.status === "In Progress"
+                          ? "border-primary/30 text-primary/80"
+                          : "border-foreground/15 text-foreground/50",
+                      ]}
+                    >
+                      {item.status}
+                    </span>
+                    {item.date && (
+                      <p class="text-xs text-foreground/40 whitespace-nowrap">
+                        {item.date}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {item.description && (
+                  <p class="mt-4 text-sm text-foreground/50 leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
+
+                {item.detail && (
+                  <p class="mt-3 text-xs text-foreground/45">{item.detail}</p>
+                )}
+
+                {item.tags && item.tags.length > 0 && (
+                  <div class="mt-4">
+                    {item.tagLabel && (
+                      <p class="text-[11px] uppercase tracking-[0.12em] text-foreground/35 mb-2">
+                        {item.tagLabel}
+                      </p>
+                    )}
+                    <div class="flex flex-wrap gap-2">
+                      {item.tags.map((tag) => (
+                        <span class="text-xs text-foreground/55 px-2.5 py-1 rounded border border-foreground/10 bg-foreground/3">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {item.certificateImage && (
+                  <button
+                    type="button"
+                    class="mt-5 inline-flex items-center gap-2 text-xs text-foreground/45 hover:text-foreground/70 transition-colors"
+                    data-cert-image={item.certificateImage}
+                    data-cert-alt={item.certificateAlt ?? item.title}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    View Certificate
+                  </button>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<div
+  id="cert-modal"
+  class="fixed inset-0 z-[70] hidden items-center justify-center p-4 bg-black/55"
+>
+  <div
+    class="relative w-full max-w-4xl rounded-lg border border-foreground/10 bg-background p-3 md:p-4"
+  >
+    <button
+      id="cert-modal-close"
+      type="button"
+      class="absolute right-3 top-3 h-8 w-8 rounded-full border border-foreground/10 text-foreground/50 hover:text-foreground/80 transition-colors"
+      aria-label="Close certificate preview"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+    <img
+      id="cert-modal-image"
+      src=""
+      alt=""
+      class="w-full max-h-[80vh] object-contain rounded"
+      loading="lazy"
+    />
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("cert-modal");
+  const modalImage = document.getElementById("cert-modal-image");
+  const closeButton = document.getElementById("cert-modal-close");
+
+  function openModal(src, alt) {
+    if (!modal || !modalImage) return;
+    modalImage.setAttribute("src", src);
+    modalImage.setAttribute("alt", alt || "Certificate preview");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    if (!modal || !modalImage) return;
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    modalImage.setAttribute("src", "");
+    modalImage.setAttribute("alt", "");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("[data-cert-image]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const src = button.getAttribute("data-cert-image");
+      const alt = button.getAttribute("data-cert-alt");
+      if (!src) return;
+      openModal(src, alt || "Certificate preview");
+    });
+  });
+
+  closeButton?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+  });
+</script>

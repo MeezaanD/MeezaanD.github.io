@@ -2,7 +2,7 @@
 import { getEntry } from "astro:content";
 
 const hero = await getEntry("hero", "index");
-const { name, headline, description, quote } = hero!.data;
+const { name, headline, description, quote, cta } = hero!.data;
 ---
 
 <section class="section-padding pt-40">
@@ -27,47 +27,6 @@ const { name, headline, description, quote } = hero!.data;
         </blockquote>
       )
     }
-    <div class="flex flex-wrap gap-4">
-      <a
-        href="/Meezaan_Davids_CV.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded hover:bg-primary/90 transition-colors"
-      >
-        Download CV
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 5v14M5 12l7 7 7-7"></path>
-        </svg>
-      </a>
-      <a
-        href="https://meezaand.github.io/certifications/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white text-sm font-medium rounded hover:bg-primary/90 transition-colors"
-      >
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 5v14M5 12l7 7 7-7"></path>
-        </svg>
-        Academic Transcript
-      </a>
-    </div>
+    <p class="text-foreground/40 text-sm md:text-base italic">{cta.text}</p>
   </div>
 </section>
