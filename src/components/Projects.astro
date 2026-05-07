@@ -30,9 +30,6 @@ const projects = (await getCollection("projects")).sort(
             <p class="text-sm text-foreground/50 mb-4 leading-relaxed">
               {project.data.description}
             </p>
-            <p class="text-xs text-foreground/30 mb-4">
-              {project.data.techStack}
-            </p>
             <div class="flex gap-4">
               {project.data.code && (
                 <a
