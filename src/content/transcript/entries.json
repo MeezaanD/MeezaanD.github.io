@@ -5,21 +5,23 @@
         "institution": "MANCOSA · NQF Level 7",
         "status": "In Progress",
         "date": "January 2026 – November 2028 (Expected)",
-        "description": "Currently pursuing a Bachelor of Commerce with a specialisation in Information and Technology Management at NQF Level 7. The programme covers strategic IT management, business systems, data management, project management, and digital transformation.",
+        "description": "Currently pursuing a Bachelor of Commerce with a specialisation in Information and Technology Management at NQF Level 7. The programme covers a comprehensive curriculum designed to equip students with the knowledge and skills necessary for effective management of information technology in business contexts.",
         "tagLabel": "Focus Areas",
         "tags": [
-            "IT Management",
-            "Business Systems",
-            "Data Management",
-            "Project Management",
-            "Digital Transformation",
-            "Strategic Management"
+            "Introduction to Business Management",
+            "Fundamentals of Computer Programming",
+            "Analytical Techniques",
+            "Microeconomic Essentials",
+            "Introduction to Functional Areas of Management",
+            "Advanced Programming Concepts",
+            "Financial Reporting and Analysis",
+            "Macroeconomics Essentials"
         ],
         "order": 1
     },
     {
         "section": "Bootcamps & Institutions",
-        "title": "6-Month Full Stack Web Developer Bootcamp",
+        "title": "Full Stack Web Developer Bootcamp",
         "institution": "Zaio",
         "status": "Completed",
         "date": "Completed 10 July 2025",
