@@ -1,0 +1,65 @@
+---
+import { getEntry, render } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const now = await getEntry("now", "index");
+if (!now) throw new Error("Now content is missing");
+
+const { Content } = await render(now);
+const items = [now.data.work, now.data.learning, now.data.curiosity];
+const updated = new Intl.DateTimeFormat("en", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+}).format(now.data.updatedDate);
+---
+
+<Layout
+  title="Now | Meezaan Davids"
+  description="What Meezaan Davids is currently working on, learning, and thinking about."
+>
+  <div class="mx-auto max-w-site px-5 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
+    <header class="max-w-3xl pb-16 md:pb-24">
+      <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+        Updated {updated}
+      </p>
+      <h1 class="mt-4 max-w-[50rem] text-[clamp(3rem,7vw,5.8rem)] leading-none tracking-[-0.05em]">
+        What has my attention now.
+      </h1>
+      <div class="mt-8 max-w-[43rem] text-base leading-8 text-muted md:text-lg">
+        <Content />
+      </div>
+    </header>
+
+    <div class="border-t border-border">
+      {
+        items.map((item) => (
+          <article class="grid gap-5 border-b border-border py-11 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-12">
+            <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+              {item.title}
+            </p>
+            <p class="max-w-3xl text-[clamp(1.15rem,2vw,1.45rem)] leading-[1.75] text-muted">
+              {item.text}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+
+    {
+      now.data.links && (
+        <nav class="flex flex-wrap gap-x-10 gap-y-6 pt-12" aria-label="Related pages">
+          {now.data.links.map((link) => (
+            <a
+              class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
+              href={link.href}
+            >
+              {link.label} <span aria-hidden="true">→</span>
+            </a>
+          ))}
+        </nav>
+      )
+    }
+  </div>
+</Layout>

@@ -95,6 +95,31 @@ const blog = defineCollection({
     }),
 });
 
+const now = defineCollection({
+    loader: glob({ pattern: '**/*.md', base: 'src/content/now' }),
+    schema: z.object({
+        updatedDate: z.coerce.date(),
+        work: z.object({
+            title: z.string(),
+            text: z.string(),
+        }),
+        learning: z.object({
+            title: z.string(),
+            text: z.string(),
+        }),
+        curiosity: z.object({
+            title: z.string(),
+            text: z.string(),
+        }),
+        links: z.array(
+            z.object({
+                label: z.string(),
+                href: z.string(),
+            }),
+        ).optional(),
+    }),
+});
+
 export const collections = {
     hero,
     projects,
@@ -103,4 +128,5 @@ export const collections = {
     cta,
     transcript,
     blog,
+    now,
 };

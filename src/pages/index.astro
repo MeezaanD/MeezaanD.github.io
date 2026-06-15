@@ -1,59 +1,219 @@
 ---
+import { getCollection, getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import GitHubHeatmap from "../components/GitHubHeatmap.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import BottomCTA from "../components/BottomCTA.astro";
-import { getEntry } from "astro:content";
+import { site } from "../data/site";
 
-const hero = await getEntry("hero", "index");
+const now = await getEntry("now", "index");
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+
+const nowItems = now
+  ? [now.data.work, now.data.learning, now.data.curiosity]
+  : [];
 ---
 
-<Layout title="Meezaan Davids">
-  <Hero />
-  <div class="reveal">
-    <GitHubHeatmap username={hero!.data.github} />
-  </div>
-  <div class="reveal">
-    <Projects />
-  </div>
-  <div class="reveal">
-    <Experience />
-  </div>
-  <div class="reveal">
-    <Education />
-  </div>
+<Layout title="Meezaan Davids | Software, systems, and writing">
+  <section class="mx-auto max-w-site px-5 pb-32 pt-44 sm:px-8 max-[700px]:pb-[5.5rem] max-[700px]:pt-[8.5rem]">
+    <div class="grid gap-8 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-12">
+      <p class="pt-3 font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+        {site.name}
+      </p>
+      <div class="max-w-[54rem]">
+        <h1 class="max-w-[52rem] text-[clamp(3rem,7.5vw,6.4rem)] leading-[0.98] tracking-[-0.055em] max-[700px]:text-[clamp(2.8rem,15vw,4.5rem)]">
+          Building software with judgment and intention.
+        </h1>
+        <p class="my-9 max-w-[44rem] text-[clamp(1.05rem,2vw,1.25rem)] leading-[1.8] text-muted">
+          I am a software developer interested in the whole system: the
+          interface, the architecture beneath it, and the decisions that make
+          technology useful to people.
+        </p>
+        <a
+          class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
+          href="/blog"
+        >
+          Read what I am thinking about <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-site border-t border-border px-5 py-[5.5rem] sm:px-8 max-[700px]:py-16"
+    aria-labelledby="now-heading"
+  >
+    <div class="mb-11 flex items-end justify-between gap-8 max-[700px]:mb-8 max-[700px]:block">
+      <div>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+          Current state
+        </p>
+        <h2
+          class="mt-[0.45rem] text-[clamp(2.1rem,5vw,3.7rem)] leading-[1.08] tracking-[-0.035em]"
+          id="now-heading"
+        >
+          Now
+        </h2>
+      </div>
+      <a
+        class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current max-[700px]:mt-4"
+        href="/now"
+      >
+        The full update <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="border-t border-border">
+      {
+        nowItems.map((item) => (
+          <article class="grid gap-4 border-b border-border py-7 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-10 md:py-9">
+            <h3 class="font-mono text-sm font-medium text-foreground">
+              {item.title}
+            </h3>
+            <p class="max-w-3xl leading-7 text-muted">{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-site border-t border-border px-5 py-[5.5rem] sm:px-8 max-[700px]:py-16"
+    aria-labelledby="writing-heading"
+  >
+    <div class="mb-11 flex items-end justify-between gap-8 max-[700px]:mb-8 max-[700px]:block">
+      <div>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+          Notes and essays
+        </p>
+        <h2
+          class="mt-[0.45rem] text-[clamp(2.1rem,5vw,3.7rem)] leading-[1.08] tracking-[-0.035em]"
+          id="writing-heading"
+        >
+          Recent writing
+        </h2>
+      </div>
+      <a
+        class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current max-[700px]:mt-4"
+        href="/blog"
+      >
+        All writing <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div class="border-t border-border">
+      {
+        posts.map((post) => (
+          <article class="grid grid-cols-[8rem_minmax(0,1fr)_auto] items-start gap-8 border-b border-border py-[2.2rem] max-[700px]:grid-cols-[1fr_auto] max-[700px]:gap-4">
+            <time
+              class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle max-[700px]:col-span-full"
+              datetime={post.data.pubDate.toISOString()}
+            >
+              {formatDate(post.data.pubDate)}
+            </time>
+            <div>
+              <h3 class="max-w-3xl text-[clamp(1.45rem,3vw,2.1rem)] leading-[1.2]">
+                <a
+                  class="transition-colors duration-[160ms] hover:text-primary"
+                  href={`/blog/${post.id}/`}
+                >
+                  {post.data.title}
+                </a>
+              </h3>
+              <p class="mt-3 max-w-[44rem] leading-[1.7] text-muted">
+                {post.data.description}
+              </p>
+            </div>
+            <a
+              class="font-mono text-subtle"
+              href={`/blog/${post.id}/`}
+              aria-label={`Read ${post.data.title}`}
+            >
+              ↗
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-site border-t border-border px-5 py-[5.5rem] sm:px-8 max-[700px]:py-16"
+    aria-labelledby="elsewhere-heading"
+  >
+    <div class="mb-11 flex items-end justify-between gap-8 max-[700px]:mb-8 max-[700px]:block">
+      <div>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+          Around the web
+        </p>
+        <h2
+          class="mt-[0.45rem] text-[clamp(2.1rem,5vw,3.7rem)] leading-[1.08] tracking-[-0.035em]"
+          id="elsewhere-heading"
+        >
+          Elsewhere
+        </h2>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 border-t border-border max-[700px]:grid-cols-1">
+      {
+        [...site.products, ...site.social.map((item) => ({ ...item, description: "Find me and follow the work." }))].map(
+          (item, index) => (
+            <a
+              class:list={[
+                "group flex justify-between gap-6 border-b border-border py-7 max-[700px]:px-0 max-[700px]:border-l-0",
+                index % 2 === 0 ? "pr-8" : "border-l border-border pl-8",
+              ]}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>
+                <strong class="block font-mono text-[0.9rem] font-medium transition-colors group-hover:text-primary">
+                  {item.label}
+                </strong>
+                <small class="mt-[0.45rem] block text-[0.85rem] leading-[1.5] text-muted">
+                  {item.description}
+                </small>
+              </span>
+              <span class="text-subtle transition-colors group-hover:text-primary" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          ),
+        )
+      }
+    </div>
+  </section>
+
+  <section
+    class="mx-auto max-w-site border-t border-border px-5 pb-32 pt-28 sm:px-8"
+    id="contact"
+    aria-labelledby="contact-heading"
+  >
+    <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+      Contact
+    </p>
+    <h2
+      class="mt-[0.45rem] text-[clamp(2.1rem,5vw,3.7rem)] leading-[1.08] tracking-[-0.035em]"
+      id="contact-heading"
+    >
+      Say hello.
+    </h2>
+    <p class="mb-7 mt-5 max-w-[34rem] leading-[1.75] text-muted">
+      For thoughtful conversations about software, systems, and the work around
+      them.
+    </p>
+    <a
+      class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
+      href={`mailto:${site.email}`}
+    >
+      {site.email} <span aria-hidden="true">→</span>
+    </a>
+  </section>
 </Layout>
-
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
-
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-</script>
-
-<style is:global>
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-      opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
-      transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-
-  .reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>

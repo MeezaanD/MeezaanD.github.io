@@ -1,6 +1,7 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
 import "../styles/global.css";
 
 interface Props {
@@ -8,8 +9,8 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Meezaan Davids — Software Developer" } =
-  Astro.props;
+const { title, description = site.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -18,11 +19,12 @@ const { title, description = "Meezaan Davids — Software Developer" } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" href="/logo.png" />
@@ -32,29 +34,16 @@ const { title, description = "Meezaan Davids — Software Developer" } =
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        if (stored === "dark" || (!stored && prefersDark)) {
-          document.documentElement.classList.add("dark");
-        }
+        const dark = stored === "dark" || (!stored && prefersDark);
+        document.documentElement.classList.toggle("dark", dark);
       })();
     </script>
   </head>
   <body>
     <Navigation />
-    <main>
+    <main id="page-content">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-</style>

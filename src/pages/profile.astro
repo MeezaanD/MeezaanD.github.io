@@ -1,0 +1,144 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+
+const experienceEntries = (await getCollection("experience")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const experience = await Promise.all(
+  experienceEntries.map(async (entry) => ({
+    data: entry.data,
+    Content: (await render(entry)).Content,
+  })),
+);
+const education = (await getCollection("education")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Layout
+  title="Profile | Meezaan Davids"
+  description="A concise professional and learning profile for Meezaan Davids."
+>
+  <div class="mx-auto max-w-site px-5 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
+    <header class="grid gap-10 pb-20 md:pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,1fr)] lg:gap-16 lg:pb-24">
+      <div>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+          Background
+        </p>
+        <h1 class="mt-4 max-w-[32rem] text-[clamp(2.8rem,5.5vw,4.4rem)] leading-[1.02] tracking-[-0.045em]">
+          Software developer, systems thinker, persistent student.
+        </h1>
+      </div>
+      <div class="max-w-[38rem] leading-[1.8] text-muted">
+        <p>
+          My work sits between frontend engineering, product thinking, and the
+          wider systems that make software dependable. This page keeps the
+          formal record; the homepage keeps the living one.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-x-8 gap-y-4">
+          {site.references.map((item) => (
+            <a
+              class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
+              href={item.href}
+              target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+              rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+            >
+              {item.label} <span aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <section
+      class="grid gap-10 border-t border-border py-16 md:py-20 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:gap-20"
+      aria-labelledby="experience-heading"
+    >
+      <div>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+          01
+        </p>
+        <h2 class="mt-2 text-[clamp(2rem,4vw,3.2rem)]" id="experience-heading">
+          Experience
+        </h2>
+      </div>
+      <div class="border-t border-border">
+        {
+          experience.map(({ data, Content }) => (
+            <article class="grid gap-4 border-b border-border py-8 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8">
+              <p class="font-mono text-[0.72rem] uppercase leading-[1.6] text-subtle">
+                {data.date}
+              </p>
+              <div>
+                <h3 class="font-sans text-[1.1rem] font-semibold">{data.title}</h3>
+                {data.url ? (
+                  <a
+                    class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary"
+                    href={data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {data.company} ↗
+                  </a>
+                ) : (
+                  <p class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary">
+                    {data.company}
+                  </p>
+                )}
+                <div class="mt-4 max-w-[44rem] text-[0.93rem] leading-[1.75] text-muted">
+                  <Content />
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="grid gap-10 border-t border-border py-16 md:py-20 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:gap-20"
+      aria-labelledby="education-heading"
+    >
+      <div>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+          02
+        </p>
+        <h2 class="mt-2 text-[clamp(2rem,4vw,3.2rem)]" id="education-heading">
+          Education
+        </h2>
+      </div>
+      <div class="border-t border-border">
+        {
+          education.map((entry) => (
+            <article class="grid gap-4 border-b border-border py-8 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8">
+              <p class="font-mono text-[0.72rem] uppercase leading-[1.6] text-subtle">
+                {entry.data.date}
+              </p>
+              <div>
+                <h3 class="font-sans text-[1.1rem] font-semibold">
+                  {entry.data.title}
+                </h3>
+                {entry.data.url ? (
+                  <a
+                    class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary"
+                    href={entry.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {entry.data.institution} ↗
+                  </a>
+                ) : (
+                  <p class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary">
+                    {entry.data.institution}
+                  </p>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</Layout>
