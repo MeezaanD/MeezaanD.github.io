@@ -82,4 +82,25 @@ const transcript = defineCollection({
     ),
 });
 
-export const collections = { hero, projects, experience, education, cta, transcript };
+const blog = defineCollection({
+    loader: glob({ pattern: '**/*.md', base: 'src/content/blog' }),
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        pubDate: z.coerce.date(),
+        updatedDate: z.coerce.date().optional(),
+        heroImage: z.string().optional(),
+        tags: z.array(z.string()),
+        draft: z.boolean().default(false),
+    }),
+});
+
+export const collections = {
+    hero,
+    projects,
+    experience,
+    education,
+    cta,
+    transcript,
+    blog,
+};

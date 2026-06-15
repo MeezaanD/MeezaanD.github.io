@@ -1,0 +1,283 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+---
+
+<Layout title={`${post.data.title} | Meezaan Davids`} description={post.data.description}>
+  <article class="article-shell">
+    <header class="article-header">
+      <a class="back-link" href="/blog">
+        <span aria-hidden="true">←</span> All posts
+      </a>
+
+      <div class="article-meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {formatDate(post.data.pubDate)}
+        </time>
+        {
+          post.data.updatedDate && (
+            <span>
+              Updated{" "}
+              <time datetime={post.data.updatedDate.toISOString()}>
+                {formatDate(post.data.updatedDate)}
+              </time>
+            </span>
+          )
+        }
+      </div>
+
+      <h1>{post.data.title}</h1>
+      <p class="description">{post.data.description}</p>
+
+      <ul class="tag-list" aria-label="Tags">
+        {post.data.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    </header>
+
+    {
+      post.data.heroImage && (
+        <img
+          class="hero-image"
+          src={post.data.heroImage}
+          alt=""
+          loading="eager"
+        />
+      )
+    }
+
+    <div class="article-content">
+      <Content />
+    </div>
+
+    <footer class="article-footer">
+      <a class="back-link" href="/blog">
+        <span aria-hidden="true">←</span> Back to all posts
+      </a>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .article-shell {
+    width: min(100% - 3rem, 54rem);
+    margin: 0 auto;
+    padding: 10rem 0 6rem;
+  }
+
+  .article-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: color-mix(in srgb, var(--color-foreground) 52%, transparent);
+    font-size: 0.82rem;
+    transition: color 180ms ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-primary);
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: 3rem;
+    color: color-mix(in srgb, var(--color-foreground) 42%, transparent);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin-top: 1.25rem;
+    font-size: clamp(2.35rem, 6vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+  }
+
+  .description {
+    max-width: 45rem;
+    margin-top: 1.5rem;
+    color: color-mix(in srgb, var(--color-foreground) 58%, transparent);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.75;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tag-list li {
+    padding: 0.35rem 0.65rem;
+    border: 1px solid
+      color-mix(in srgb, var(--color-foreground) 12%, transparent);
+    border-radius: 999px;
+    color: color-mix(in srgb, var(--color-foreground) 55%, transparent);
+    font-size: 0.72rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-height: 34rem;
+    margin-bottom: 4rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+
+  .article-content {
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+
+  .article-content :global(p),
+  .article-content :global(li) {
+    color: color-mix(in srgb, var(--color-foreground) 78%, transparent);
+    font-size: clamp(1rem, 2vw, 1.12rem);
+    line-height: 1.9;
+  }
+
+  .article-content :global(p) {
+    margin: 1.5rem 0;
+  }
+
+  .article-content :global(h2) {
+    margin: 3.5rem 0 1rem;
+    font-size: clamp(1.75rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .article-content :global(h3) {
+    margin: 2.75rem 0 0.75rem;
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    line-height: 1.3;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .article-content :global(ul) {
+    list-style: disc;
+  }
+
+  .article-content :global(ol) {
+    list-style: decimal;
+  }
+
+  .article-content :global(li) {
+    margin: 0.6rem 0;
+    padding-left: 0.35rem;
+  }
+
+  .article-content :global(a) {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .article-content :global(blockquote) {
+    margin: 2.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+  }
+
+  .article-content :global(code) {
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    background: color-mix(
+      in srgb,
+      var(--color-foreground) 7%,
+      transparent
+    );
+    font-size: 0.9em;
+  }
+
+  .article-content :global(pre) {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    overflow-x: auto;
+    border: 1px solid
+      color-mix(in srgb, var(--color-foreground) 10%, transparent);
+    border-radius: 0.5rem;
+  }
+
+  .article-content :global(pre code) {
+    padding: 0;
+    background: transparent;
+  }
+
+  .article-content :global(hr) {
+    margin: 3.5rem 0;
+    border: 0;
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-foreground) 12%, transparent);
+  }
+
+  .article-content :global(img) {
+    width: 100%;
+    margin: 2.5rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .article-footer {
+    max-width: 46rem;
+    margin: 4.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-foreground) 10%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .article-shell {
+      width: min(100% - 2rem, 54rem);
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+    }
+
+    .article-header {
+      margin-bottom: 3rem;
+    }
+
+    .article-meta {
+      margin-top: 2.5rem;
+    }
+  }
+</style>
