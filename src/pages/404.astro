@@ -2,30 +2,26 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="404 - Page Not Found">
-  <div
-    class="min-h-screen container-site section-padding flex items-center justify-center"
-  >
-    <div class="text-center max-w-2xl">
-      <div class="mb-8">
-        <h1 class="text-7xl font-bold text-foreground mb-4">404</h1>
-        <h2
-          class="text-3xl md:text-4xl font-display font-semibold text-foreground mb-4"
-        >
-          Oops! Page Not Found
-        </h2>
-        <p class="text-lg text-gray-600 mb-8">
-          The page you're looking for doesn't exist. But don't worry, let's help
-          you get back on track!
-        </p>
-      </div>
-
-      <a
-        href="/"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-sm font-medium hover:opacity-90 hover:gap-3 transition-all"
-      >
-        Back to Home
-      </a>
-    </div>
+<Layout
+  title="Page not found | Meezaan Davids"
+  description="The requested page could not be found."
+>
+  <div class="mx-auto flex min-h-[82vh] max-w-site flex-col justify-center px-5 pb-24 pt-32 sm:px-8">
+    <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
+      Error 404
+    </p>
+    <h1 class="mt-4 max-w-3xl text-[clamp(3rem,8vw,6rem)] leading-[0.98] tracking-[-0.05em]">
+      This page is not part of the map.
+    </h1>
+    <p class="my-8 max-w-xl leading-[1.8] text-muted">
+      The address may have changed, or the thing you were looking for may no
+      longer live here.
+    </p>
+    <a
+      class="inline-flex items-center gap-2 self-start font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
+      href="/"
+    >
+      Return home <span aria-hidden="true">→</span>
+    </a>
   </div>
 </Layout>

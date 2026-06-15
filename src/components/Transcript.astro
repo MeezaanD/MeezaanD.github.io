@@ -36,20 +36,19 @@ const grouped = sectionOrder
   .filter((group) => group.items.length > 0);
 ---
 
-<section class="section-padding pt-32" id="transcript">
-  <div class="container-site">
+<section
+  class="mx-auto max-w-site px-5 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44"
+  id="transcript"
+>
+  <div>
     <div class="mb-10">
-      <p
-        class="text-base tracking-[0.3em] uppercase mb-4 text-primary font-bold"
-      >
+      <p class="mb-4 font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
         Academic Transcript
       </p>
-      <h1
-        class="font-display text-3xl md:text-4xl mb-3 leading-tight max-w-3xl"
-      >
+      <h1 class="mb-5 mt-4 max-w-4xl text-[clamp(2.8rem,6vw,4.8rem)] leading-[1.02] tracking-[-0.045em]">
         Qualifications, Bootcamps, and Certifications
       </h1>
-      <p class="text-foreground/50 text-base max-w-3xl leading-relaxed">
+      <p class="max-w-3xl text-base leading-relaxed text-muted">
         A complete in-app transcript of formal education and practical learning,
         with locally hosted certificate previews.
       </p>
@@ -58,10 +57,10 @@ const grouped = sectionOrder
     {
       grouped.map((group) => (
         <div class="mb-12 last:mb-0">
-          <h2 class="font-display text-xl mb-6">{group.section}</h2>
+          <h2 class="mb-6 font-display text-xl">{group.section}</h2>
           <div class="space-y-5">
             {group.items.map((item) => (
-              <article class="border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 transition-colors">
+              <article class="border-b border-border py-6">
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                   <div>
                     <h3 class="font-display text-lg leading-snug">
@@ -69,19 +68,19 @@ const grouped = sectionOrder
                     </h3>
                     <p class="text-sm text-primary">{item.institution}</p>
                   </div>
-                  <div class="flex flex-col sm:items-end gap-1">
+                  <div class="flex flex-col items-start gap-1 sm:items-end">
                     <span
                       class:list={[
                         "text-[11px] uppercase tracking-[0.12em] rounded-full px-3 py-1 border",
                         item.status === "In Progress"
-                          ? "border-primary/30 text-primary/80"
-                          : "border-foreground/15 text-foreground/50",
+                          ? "border-primary text-primary"
+                          : "border-border text-muted",
                       ]}
                     >
                       {item.status}
                     </span>
                     {item.date && (
-                      <p class="text-xs text-foreground/40 whitespace-nowrap">
+                      <p class="whitespace-nowrap font-mono text-xs text-subtle">
                         {item.date}
                       </p>
                     )}
@@ -89,25 +88,25 @@ const grouped = sectionOrder
                 </div>
 
                 {item.description && (
-                  <p class="mt-4 text-sm text-foreground/50 leading-relaxed">
+                  <p class="mt-4 text-sm leading-relaxed text-muted">
                     {item.description}
                   </p>
                 )}
 
                 {item.detail && (
-                  <p class="mt-3 text-xs text-foreground/45">{item.detail}</p>
+                  <p class="mt-3 text-xs text-subtle">{item.detail}</p>
                 )}
 
                 {item.tags && item.tags.length > 0 && (
                   <div class="mt-4">
                     {item.tagLabel && (
-                      <p class="text-[11px] uppercase tracking-[0.12em] text-foreground/35 mb-2">
+                      <p class="mb-2 font-mono text-[11px] uppercase tracking-[0.12em] text-subtle">
                         {item.tagLabel}
                       </p>
                     )}
                     <div class="flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
-                        <span class="text-xs text-foreground/55 px-2.5 py-1 rounded border border-foreground/10 bg-foreground/3">
+                        <span class="border border-border bg-surface px-2.5 py-1 font-mono text-xs text-muted">
                           {tag}
                         </span>
                       ))}
@@ -118,7 +117,7 @@ const grouped = sectionOrder
                 {item.certificateImage && (
                   <button
                     type="button"
-                    class="mt-5 inline-flex items-center gap-2 text-xs text-foreground/45 hover:text-foreground/70 transition-colors"
+                    class="mt-5 inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-foreground"
                     data-cert-image={item.certificateImage}
                     data-cert-alt={item.certificateAlt ?? item.title}
                   >
@@ -152,14 +151,17 @@ const grouped = sectionOrder
 <div
   id="cert-modal"
   class="fixed inset-0 z-[70] hidden items-center justify-center p-4 bg-black/55"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Certificate preview"
 >
   <div
-    class="relative w-full max-w-4xl rounded-lg border border-foreground/10 bg-background p-3 md:p-4"
+    class="relative w-full max-w-4xl border border-border bg-background p-3 md:p-4"
   >
     <button
       id="cert-modal-close"
       type="button"
-      class="absolute right-3 top-3 h-8 w-8 rounded-full border border-foreground/10 text-foreground/50 hover:text-foreground/80 transition-colors"
+      class="absolute right-3 top-3 h-8 w-8 rounded-full border border-border text-muted transition-colors hover:text-foreground"
       aria-label="Close certificate preview"
     >
       <span aria-hidden="true">×</span>

@@ -1,31 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
-
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #001489;
-  --color-foreground: #1a1a1a;
-  --color-background: #ffffff;
+  --color-primary: var(--accent);
+  --color-foreground: var(--text);
+  --color-background: var(--canvas);
+  --color-surface: var(--surface);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-border: var(--rule);
+  --color-contribution-0: var(--contribution-0);
+  --color-contribution-1: var(--contribution-1);
+  --color-contribution-2: var(--contribution-2);
+  --color-contribution-3: var(--contribution-3);
+  --color-contribution-4: var(--contribution-4);
 
   --font-sans: "Inter", sans-serif;
   --font-display: "Playfair Display", serif;
+  --font-mono: "IBM Plex Mono", monospace;
 
-  --max-width-site: 1200px;
+  --max-width-site: 1120px;
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+    --canvas: #f4f3ef;
+    --surface: #ebe9e3;
+    --text: #24272b;
+    --text-muted: #565b62;
+    --text-subtle: #6a7078;
+    --accent: #2548a8;
+    --accent-soft: #dce3f6;
+    --rule: #cbc9c2;
+    --focus: #1d4ed8;
+    --contribution-0: #ebedf0;
+    --contribution-1: #c6cae8;
+    --contribution-2: #8b92d1;
+    --contribution-3: #4953a9;
+    --contribution-4: #001489;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+    --canvas: #1d1f22;
+    --surface: #25282c;
+    --text: #eceae4;
+    --text-muted: #c0beb8;
+    --text-subtle: #a6a49f;
+    --accent: #91a8ff;
+    --accent-soft: #29365c;
+    --rule: #3b3e43;
+    --focus: #a9baff;
+    --contribution-0: #161b22;
+    --contribution-1: #2a3560;
+    --contribution-2: #3d4f99;
+    --contribution-3: #5570cc;
+    --contribution-4: #4d6aff;
+  }
+
   html {
     scroll-behavior: smooth;
+    background: var(--canvas);
   }
 
   body {
-    @apply font-sans text-foreground bg-background transition-colors duration-300;
-  }
-
-  .dark body {
-    --color-foreground: #e5e5e5;
-    --color-background: #0a0a0a;
-    --color-primary: #4d6aff;
+    @apply m-0 min-h-screen bg-background font-sans text-foreground antialiased;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
   }
 
   h1,
@@ -34,16 +76,36 @@
   h4,
   h5,
   h6 {
-    @apply font-display font-semibold;
+    @apply font-display font-semibold text-foreground;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--text);
   }
 }
 
-@layer components {
-  .container-site {
-    @apply max-w-site mx-auto px-8;
-  }
-
-  .section-padding {
-    @apply py-12;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
