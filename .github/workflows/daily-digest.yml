@@ -77,9 +77,9 @@ jobs:
 
       - name: Generate draft digest
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPEN_API_KEY: ${{ secrets.OPEN_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           DIGEST_DATE: ${{ steps.prepare.outputs.date }}
         run: |
           node scripts/generate-digest.mjs --date "$DIGEST_DATE"
