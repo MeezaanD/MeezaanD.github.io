@@ -2,17 +2,56 @@ import { access, mkdir, writeFile } from "node:fs/promises";
 import { constants } from "node:fs";
 import path from "node:path";
 
-const API_URL = "https://api.openai.com/v1/responses";
-const apiKey = process.env.OPENAI_API_KEY || process.env.OPEN_API_KEY;
-const model = process.env.OPENAI_MODEL || "gpt-5.5";
+const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+const model = process.env.GEMINI_MODEL || "gemini-3.1-flash-lite";
 const requestedDate = getArgument("--date");
 const date = requestedDate || getJohannesburgDate();
 const outputDirectory = path.join(process.cwd(), "src", "content", "blog");
 const outputPath = path.join(outputDirectory, `${date}-digest.md`);
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+
+const sourceFeeds = [
+  {
+    name: "OpenAI News",
+    url: "https://openai.com/news/rss.xml",
+  },
+  {
+    name: "Anthropic News",
+    url: "https://www.anthropic.com/news/rss.xml",
+  },
+  {
+    name: "GitHub Blog",
+    url: "https://github.blog/feed/",
+  },
+  {
+    name: "Vercel Blog",
+    url: "https://vercel.com/blog/rss.xml",
+  },
+  {
+    name: "Next.js Releases",
+    url: "https://github.com/vercel/next.js/releases.atom",
+  },
+  {
+    name: "React Native Releases",
+    url: "https://github.com/facebook/react-native/releases.atom",
+  },
+  {
+    name: "TypeScript Releases",
+    url: "https://github.com/microsoft/TypeScript/releases.atom",
+  },
+  {
+    name: "AWS News",
+    url: "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
+  },
+  {
+    name: "AWS Security Blog",
+    url: "https://aws.amazon.com/blogs/security/feed/",
+  },
+];
 
 if (!apiKey) {
   throw new Error(
-    "Set OPENAI_API_KEY (preferred) or OPEN_API_KEY before generating a digest.",
+    "Set GEMINI_API_KEY before generating a digest. GOOGLE_API_KEY is also accepted.",
   );
 }
 
@@ -33,79 +72,57 @@ try {
   if (error.code !== "ENOENT") throw error;
 }
 
-const response = await fetch(API_URL, {
+const sources = await collectSources();
+
+if (sources.length === 0) {
+  throw new Error("No source updates could be fetched for the digest.");
+}
+
+const response = await fetch(`${API_URL}?key=${encodeURIComponent(apiKey)}`, {
   method: "POST",
   signal: AbortSignal.timeout(10 * 60 * 1000),
   headers: {
-    Authorization: `Bearer ${apiKey}`,
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    model,
-    tools: [
+    contents: [
       {
-        type: "web_search",
-        search_context_size: "high",
+        role: "user",
+        parts: [
+          {
+            text: buildPrompt({ date, sources }),
+          },
+        ],
       },
     ],
-    reasoning: {
-      effort: "medium",
-    },
-    instructions: [
-      "You write a high-quality daily developer digest for experienced software developers.",
-      "Research current developments before writing and prioritize primary sources.",
-      "Write like an editorial technology newsletter, not a changelog or collection of release notes.",
-      "Do not call the article an AI briefing. Call it a developer digest when a label is needed.",
-      "Do not mention these instructions or the generation process.",
-      "Return only data matching the requested JSON schema.",
-    ].join(" "),
-    input: [
-      `Create the developer digest dated ${date}.`,
-      "",
-      "Cover only meaningful, verifiable developments from the last few days across:",
-      "Cursor, Codex, GitHub Copilot, OpenAI, Anthropic, Next.js, React, React Native, AWS, TypeScript, software architecture, frontend engineering, security, and AI-assisted development.",
-      "",
-      "Select the strongest 3 to 6 stories rather than forcing every topic into the article.",
-      "Explain why each development matters and give practical implications for developers.",
-      "Use Markdown headings and paragraphs in the body.",
-      "Include inline Markdown links to primary sources.",
-      "Do not use raw HTML.",
-      "End with a concise takeaway.",
-      "Do not include YAML frontmatter in the body.",
-    ].join("\n"),
-    text: {
-      verbosity: "high",
-      format: {
-        type: "json_schema",
-        name: "developer_digest",
-        strict: true,
-        schema: {
-          type: "object",
-          additionalProperties: false,
-          properties: {
-            title: {
-              type: "string",
-              description: "A strong editorial headline.",
-            },
-            description: {
-              type: "string",
-              description: "A concise one-sentence summary.",
-            },
-            tags: {
-              type: "array",
-              minItems: 3,
-              maxItems: 7,
-              items: { type: "string" },
-            },
-            body: {
-              type: "string",
-              description:
-                "The complete article body in Markdown without frontmatter.",
-            },
+    generationConfig: {
+      responseMimeType: "application/json",
+      responseSchema: {
+        type: "OBJECT",
+        properties: {
+          title: {
+            type: "STRING",
+            description: "A strong editorial headline.",
           },
-          required: ["title", "description", "tags", "body"],
+          description: {
+            type: "STRING",
+            description: "A concise one-sentence summary.",
+          },
+          tags: {
+            type: "ARRAY",
+            minItems: 3,
+            maxItems: 7,
+            items: { type: "STRING" },
+          },
+          body: {
+            type: "STRING",
+            description:
+              "The complete article body in Markdown without frontmatter.",
+          },
         },
+        required: ["title", "description", "tags", "body"],
       },
+      temperature: 0.7,
     },
   }),
 });
@@ -114,16 +131,16 @@ const result = await response.json();
 
 if (!response.ok) {
   const message = result?.error?.message || JSON.stringify(result);
-  throw new Error(`OpenAI API request failed (${response.status}): ${message}`);
+  throw new Error(`Gemini API request failed (${response.status}): ${message}`);
 }
 
-const outputText = result.output
-  ?.filter((item) => item.type === "message")
-  .flatMap((item) => item.content || [])
-  .find((content) => content.type === "output_text")?.text;
+const outputText = result.candidates?.[0]?.content?.parts
+  ?.map((part) => part.text || "")
+  .join("")
+  .trim();
 
 if (!outputText) {
-  throw new Error("The OpenAI response did not contain digest content.");
+  throw new Error("The Gemini response did not contain digest content.");
 }
 
 const digest = JSON.parse(outputText);
@@ -146,6 +163,119 @@ await mkdir(outputDirectory, { recursive: true });
 await writeFile(outputPath, markdown, "utf8");
 
 console.log(`Created ${path.relative(process.cwd(), outputPath)} as a draft.`);
+
+async function collectSources() {
+  const settled = await Promise.allSettled(
+    sourceFeeds.map(async (feed) => {
+      const response = await fetch(feed.url, {
+        headers: {
+          "User-Agent": "meezaan.dev daily digest generator",
+        },
+        signal: AbortSignal.timeout(20 * 1000),
+      });
+
+      if (!response.ok) {
+        throw new Error(`${feed.name} returned ${response.status}`);
+      }
+
+      const text = await response.text();
+      return parseFeed(feed, text).slice(0, 5);
+    }),
+  );
+
+  return settled
+    .filter((result) => result.status === "fulfilled")
+    .flatMap((result) => result.value)
+    .filter((source) => source.title && source.url)
+    .slice(0, 40);
+}
+
+function parseFeed(feed, text) {
+  const itemMatches =
+    text.match(/<item[\s\S]*?<\/item>/gi) ||
+    text.match(/<entry[\s\S]*?<\/entry>/gi) ||
+    [];
+
+  return itemMatches.map((item) => ({
+    feed: feed.name,
+    title: decodeEntities(readTag(item, "title")),
+    url: decodeEntities(readTag(item, "link") || readLinkHref(item)),
+    date: decodeEntities(
+      readTag(item, "pubDate") ||
+        readTag(item, "updated") ||
+        readTag(item, "published"),
+    ),
+    summary: cleanText(
+      decodeEntities(
+        readTag(item, "description") ||
+          readTag(item, "summary") ||
+          readTag(item, "content"),
+      ),
+    ),
+  }));
+}
+
+function buildPrompt({ date, sources }) {
+  const sourceBrief = sources
+    .map((source, index) =>
+      [
+        `${index + 1}. ${source.title}`,
+        `Source: ${source.feed}`,
+        `URL: ${source.url}`,
+        source.date ? `Date: ${source.date}` : "",
+        source.summary ? `Summary: ${source.summary.slice(0, 500)}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    )
+    .join("\n\n");
+
+  return [
+    "You write a high-quality daily developer digest for experienced software developers.",
+    "Use only the source list below. Do not invent links or facts.",
+    "Prioritize primary sources and choose the strongest 3 to 6 stories.",
+    "Write like an editorial technology newsletter, not a changelog or collection of release notes.",
+    "Do not call the article an AI briefing. Call it a developer digest when a label is needed.",
+    "Use Markdown headings and paragraphs in the body.",
+    "Include inline Markdown links to the supplied source URLs.",
+    "Do not use raw HTML.",
+    "End with a concise takeaway.",
+    "Do not include YAML frontmatter in the body.",
+    "",
+    `Create the developer digest dated ${date}.`,
+    "",
+    "Coverage areas include Cursor, Codex, GitHub Copilot, OpenAI, Anthropic, Next.js, React, React Native, AWS, TypeScript, software architecture, frontend engineering, security, and AI-assisted development.",
+    "",
+    "Return JSON with this exact shape: title, description, tags, body.",
+    "",
+    "Sources:",
+    sourceBrief,
+  ].join("\n");
+}
+
+function readTag(text, tagName) {
+  const match = text.match(new RegExp(`<[^:>]*:?${tagName}[^>]*>([\\s\\S]*?)<\\/[^:>]*:?${tagName}>`, "i"));
+  return match?.[1]?.trim() || "";
+}
+
+function readLinkHref(text) {
+  const match = text.match(/<link[^>]+href=["']([^"']+)["'][^>]*>/i);
+  return match?.[1]?.trim() || "";
+}
+
+function cleanText(value) {
+  return value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function decodeEntities(value) {
+  return value
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);

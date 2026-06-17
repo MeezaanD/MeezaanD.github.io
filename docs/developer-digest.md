@@ -79,8 +79,9 @@ Published posts are available at `/blog/YYYY-MM-DD-digest/`.
 
 ```text
 Scheduled GitHub Action
-→ search current developer updates with the OpenAI API
-→ generate a Markdown digest with draft: true
+→ fetch public developer source feeds
+→ generate a Markdown digest with the Gemini API
+→ save it with draft: true
 → validate the Astro build
 → commit to a dated automation branch
 → open a draft pull request
@@ -91,16 +92,16 @@ The workflow refuses to overwrite an existing digest for the same date.
 ### GitHub Setup
 
 1. Open **Settings → Secrets and variables → Actions**.
-2. Add a repository secret named `OPENAI_API_KEY`.
+2. Add a repository secret named `GEMINI_API_KEY`.
 3. Open **Settings → Actions → General → Workflow permissions**.
 4. Select **Read and write permissions**.
 5. Enable **Allow GitHub Actions to create and approve pull requests**.
 
 The key is only required in GitHub Actions. The deployed Astro site does not
-call the OpenAI API. `OPEN_API_KEY` is accepted as a compatibility alias.
+call the Gemini API. `GOOGLE_API_KEY` is accepted as a compatibility alias.
 
-An optional Actions variable named `OPENAI_MODEL` can override the default
-model.
+An optional Actions variable named `GEMINI_MODEL` can override the default
+model. The default is `gemini-3.1-flash-lite`.
 
 ### Review and Publish
 
@@ -123,11 +124,11 @@ The merge triggers the existing deployment and publishes the post.
 ## Generate Locally
 
 ```sh
-OPENAI_API_KEY=your-key npm run generate:digest
+GEMINI_API_KEY=your-key npm run generate:digest
 ```
 
 For a specific date:
 
 ```sh
-OPENAI_API_KEY=your-key npm run generate:digest -- --date 2026-06-15
+GEMINI_API_KEY=your-key npm run generate:digest -- --date 2026-06-15
 ```
