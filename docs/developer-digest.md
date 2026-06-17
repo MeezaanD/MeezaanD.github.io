@@ -31,7 +31,6 @@ title: "Digest title"
 description: "A short summary shown on the blog listing and in page metadata."
 pubDate: 2026-06-15
 tags: ["AI", "TypeScript", "Developer Tools"]
-draft: false
 ---
 
 Opening context for the day's digest.
@@ -56,10 +55,8 @@ Optional frontmatter:
 | --- | --- | --- |
 | `updatedDate` | date | Date of the latest meaningful revision |
 | `heroImage` | string | Site-relative or external hero image URL |
-| `draft` | boolean | Hides the post when `true`; defaults to `false` |
 
-Only non-draft posts appear on `/blog` or receive public routes. Posts are
-sorted by publication date, newest first.
+Posts are sorted by publication date, newest first.
 
 ## Manual Publishing
 
@@ -81,7 +78,6 @@ Published posts are available at `/blog/YYYY-MM-DD-digest/`.
 Scheduled GitHub Action
 → fetch public developer source feeds
 → generate a Markdown digest with the Gemini API
-→ save it with draft: true
 → validate the Astro build
 → commit to a dated automation branch
 → open a draft pull request
@@ -115,11 +111,12 @@ Before merging:
 
 1. Proofread the article and verify its source links.
 2. Make any editorial changes on the pull request branch.
-3. Change `draft: true` to `draft: false`.
-4. Confirm the build passes.
-5. Mark the pull request ready and merge it.
+3. Confirm the build passes.
+4. Mark the pull request ready and merge it.
 
-The merge triggers the existing deployment and publishes the post.
+The merge triggers the existing deployment and publishes the post. Until then,
+the digest stays off the live site because it only exists on the pull request
+branch.
 
 ## Generate Locally
 

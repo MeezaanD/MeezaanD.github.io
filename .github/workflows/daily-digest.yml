@@ -103,7 +103,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$DIGEST_BRANCH"
           git add "$DIGEST_FILE"
-          git commit -m "content: add $DIGEST_DATE developer digest draft"
+          git commit -m "content: add $DIGEST_DATE developer digest"
           git push --set-upstream origin "$DIGEST_BRANCH"
 
           echo "date=$DIGEST_DATE" >> "$GITHUB_OUTPUT"
@@ -123,18 +123,17 @@ jobs:
             --head "$DIGEST_BRANCH" \
             --title "Developer digest: $DIGEST_DATE" \
             --body "$(cat <<EOF
-          ## Daily digest draft
+          ## Daily digest
 
-          Generated \`$DIGEST_FILE\` with \`draft: true\`.
+          Generated \`$DIGEST_FILE\`.
 
           Before publishing:
 
           - Proofread the article and verify its source links.
           - Make any editorial changes in this pull request.
-          - Change \`draft: true\` to \`draft: false\`.
           - Run or confirm the Astro build.
           - Mark this pull request ready and merge it.
 
-          The digest remains hidden from the public blog until \`draft\` is set to \`false\` and this pull request is merged.
+          The digest remains off the live site until this pull request is merged.
           EOF
           )"

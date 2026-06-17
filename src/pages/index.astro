@@ -5,7 +5,6 @@ import { site } from "../data/site";
 
 const now = await getEntry("now", "index");
 const posts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 

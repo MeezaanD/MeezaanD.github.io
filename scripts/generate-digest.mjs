@@ -152,7 +152,6 @@ const markdown = [
   `description: ${JSON.stringify(digest.description)}`,
   `pubDate: ${date}`,
   `tags: ${JSON.stringify(digest.tags)}`,
-  "draft: true",
   "---",
   "",
   digest.body.trim(),
@@ -162,7 +161,7 @@ const markdown = [
 await mkdir(outputDirectory, { recursive: true });
 await writeFile(outputPath, markdown, "utf8");
 
-console.log(`Created ${path.relative(process.cwd(), outputPath)} as a draft.`);
+console.log(`Created ${path.relative(process.cwd(), outputPath)}.`);
 
 async function collectSources() {
   const settled = await Promise.allSettled(
