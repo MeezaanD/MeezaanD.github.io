@@ -1,13 +1,13 @@
-name: Create daily developer digest
+name: Create weekly developer digest
 
 on:
   schedule:
-    - cron: "0 7 * * 1-5"
+    - cron: "0 7 * * 1"
       timezone: "Africa/Johannesburg"
   workflow_dispatch:
     inputs:
       date:
-        description: "Digest date (YYYY-MM-DD). Defaults to today in Johannesburg."
+        description: "Digest publication date (YYYY-MM-DD). Defaults to today in Johannesburg."
         required: false
         type: string
 
@@ -16,7 +16,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: daily-developer-digest
+  group: weekly-developer-digest
   cancel-in-progress: false
 
 jobs:
@@ -123,7 +123,7 @@ jobs:
             --head "$DIGEST_BRANCH" \
             --title "Developer digest: $DIGEST_DATE" \
             --body "$(cat <<EOF
-          ## Daily digest
+          ## Weekly digest
 
           Generated \`$DIGEST_FILE\`.
 

@@ -33,7 +33,7 @@ pubDate: 2026-06-15
 tags: ["AI", "TypeScript", "Developer Tools"]
 ---
 
-Opening context for the day's digest.
+Opening context for the week's digest.
 
 ## The signal
 
@@ -71,7 +71,7 @@ Published posts are available at `/blog/YYYY-MM-DD-digest/`.
 
 ## Automated Draft Workflow
 
-`.github/workflows/daily-digest.yml` runs every weekday at 7 AM in the
+`.github/workflows/weekly-digest.yml` runs every Monday at 7 AM in the
 `Africa/Johannesburg` timezone:
 
 ```text

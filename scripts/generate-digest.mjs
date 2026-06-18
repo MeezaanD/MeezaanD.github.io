@@ -72,7 +72,8 @@ try {
   if (error.code !== "ENOENT") throw error;
 }
 
-const sources = await collectSources();
+const weekRange = getWeekRange(date);
+const sources = await collectSources(weekRange);
 
 if (sources.length === 0) {
   throw new Error("No source updates could be fetched for the digest.");
@@ -90,7 +91,7 @@ const response = await fetch(`${API_URL}?key=${encodeURIComponent(apiKey)}`, {
         role: "user",
         parts: [
           {
-            text: buildPrompt({ date, sources }),
+            text: buildPrompt({ date, weekRange, sources }),
           },
         ],
       },
@@ -163,12 +164,12 @@ await writeFile(outputPath, markdown, "utf8");
 
 console.log(`Created ${path.relative(process.cwd(), outputPath)}.`);
 
-async function collectSources() {
+async function collectSources(weekRange) {
   const settled = await Promise.allSettled(
     sourceFeeds.map(async (feed) => {
       const response = await fetch(feed.url, {
         headers: {
-          "User-Agent": "meezaan.dev daily digest generator",
+          "User-Agent": "meezaan.dev weekly digest generator",
         },
         signal: AbortSignal.timeout(20 * 1000),
       });
@@ -178,7 +179,9 @@ async function collectSources() {
       }
 
       const text = await response.text();
-      return parseFeed(feed, text).slice(0, 5);
+      return parseFeed(feed, text)
+        .filter((source) => isWithinWeek(source.date, weekRange))
+        .slice(0, 8);
     }),
   );
 
@@ -186,7 +189,7 @@ async function collectSources() {
     .filter((result) => result.status === "fulfilled")
     .flatMap((result) => result.value)
     .filter((source) => source.title && source.url)
-    .slice(0, 40);
+    .slice(0, 60);
 }
 
 function parseFeed(feed, text) {
@@ -214,7 +217,30 @@ function parseFeed(feed, text) {
   }));
 }
 
-function buildPrompt({ date, sources }) {
+function getWeekRange(digestDate) {
+  const end = new Date(`${digestDate}T00:00:00.000Z`);
+  end.setUTCDate(end.getUTCDate() - 1);
+
+  const start = new Date(end);
+  start.setUTCDate(start.getUTCDate() - 6);
+
+  return {
+    start: start.toISOString().slice(0, 10),
+    end: end.toISOString().slice(0, 10),
+  };
+}
+
+function isWithinWeek(sourceDate, weekRange) {
+  if (!sourceDate) return true;
+
+  const parsed = new Date(sourceDate);
+  if (Number.isNaN(parsed.valueOf())) return true;
+
+  const value = parsed.toISOString().slice(0, 10);
+  return value >= weekRange.start && value <= weekRange.end;
+}
+
+function buildPrompt({ date, weekRange, sources }) {
   const sourceBrief = sources
     .map((source, index) =>
       [
@@ -230,18 +256,19 @@ function buildPrompt({ date, sources }) {
     .join("\n\n");
 
   return [
-    "You write a high-quality daily developer digest for experienced software developers.",
+    "You write a high-quality weekly developer digest for experienced software developers.",
     "Use only the source list below. Do not invent links or facts.",
-    "Prioritize primary sources and choose the strongest 3 to 6 stories.",
+    "Synthesize the week into a cohesive overview rather than a day-by-day recap.",
+    "Prioritize primary sources and choose the strongest 5 to 8 stories.",
     "Write like an editorial technology newsletter, not a changelog or collection of release notes.",
     "Do not call the article an AI briefing. Call it a developer digest when a label is needed.",
     "Use Markdown headings and paragraphs in the body.",
     "Include inline Markdown links to the supplied source URLs.",
     "Do not use raw HTML.",
-    "End with a concise takeaway.",
+    "End with a concise takeaway about the week's overall signal.",
     "Do not include YAML frontmatter in the body.",
     "",
-    `Create the developer digest dated ${date}.`,
+    `Create the weekly developer digest dated ${date}, covering ${weekRange.start} through ${weekRange.end}.`,
     "",
     "Coverage areas include Cursor, Codex, GitHub Copilot, OpenAI, Anthropic, Next.js, React, React Native, AWS, TypeScript, software architecture, frontend engineering, security, and AI-assisted development.",
     "",
