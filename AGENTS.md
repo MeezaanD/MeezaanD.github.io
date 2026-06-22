@@ -6,15 +6,12 @@ This repository powers `meezaan.dev`, a personal digital presence built with Ast
 The current site emphasizes:
 - a thoughtful homepage
 - current focus via `Now`
-- writing via `/blog`
 - background via `/profile`
 - credentials and certificates via `/transcript`
 
 ## Active Information Architecture
 Primary public routes:
 - `/`
-- `/blog`
-- `/blog/[slug]`
 - `/now`
 - `/profile`
 - `/transcript`
@@ -22,7 +19,6 @@ Primary public routes:
 Homepage structure should remain:
 - introduction
 - now preview
-- recent writing
 - elsewhere links
 - contact
 
@@ -34,14 +30,9 @@ The homepage should not drift back toward:
 
 Public labels that should remain stable unless a task explicitly redesigns them:
 - `Home`
-- `Writing`
 - `Now`
 - `Profile`
 - `Contact`
-
-Important convention:
-- the user-facing label is `Writing`
-- the route remains `/blog`
 
 `Contact` is a direct `mailto:` flow, not a form workflow.
 
@@ -65,7 +56,6 @@ Do not duplicate nav, footer, contact, or external-link data across components w
 - `src/content/*`
 
 Current authored collections include:
-- `blog`
 - `now`
 - `experience`
 - `education`
@@ -157,7 +147,7 @@ Preferred verification flow:
 ## Verification Checklist
 Future agents should verify the following after meaningful UI or IA changes:
 - `astro build` succeeds
-- `/`, `/blog`, blog post pages, `/now`, `/profile`, `/transcript`, and `404` still render
+- `/`, `/now`, `/profile`, `/transcript`, and `404` still render
 - theme toggle still persists correctly
 - both themes remain readable and keep the intended editorial tone
 - active nav states still work

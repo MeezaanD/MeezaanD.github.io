@@ -10,8 +10,6 @@ curiosity:
   title: Curiosity
   text: Exploring how AI changes software practice when code becomes abundant and discernment becomes the constraint.
 links:
-  - label: Read the latest writing
-    href: /blog
   - label: See my background
     href: /profile
 ---

@@ -6,7 +6,6 @@ export const site = {
     "The digital home of Meezaan Davids: software, systems thinking, learning, and writing.",
   navigation: [
     { href: "/", label: "Home" },
-    { href: "/blog", label: "Writing" },
     { href: "/now", label: "Now" },
     { href: "/profile", label: "Profile" },
     { href: "mailto:meezaandavids365@gmail.com", label: "Contact" },
