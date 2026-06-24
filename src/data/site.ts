@@ -11,7 +11,6 @@ export const site = {
     { href: "mailto:meezaandavids365@gmail.com", label: "Contact" },
   ],
   social: [
-    { href: "https://github.com/MeezaanD", label: "GitHub" },
     {
       href: "https://www.linkedin.com/in/meezaan-davids/",
       label: "LinkedIn",
@@ -27,6 +26,11 @@ export const site = {
       href: "https://cinema.meezaan.dev/",
       label: "Cinema",
       description: "A calmer way to decide what to watch next.",
+    },
+    {
+      href: "https://rewards.meezaan.dev/",
+      label: "Rewards Optimizer",
+      description: "For adults stepping into real-world money decisions.",
     },
   ],
   references: [
