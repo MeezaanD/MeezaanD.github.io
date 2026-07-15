@@ -81,39 +81,34 @@ const nowItems = now
     <div class="mb-11 flex items-end justify-between gap-8 max-[700px]:mb-8 max-[700px]:block">
       <div>
         <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
-          Around the web
+          Tools I built and use
         </p>
         <h2
           class="mt-[0.45rem] text-[clamp(2.1rem,5vw,3.7rem)] leading-[1.08] tracking-[-0.035em]"
           id="elsewhere-heading"
         >
-          Elsewhere
+          Built for myself
         </h2>
       </div>
     </div>
-    <div class="grid grid-cols-2 border-t border-border max-[700px]:grid-cols-1">
+    <div class="border-t border-border">
       {
-        [...site.products, ...site.social.map((item) => ({ ...item, description: "Find me and follow the work." }))].map(
-          (item, index) => (
+        [...site.products].map(
+          (item) => (
             <a
-              class:list={[
-                "group flex justify-between gap-6 border-b border-border py-7 max-[700px]:px-0 max-[700px]:border-l-0",
-                index % 2 === 0 ? "pr-8" : "border-l border-border pl-8",
-              ]}
+              class="group grid gap-4 border-b border-border py-7 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-10 md:py-9"
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>
-                <strong class="block font-mono text-[0.9rem] font-medium transition-colors group-hover:text-primary">
-                  {item.label}
-                </strong>
-                <small class="mt-[0.45rem] block text-[0.85rem] leading-[1.5] text-muted">
-                  {item.description}
-                </small>
-              </span>
-              <span class="text-subtle transition-colors group-hover:text-primary" aria-hidden="true">
-                ↗
+              <h3 class="font-mono text-sm font-medium text-foreground transition-colors group-hover:text-primary">
+                {item.label}
+              </h3>
+              <span class="flex max-w-3xl items-start justify-between gap-6 leading-7 text-muted">
+                <span>{item.description}</span>
+                <span class="text-subtle transition-colors group-hover:text-primary" aria-hidden="true">
+                  ↗
+                </span>
               </span>
             </a>
           ),

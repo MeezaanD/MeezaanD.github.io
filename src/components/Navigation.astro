@@ -15,8 +15,15 @@ const isActive = (href: string) =>
   class="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/92 backdrop-blur-md"
 >
   <nav class="mx-auto flex min-h-18 max-w-site items-center justify-between px-5 sm:px-8" aria-label="Primary navigation">
-    <a href="/" class="font-mono text-sm font-medium tracking-[-0.02em] text-foreground">
-      {site.domain}
+    <a href="/" class="inline-flex items-center" aria-label={site.domain}>
+      <img
+        id="site-logo"
+        src={site.logo.lightMode}
+        data-light-src={site.logo.lightMode}
+        data-dark-src={site.logo.darkMode}
+        alt=""
+        class="h-20 w-auto"
+      />
     </a>
 
     <div class="hidden items-center gap-7 lg:flex">
@@ -94,5 +101,24 @@ const isActive = (href: string) =>
       "aria-label",
       isOpen ? "Open navigation" : "Close navigation",
     );
+  });
+
+  const siteLogo = document.getElementById(
+    "site-logo",
+  ) as HTMLImageElement | null;
+  const updateSiteLogo = () => {
+    if (!siteLogo) return;
+
+    const isDark = document.documentElement.classList.contains("dark");
+    siteLogo.src = isDark
+      ? siteLogo.dataset.darkSrc || ""
+      : siteLogo.dataset.lightSrc || "";
+  };
+
+  updateSiteLogo();
+
+  new MutationObserver(updateSiteLogo).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
   });
 </script>
