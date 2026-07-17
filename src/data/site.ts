@@ -1,6 +1,13 @@
+import darkLogo from "../../public/dark-logo.png";
+import lightLogo from "../../public/light-logo.png";
+
 export const site = {
   name: "Meezaan Davids",
   domain: "meezaan.dev",
+  logo: {
+    lightMode: darkLogo.src,
+    darkMode: lightLogo.src,
+  },
   email: "meezaandavids365@gmail.com",
   description:
     "The digital home of Meezaan Davids: software, systems thinking, learning, and writing.",
@@ -20,17 +27,12 @@ export const site = {
     {
       href: "https://cashflow.meezaan.dev/",
       label: "Cash Flow",
-      description: "A personal finance tracker for everyday clarity.",
+      description: "How I stay on top of my finances.",
     },
     {
       href: "https://cinema.meezaan.dev/",
       label: "Cinema",
-      description: "A calmer way to decide what to watch next.",
-    },
-    {
-      href: "https://rewards.meezaan.dev/",
-      label: "Rewards Optimizer",
-      description: "For adults stepping into real-world money decisions.",
+      description: "My way of finding new movies and shows.",
     },
   ],
   references: [
@@ -38,4 +40,3 @@ export const site = {
     { href: "/transcript", label: "Academic transcript" },
   ],
 } as const;
-
