@@ -19,40 +19,61 @@ const updated = new Intl.DateTimeFormat("en", {
   title="Now | Meezaan Davids"
   description="What Meezaan Davids is currently working on, learning, and thinking about."
 >
-  <div class="mx-auto max-w-site px-5 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
-    <header class="max-w-3xl pb-16 md:pb-24">
-      <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
-        Updated {updated}
+  <div class="mx-auto max-w-[68rem] px-5 pb-24 pt-[9.5rem] sm:px-8 md:pb-32 md:pt-[10.5rem]">
+    <header class="border-b border-border pb-16 md:pb-20">
+      <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+        Now
       </p>
-      <h1 class="mt-4 max-w-[50rem] text-[clamp(3rem,7vw,5.8rem)] leading-none tracking-[-0.05em]">
-        What has my attention now.
-      </h1>
-      <div class="mt-8 max-w-[43rem] text-base leading-8 text-muted md:text-lg">
-        <Content />
+      <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-20">
+        <h1 class="max-w-[36rem] text-[clamp(2.25rem,4.2vw,3.55rem)] font-medium leading-[1.05] tracking-[-0.018em] max-[700px]:max-w-[20.5rem] max-[700px]:text-[clamp(2.15rem,9.5vw,2.75rem)]">
+          What has my attention now.
+        </h1>
+        <div class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted max-[700px]:max-w-[20rem]">
+          <Content />
+          <p class="mt-8 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-subtle">
+            Updated {updated}
+          </p>
+        </div>
       </div>
     </header>
 
-    <div class="border-t border-border">
+    <section class="py-16 md:py-20" aria-labelledby="now-list-heading">
+      <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+            01
+          </p>
+          <h2 class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium" id="now-list-heading">
+            Current focus
+          </h2>
+        </div>
+        <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+          Living record
+        </p>
+      </div>
+      <div>
       {
         items.map((item) => (
-          <article class="grid gap-5 border-b border-border py-11 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-12">
-            <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
-              {item.title}
-            </p>
-            <p class="max-w-3xl text-[clamp(1.15rem,2vw,1.45rem)] leading-[1.75] text-muted">
-              {item.text}
-            </p>
+          <article class="border-b border-border py-8 first:pt-0 md:py-9">
+            <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <h3 class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
+                {item.title}
+              </h3>
+              <p class="max-w-[45rem] text-[1rem] leading-[1.7] text-muted md:text-right">
+                {item.text}
+              </p>
+            </div>
           </article>
         ))
       }
-    </div>
+      </div>
 
     {
       now.data.links && (
         <nav class="flex flex-wrap gap-x-10 gap-y-6 pt-12" aria-label="Related pages">
           {now.data.links.map((link) => (
             <a
-              class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
+              class="inline-flex items-center gap-2 font-mono text-[0.72rem] text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
               href={link.href}
             >
               {link.label} <span aria-hidden="true">→</span>
@@ -61,5 +82,6 @@ const updated = new Intl.DateTimeFormat("en", {
         </nav>
       )
     }
+    </section>
   </div>
 </Layout>

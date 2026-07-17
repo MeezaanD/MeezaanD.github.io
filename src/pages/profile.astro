@@ -21,73 +21,84 @@ const education = (await getCollection("education")).sort(
   title="Profile | Meezaan Davids"
   description="A concise professional and learning profile for Meezaan Davids."
 >
-  <div class="mx-auto max-w-site px-5 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
-    <header class="grid gap-10 pb-20 md:pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,1fr)] lg:gap-16 lg:pb-24">
-      <div>
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
-          Background
-        </p>
-        <h1 class="mt-4 max-w-[32rem] text-[clamp(2.8rem,5.5vw,4.4rem)] leading-[1.02] tracking-[-0.045em]">
+  <div class="mx-auto max-w-[68rem] px-5 pb-24 pt-[9.5rem] sm:px-8 md:pb-32 md:pt-[10.5rem]">
+    <header class="border-b border-border pb-16 md:pb-20">
+      <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+        Background
+      </p>
+      <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-20">
+        <h1 class="max-w-[36rem] text-[clamp(2.25rem,4.2vw,3.55rem)] font-medium leading-[1.05] tracking-[-0.018em] max-[700px]:max-w-[20.5rem] max-[700px]:text-[clamp(2.15rem,9.5vw,2.75rem)]">
           Software developer, systems thinker, persistent student.
         </h1>
-      </div>
-      <div class="max-w-[38rem] leading-[1.8] text-muted">
-        <p>
-          My work sits between frontend engineering, product thinking, and the
-          wider systems that make software dependable. This page keeps the
-          formal record; the homepage keeps the living one.
-        </p>
-        <div class="mt-7 flex flex-wrap gap-x-8 gap-y-4">
-          {site.references.map((item) => (
-            <a
-              class="inline-flex items-center gap-2 font-mono text-sm text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
-              href={item.href}
-              target={item.href.endsWith(".pdf") ? "_blank" : undefined}
-              rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
-            >
-              {item.label} <span aria-hidden="true">→</span>
-            </a>
-          ))}
+        <div class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted max-[700px]:max-w-[20rem]">
+          <p>
+            My work sits between frontend engineering, product thinking, and the
+            wider systems that make software dependable. This page keeps the
+            formal record; the homepage keeps the living one.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            {site.references.map((item) => (
+              <a
+                class="inline-flex items-center gap-2 border border-border px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-primary transition-colors hover:border-primary hover:text-foreground"
+                href={item.href}
+                target={item.href.endsWith(".pdf") ? "_blank" : undefined}
+                rel={item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
+              >
+                {item.label} <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </header>
 
     <section
-      class="grid gap-10 border-t border-border py-16 md:py-20 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:gap-20"
+      class="py-16 md:py-20"
       aria-labelledby="experience-heading"
     >
-      <div>
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
-          01
+      <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+            01
+          </p>
+          <h2 class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium" id="experience-heading">
+            Experience
+          </h2>
+        </div>
+        <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+          Professional record
         </p>
-        <h2 class="mt-2 text-[clamp(2rem,4vw,3.2rem)]" id="experience-heading">
-          Experience
-        </h2>
       </div>
-      <div class="border-t border-border">
+      <div>
         {
           experience.map(({ data, Content }) => (
-            <article class="grid gap-4 border-b border-border py-8 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8">
-              <p class="font-mono text-[0.72rem] uppercase leading-[1.6] text-subtle">
-                {data.date}
-              </p>
+            <article class="border-b border-border py-9 first:pt-0 md:py-10">
               <div>
-                <h3 class="font-sans text-[1.1rem] font-semibold">{data.title}</h3>
-                {data.url ? (
-                  <a
-                    class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary"
-                    href={data.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {data.company} ↗
-                  </a>
-                ) : (
-                  <p class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary">
-                    {data.company}
+                <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <h3 class="font-display text-[clamp(1.45rem,3vw,1.95rem)] font-medium leading-tight">
+                      {data.title}
+                    </h3>
+                    {data.url ? (
+                      <a
+                        class="mt-2 inline-flex items-center gap-2 font-mono text-[0.74rem] text-primary transition-colors hover:text-foreground"
+                        href={data.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {data.company} <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <p class="mt-2 font-mono text-[0.74rem] text-primary">
+                        {data.company}
+                      </p>
+                    )}
+                  </div>
+                  <p class="font-mono text-[0.68rem] uppercase leading-[1.6] tracking-[0.14em] text-subtle md:max-w-[13rem] md:text-right">
+                    {data.date}
                   </p>
-                )}
-                <div class="mt-4 max-w-[44rem] text-[0.93rem] leading-[1.75] text-muted">
+                </div>
+                <div class="mt-5 max-w-[45rem] text-[1rem] leading-[1.7] text-muted empty:hidden">
                   <Content />
                 </div>
               </div>
@@ -98,42 +109,49 @@ const education = (await getCollection("education")).sort(
     </section>
 
     <section
-      class="grid gap-10 border-t border-border py-16 md:py-20 lg:grid-cols-[minmax(0,0.8fr)_minmax(28rem,1.2fr)] lg:gap-20"
+      class="border-t border-border py-16 md:py-20"
       aria-labelledby="education-heading"
     >
-      <div>
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-[0.15em] text-subtle">
-          02
+      <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+            02
+          </p>
+          <h2 class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium" id="education-heading">
+            Education
+          </h2>
+        </div>
+        <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+          Learning path
         </p>
-        <h2 class="mt-2 text-[clamp(2rem,4vw,3.2rem)]" id="education-heading">
-          Education
-        </h2>
       </div>
-      <div class="border-t border-border">
+      <div>
         {
           education.map((entry) => (
-            <article class="grid gap-4 border-b border-border py-8 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-8">
-              <p class="font-mono text-[0.72rem] uppercase leading-[1.6] text-subtle">
-                {entry.data.date}
-              </p>
-              <div>
-                <h3 class="font-sans text-[1.1rem] font-semibold">
-                  {entry.data.title}
-                </h3>
-                {entry.data.url ? (
-                  <a
-                    class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary"
-                    href={entry.data.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {entry.data.institution} ↗
-                  </a>
-                ) : (
-                  <p class="mt-[0.35rem] inline-block font-mono text-[0.78rem] text-primary">
-                    {entry.data.institution}
-                  </p>
-                )}
+            <article class="border-b border-border py-8 first:pt-0 md:py-9">
+              <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <h3 class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
+                    {entry.data.title}
+                  </h3>
+                  {entry.data.url ? (
+                    <a
+                      class="mt-2 inline-flex items-center gap-2 font-mono text-[0.74rem] text-primary transition-colors hover:text-foreground"
+                      href={entry.data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {entry.data.institution} <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    <p class="mt-2 font-mono text-[0.74rem] text-primary">
+                      {entry.data.institution}
+                    </p>
+                  )}
+                </div>
+                <p class="font-mono text-[0.68rem] uppercase leading-[1.6] tracking-[0.14em] text-subtle md:max-w-[13rem] md:text-right">
+                  {entry.data.date}
+                </p>
               </div>
             </article>
           ))

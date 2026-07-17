@@ -12,9 +12,9 @@ const isActive = (href: string) =>
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/92 backdrop-blur-md"
+  class="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/88 backdrop-blur-md"
 >
-  <nav class="mx-auto flex min-h-18 max-w-site items-center justify-between px-5 sm:px-8" aria-label="Primary navigation">
+  <nav class="mx-auto flex min-h-16 max-w-[53rem] items-center justify-between px-5 sm:px-8" aria-label="Primary navigation">
     <a href="/" class="inline-flex items-center" aria-label={site.domain}>
       <img
         id="site-logo"
@@ -26,16 +26,16 @@ const isActive = (href: string) =>
       />
     </a>
 
-    <div class="hidden items-center gap-7 lg:flex">
+    <div class="hidden items-center gap-6 lg:flex">
       {
         site.navigation.map((item) => (
           <a
             href={item.href}
             class:list={[
-              "border-b py-1 font-mono text-xs transition-colors",
+              "py-1 text-sm text-muted transition-colors",
               isActive(item.href)
-                ? "border-primary text-foreground"
-                : "border-transparent text-muted hover:text-foreground",
+                ? "text-foreground"
+                : "hover:text-foreground",
             ]}
             aria-current={isActive(item.href) ? "page" : undefined}
           >
@@ -48,13 +48,14 @@ const isActive = (href: string) =>
 
     <button
       id="mobile-menu-btn"
-      class="flex h-10 w-10 items-center justify-center text-muted lg:hidden"
+      class="fixed right-5 top-3 z-[60] flex h-10 items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-foreground transition-colors hover:text-primary lg:hidden"
       aria-label="Open navigation"
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
+      <span>Menu</span>
       <svg
-        class="w-5 h-5"
+        class="h-4 w-4"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -68,13 +69,13 @@ const isActive = (href: string) =>
   </nav>
 
   <div id="mobile-menu" class="hidden border-t border-border bg-background lg:hidden">
-    <div class="mx-auto flex max-w-site flex-col px-5 py-5 sm:px-8">
+    <div class="mx-auto flex max-w-[53rem] flex-col px-5 py-5 sm:px-8">
       {
         site.navigation.map((item) => (
           <a
             href={item.href}
             class:list={[
-              "border-b border-border py-4 font-mono text-sm",
+              "border-b border-border py-4 text-sm",
               isActive(item.href) ? "text-primary" : "text-muted",
             ]}
           >
