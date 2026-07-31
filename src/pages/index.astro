@@ -19,13 +19,14 @@ const updated = now
 ---
 
 <Layout title="Meezaan Davids | Software, systems, and learning">
-  <section class="mx-auto max-w-[68rem] border-b border-border px-5 pb-16 pt-[9.5rem] sm:px-8 md:pb-20 md:pt-[10.5rem]">
+  <section class="mx-auto max-w-[68rem] px-5 pb-16 pt-[8.5rem] sm:px-8 md:pb-20 md:pt-[9.5rem]">
     <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
       {site.name}
     </p>
-    <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-20">
-      <div class="max-w-[42rem] max-[700px]:max-w-[20.5rem]">
-        <h1 class="text-[clamp(2.75rem,5vw,4rem)] font-medium leading-[1.02] tracking-[-0.015em] max-[700px]:text-[clamp(2.5rem,11vw,3.1rem)]">
+    <div class="reveal mt-6 rounded-lg bg-surface p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)] dark:shadow-[0_24px_70px_rgba(0,0,0,0.28)] lg:p-8">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-16">
+      <div class="max-w-[42rem]">
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.02] max-[700px]:text-[clamp(2.3rem,11vw,3rem)]">
           <span class="max-[700px]:block">Building</span>{" "}
           <span class="max-[700px]:block">software</span>{" "}
           <span class="max-[700px]:block">with</span>{" "}
@@ -33,18 +34,19 @@ const updated = now
           <em class="font-display font-medium italic max-[700px]:block">and intention.</em>
         </h1>
       </div>
-      <div class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted max-[700px]:max-w-[20rem]">
+      <div class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted">
         <p>
           I am a software developer interested in the whole system: the
           interface, the architecture beneath it, and the decisions that make
           technology useful to people.
         </p>
         <a
-          class="mt-8 inline-flex items-center gap-2 border border-border px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-primary transition-colors hover:border-primary hover:text-foreground"
+          class="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-secondary)] hover:shadow-md"
           href="/now"
         >
           What I am focused on now <span aria-hidden="true">→</span>
         </a>
+      </div>
       </div>
     </div>
   </section>
@@ -53,13 +55,13 @@ const updated = now
     class="mx-auto max-w-[68rem] px-5 py-16 sm:px-8 md:py-20"
     aria-labelledby="now-heading"
   >
-    <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+    <div class="reveal mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
           Current state
         </p>
         <h2
-          class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium"
+          class="mt-2 text-[clamp(1.95rem,3.7vw,2.55rem)] font-semibold"
           id="now-heading"
         >
           Now
@@ -71,15 +73,15 @@ const updated = now
         </p>
       )}
     </div>
-    <div>
+    <div class="space-y-3">
       {
         nowItems.map((item) => (
-          <article class="border-b border-border py-8 first:pt-0 md:py-9">
-            <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <article class="reveal rounded-lg border border-border bg-surface p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md md:p-6">
+            <div class="grid gap-3 lg:grid-cols-[9rem_minmax(0,1fr)] lg:items-center">
               <h3 class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
                 {item.title}
               </h3>
-              <p class="max-w-[45rem] text-[1rem] leading-[1.7] text-muted md:text-right">
+              <p class="text-sm leading-[1.7] text-muted lg:whitespace-nowrap">
                 {item.text}
               </p>
             </div>
@@ -101,13 +103,13 @@ const updated = now
     class="mx-auto max-w-[68rem] border-t border-border px-5 py-16 sm:px-8 md:py-20"
     aria-labelledby="elsewhere-heading"
   >
-    <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+    <div class="reveal mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
           Tools I built and use
         </p>
         <h2
-          class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium"
+          class="mt-2 text-[clamp(1.95rem,3.7vw,2.55rem)] font-semibold"
           id="elsewhere-heading"
         >
           Built for myself
@@ -117,12 +119,12 @@ const updated = now
         Product notes
       </p>
     </div>
-    <div>
+    <div class="space-y-3">
       {
         [...site.products].map(
           (item) => (
             <a
-              class="group block border-b border-border py-8 first:pt-0 md:py-9"
+              class="reveal group block rounded-lg border border-border bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow-md md:p-6"
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -152,13 +154,13 @@ const updated = now
     id="contact"
     aria-labelledby="contact-heading"
   >
-    <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+    <div class="reveal mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
           Contact
         </p>
         <h2
-          class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium"
+          class="mt-2 text-[clamp(1.95rem,3.7vw,2.55rem)] font-semibold"
           id="contact-heading"
         >
           Say hello.
@@ -173,7 +175,7 @@ const updated = now
       them.
     </p>
     <a
-      class="inline-flex items-center gap-2 border border-border px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-primary transition-colors hover:border-primary hover:text-foreground"
+      class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-secondary)] hover:shadow-md"
       href={`mailto:${site.email}`}
     >
       {site.email} <span aria-hidden="true">→</span>
