@@ -34,6 +34,11 @@ export const site = {
       label: "Cinema",
       description: "My way of finding new movies and shows.",
     },
+    {
+      href: "https://engineering.meezaan.dev/",
+      label: "Engineering Handbook",
+      description: "Always nice to have a little helper",
+    }
   ],
   references: [
     { href: "/Meezaan_Davids_CV.pdf", label: "CV" },
