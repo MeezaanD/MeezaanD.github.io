@@ -20,7 +20,7 @@ const updated = new Intl.DateTimeFormat("en", {
   description="What Meezaan Davids is currently working on, learning, and thinking about."
 >
   <div class="mx-auto max-w-[68rem] px-5 pb-24 pt-[8.5rem] sm:px-8 md:pb-32 md:pt-[9.5rem]">
-    <header class="rounded-lg border border-border bg-surface p-6 shadow-sm md:p-8">
+    <header class="glass-panel rounded-lg p-6 md:p-8">
       <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
         Now
       </p>
@@ -54,7 +54,7 @@ const updated = new Intl.DateTimeFormat("en", {
       <div class="space-y-3">
       {
         items.map((item) => (
-          <article class="rounded-lg border border-border bg-surface p-5 shadow-sm md:p-6">
+          <article class="glass-card rounded-lg p-5 md:p-6">
             <div class="grid gap-3 lg:grid-cols-[9rem_minmax(0,1fr)] lg:items-center">
               <h3 class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
                 {item.title}

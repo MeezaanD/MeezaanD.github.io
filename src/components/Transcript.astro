@@ -45,7 +45,7 @@ const grouped = sectionOrder
   id="transcript"
 >
   <div>
-    <header class="rounded-lg border border-border bg-surface p-6 shadow-sm md:p-8">
+    <header class="glass-panel rounded-lg p-6 md:p-8">
       <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
         Academic Transcript
       </p>
@@ -81,7 +81,7 @@ const grouped = sectionOrder
           </div>
           <div class="space-y-3">
             {group.items.map((item) => (
-              <article class="rounded-lg border border-border bg-surface p-5 shadow-sm md:p-6">
+              <article class="glass-card rounded-lg p-5 md:p-6">
                 <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
                     <h3 class="max-w-[45rem] font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
@@ -94,10 +94,10 @@ const grouped = sectionOrder
                   <div class="flex flex-col items-start gap-2 md:items-end">
                     <span
                       class:list={[
-                        "rounded-md border px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.16em]",
+                        "rounded-full border px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.12em]",
                         item.status === "In Progress"
-                          ? "border-primary text-primary"
-                          : "border-border text-muted",
+                          ? "glass-chip border-primary text-primary"
+                          : "glass-chip text-muted",
                       ]}
                     >
                       {item.status}
@@ -129,7 +129,7 @@ const grouped = sectionOrder
                     )}
                     <div class="flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
-                        <span class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-[0.68rem] text-muted">
+                        <span class="glass-chip rounded-full px-2.5 py-1 font-mono text-[0.68rem] text-muted">
                           {tag}
                         </span>
                       ))}
@@ -140,7 +140,7 @@ const grouped = sectionOrder
                 {item.certificateImage && (
                   <button
                     type="button"
-                    class="mt-5 inline-flex items-center gap-2 rounded-md border border-border bg-background px-3 py-2 font-mono text-[0.72rem] text-primary shadow-sm transition-colors hover:border-primary hover:text-foreground"
+                    class="glass-control mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-[0.74rem] text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-foreground"
                     data-cert-image={item.certificateImage}
                     data-cert-alt={item.certificateAlt ?? item.title}
                   >
@@ -173,18 +173,18 @@ const grouped = sectionOrder
 
 <div
   id="cert-modal"
-  class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/55 p-4"
+  class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/55 p-4 backdrop-blur-md"
   role="dialog"
   aria-modal="true"
   aria-label="Certificate preview"
 >
   <div
-    class="relative w-full max-w-4xl rounded-lg border border-border bg-background p-3 shadow-lg md:p-4"
+    class="glass-panel relative w-full max-w-4xl rounded-lg p-3 md:p-4"
   >
     <button
       id="cert-modal-close"
       type="button"
-      class="absolute right-3 top-3 h-8 w-8 rounded-md border border-border bg-background font-mono text-muted shadow-sm transition-colors hover:text-foreground"
+      class="glass-control absolute right-3 top-3 h-8 w-8 rounded-full font-mono text-muted transition-colors hover:text-foreground"
       aria-label="Close certificate preview"
     >
       <span aria-hidden="true">×</span>
