@@ -23,7 +23,7 @@ const updated = now
     <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
       {site.name}
     </p>
-    <div class="reveal mt-6 rounded-lg bg-surface p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)] shadow-sm lg:p-8">
+    <div class="reveal glass-panel mt-6 rounded-lg p-6 lg:p-8">
       <div class="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-16">
       <div class="max-w-[42rem]">
         <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.02] max-[700px]:text-[clamp(2.3rem,11vw,3rem)]">
@@ -41,7 +41,7 @@ const updated = now
           technology useful to people.
         </p>
         <a
-          class="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-secondary)] hover:shadow-md"
+          class="glass-button mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-[0.78rem] uppercase tracking-[0.08em] transition-all duration-200 hover:-translate-y-0.5"
           href="/now"
         >
           What I am focused on now <span aria-hidden="true">→</span>
@@ -76,7 +76,7 @@ const updated = now
     <div class="space-y-3">
       {
         nowItems.map((item) => (
-          <article class="reveal rounded-lg border border-border bg-surface p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md md:p-6">
+          <article class="reveal glass-card rounded-lg p-5 transition-transform duration-200 hover:-translate-y-0.5 md:p-6">
             <div class="grid gap-3 lg:grid-cols-[9rem_minmax(0,1fr)] lg:items-center">
               <h3 class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
                 {item.title}
@@ -124,7 +124,7 @@ const updated = now
         [...site.products].map(
           (item) => (
             <a
-              class="reveal group block rounded-lg border border-border bg-surface p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow-md md:p-6"
+              class="reveal glass-card group block rounded-lg p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary md:p-6"
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -175,7 +175,7 @@ const updated = now
       them.
     </p>
     <a
-      class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-secondary)] hover:shadow-md"
+      class="glass-button inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-[0.78rem] uppercase tracking-[0.08em] transition-all duration-200 hover:-translate-y-0.5"
       href={`mailto:${site.email}`}
     >
       {site.email} <span aria-hidden="true">→</span>
