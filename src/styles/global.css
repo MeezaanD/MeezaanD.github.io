@@ -293,9 +293,7 @@
 
   .glass-button {
     border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--glass-border));
-    background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.2), transparent 42%),
-      linear-gradient(180deg, var(--accent-secondary), var(--accent));
+    background: var(--accent);
     color: white;
     box-shadow: 0 14px 32px color-mix(in srgb, var(--accent) 32%, transparent);
     font-weight: 600;

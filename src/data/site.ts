@@ -38,7 +38,12 @@ export const site = {
       href: "https://engineering.meezaan.dev/",
       label: "Engineering Handbook",
       description: "Always nice to have a little helper",
-    }
+    },
+    {
+      href: "https://web.meezaan.dev/",
+      label: "Web Developer",
+      description: "My dedicated web developer presence.",
+    },
   ],
   references: [
     { href: "/Meezaan_Davids_CV.pdf", label: "CV" },
