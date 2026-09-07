@@ -11,7 +11,7 @@ curiosity:
   text: Exploring how AI changes software practice when code becomes abundant and discernment becomes the constraint.
 links:
   - label: See my background
-    href: /profile
+    href: /#profile
 ---
 
 This page is a small record of what currently has my attention. It changes as the work, questions, and seasons change.

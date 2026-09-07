@@ -1,21 +1,16 @@
-import darkLogo from "../../public/dark-logo.png";
-import lightLogo from "../../public/light-logo.png";
-
 export const site = {
   name: "Meezaan Davids",
   domain: "meezaan.dev",
-  logo: {
-    lightMode: darkLogo.src,
-    darkMode: lightLogo.src,
-  },
   email: "meezaandavids365@gmail.com",
   description:
     "The digital home of Meezaan Davids: software, systems thinking, learning, and writing.",
   navigation: [
-    { href: "/", label: "Home" },
-    { href: "/now", label: "Now" },
-    { href: "/profile", label: "Profile" },
-    { href: "mailto:meezaandavids365@gmail.com", label: "Contact" },
+    { href: "/#start", label: "Home" },
+    { href: "/#now", label: "Now" },
+    { href: "/#profile", label: "Profile" },
+    { href: "/#tools", label: "Tools" },
+    { href: "/transcript", label: "Transcript" },
+    { href: "/#contact", label: "Contact" },
   ],
   social: [
     {

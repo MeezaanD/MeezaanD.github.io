@@ -2,23 +2,23 @@
 import { site } from "../data/site";
 ---
 
-<footer class="border-t border-border bg-surface/45 py-10 backdrop-blur-2xl">
-  <div class="mx-auto flex max-w-[68rem] flex-col gap-7 px-5 sm:px-8 md:flex-row md:items-end md:justify-between">
+<footer class="site-footer">
+  <div class="site-footer__inner">
     <div>
-      <p class="font-display text-lg">A small place for work and thought.</p>
+      <p class="site-footer__line">A small place for work and thought.</p>
       <a
-        class="mt-3 inline-flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.15em] text-primary underline decoration-transparent underline-offset-[0.28em] transition-colors hover:decoration-current"
+        class="site-footer__mail"
         href={`mailto:${site.email}`}
       >
         {site.email}
       </a>
     </div>
-    <div class="flex flex-col gap-3 md:items-end">
-      <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Footer">
+    <div class="site-footer__meta">
+      <nav class="site-footer__links" aria-label="Footer">
         {[...site.social, ...site.references].map((item) => (
           <a
             href={item.href}
-            class="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-muted transition-colors hover:text-foreground"
+            class="site-footer__link"
             target={item.href.startsWith("http") || item.href.endsWith(".pdf") ? "_blank" : undefined}
             rel={item.href.startsWith("http") || item.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
           >
@@ -26,7 +26,7 @@ import { site } from "../data/site";
           </a>
         ))}
       </nav>
-      <p class="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-subtle">
+      <p class="site-footer__copyright">
         &copy; {new Date().getFullYear()} {site.name}
       </p>
     </div>

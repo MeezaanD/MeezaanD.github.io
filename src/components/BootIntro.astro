@@ -13,9 +13,13 @@
 <script>
   const bootIntro = document.querySelector<HTMLElement>("[data-boot-intro]");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  document.documentElement.classList.add("boot-intro-running");
 
   const removeBootIntro = () => {
     bootIntro?.remove();
+    document.documentElement.classList.remove("boot-intro-running");
+    window.dispatchEvent(new CustomEvent("boot:intro-complete"));
+    document.documentElement.classList.add("boot-intro-complete");
   };
 
   if (bootIntro) {
