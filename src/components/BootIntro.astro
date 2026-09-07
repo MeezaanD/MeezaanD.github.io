@@ -1,0 +1,29 @@
+<div class="boot-intro" data-boot-intro aria-hidden="true">
+  <div class="boot-intro__glow"></div>
+  <img
+    class="boot-intro__logo"
+    src="/meezaan-dev-logo.png"
+    alt=""
+    draggable="false"
+  />
+  <div class="boot-intro__grain"></div>
+  <div class="boot-intro__scanlines"></div>
+</div>
+
+<script>
+  const bootIntro = document.querySelector<HTMLElement>("[data-boot-intro]");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const removeBootIntro = () => {
+    bootIntro?.remove();
+  };
+
+  if (bootIntro) {
+    const holdDuration = reducedMotionQuery.matches ? 450 : 2200;
+
+    window.setTimeout(() => {
+      bootIntro.dataset.state = "closing";
+      window.setTimeout(removeBootIntro, reducedMotionQuery.matches ? 180 : 520);
+    }, holdDuration);
+  }
+</script>
