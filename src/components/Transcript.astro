@@ -41,69 +41,67 @@ const grouped = sectionOrder
 ---
 
 <section
-  class="mx-auto max-w-[68rem] px-5 pb-24 pt-[8.5rem] sm:px-8 md:pb-32 md:pt-[9.5rem]"
+  class="transcript-page"
   id="transcript"
 >
-  <div>
-    <header class="glass-panel rounded-lg p-6 md:p-8">
-      <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+  <div class="transcript-page__inner">
+    <header class="transcript-hero">
+      <p class="transcript-kicker">
         Academic Transcript
       </p>
-      <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-20">
-        <h1 class="max-w-[36rem] text-[clamp(2.25rem,4.2vw,3.55rem)] font-semibold leading-[1.05] max-[700px]:max-w-[20.5rem] max-[700px]:text-[clamp(2.15rem,9.5vw,2.75rem)]">
-          Qualifications, Bootcamps, and Certifications
+      <div class="transcript-hero__grid">
+        <h1>
+          Proof of learning.
         </h1>
-        <p class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted max-[700px]:max-w-[20rem]">
-          A complete in-app transcript of formal education and practical learning,
-          with locally hosted certificate previews.
+        <p>
+          Formal study, bootcamps, and certificates. Kept tidy, not loud.
         </p>
       </div>
     </header>
 
     {
       grouped.map((group) => (
-        <section class="border-b border-border py-16 last:border-b-0 md:py-20" aria-labelledby={group.id}>
-          <div class="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <section class="transcript-group" aria-labelledby={group.id}>
+          <div class="transcript-group__head">
             <div>
-              <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+              <p class="transcript-kicker">
                 Record
               </p>
               <h2
-                class="mt-2 text-[clamp(2rem,4vw,2.75rem)] font-medium"
                 id={group.id}
               >
                 {group.section}
               </h2>
             </div>
-            <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+            <p class="transcript-count">
               {group.items.length} {group.items.length === 1 ? "entry" : "entries"}
             </p>
           </div>
-          <div class="space-y-3">
+          <div class="transcript-list">
             {group.items.map((item) => (
-              <article class="glass-card rounded-lg p-5 md:p-6">
-                <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <article class="transcript-item">
+                <div class="transcript-item__top">
                   <div>
-                    <h3 class="max-w-[45rem] font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
+                    <h3>
                       {item.title}
                     </h3>
-                    <p class="mt-2 font-mono text-[0.74rem] text-primary">
+                    <p class="transcript-item__institution">
                       {item.institution}
                     </p>
                   </div>
-                  <div class="flex flex-col items-start gap-2 md:items-end">
+                  <div class="transcript-item__meta">
                     <span
                       class:list={[
-                        "rounded-full border px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.12em]",
+                        "transcript-status",
                         item.status === "In Progress"
-                          ? "glass-chip border-primary text-primary"
-                          : "glass-chip text-muted",
+                          ? "transcript-status--progress"
+                          : "transcript-status--done",
                       ]}
                     >
                       {item.status}
                     </span>
                     {item.date && (
-                      <p class="font-mono text-[0.68rem] uppercase leading-[1.6] tracking-[0.14em] text-subtle md:max-w-[13rem] md:text-right">
+                      <p class="transcript-date">
                         {item.date}
                       </p>
                     )}
@@ -111,25 +109,25 @@ const grouped = sectionOrder
                 </div>
 
                 {item.description && (
-                  <p class="mt-5 max-w-[45rem] text-[1rem] leading-[1.7] text-muted">
+                  <p class="transcript-item__description">
                     {item.description}
                   </p>
                 )}
 
                 {item.detail && (
-                  <p class="mt-3 max-w-[45rem] text-[0.82rem] leading-[1.6] text-subtle">{item.detail}</p>
+                  <p class="transcript-item__detail">{item.detail}</p>
                 )}
 
                 {item.tags && item.tags.length > 0 && (
                   <div class="mt-4">
                     {item.tagLabel && (
-                      <p class="mb-2 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-subtle">
+                      <p class="transcript-tag-label">
                         {item.tagLabel}
                       </p>
                     )}
-                    <div class="flex flex-wrap gap-2">
+                    <div class="transcript-tags">
                       {item.tags.map((tag) => (
-                        <span class="glass-chip rounded-full px-2.5 py-1 font-mono text-[0.68rem] text-muted">
+                        <span>
                           {tag}
                         </span>
                       ))}
@@ -140,7 +138,7 @@ const grouped = sectionOrder
                 {item.certificateImage && (
                   <button
                     type="button"
-                    class="glass-control mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-[0.74rem] text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:text-foreground"
+                    class="transcript-certificate"
                     data-cert-image={item.certificateImage}
                     data-cert-alt={item.certificateAlt ?? item.title}
                   >
@@ -173,18 +171,18 @@ const grouped = sectionOrder
 
 <div
   id="cert-modal"
-  class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/55 p-4 backdrop-blur-md"
+  class="certificate-modal hidden"
   role="dialog"
   aria-modal="true"
   aria-label="Certificate preview"
 >
   <div
-    class="glass-panel relative w-full max-w-4xl rounded-lg p-3 md:p-4"
+    class="certificate-modal__panel"
   >
     <button
       id="cert-modal-close"
       type="button"
-      class="glass-control absolute right-3 top-3 h-8 w-8 rounded-full font-mono text-muted transition-colors hover:text-foreground"
+      class="certificate-modal__close"
       aria-label="Close certificate preview"
     >
       <span aria-hidden="true">×</span>
@@ -193,7 +191,7 @@ const grouped = sectionOrder
       id="cert-modal-image"
       src=""
       alt=""
-      class="max-h-[80vh] w-full object-contain"
+      class="certificate-modal__image"
       loading="lazy"
     />
   </div>

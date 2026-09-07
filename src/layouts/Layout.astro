@@ -12,6 +12,7 @@ interface Props {
 
 const { title, description = site.description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const shouldShowBootIntro = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -29,19 +30,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       rel="stylesheet"
     />
     <link rel="icon" href="/logo.png" />
-    <script is:inline>
-      (function () {
-        const stored = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        const dark = stored === "dark" || (!stored && prefersDark);
-        document.documentElement.classList.toggle("dark", dark);
-      })();
-    </script>
   </head>
   <body>
-    <BootIntro />
+    {shouldShowBootIntro && <BootIntro />}
     <Navigation />
     <main id="page-content">
       <slot />

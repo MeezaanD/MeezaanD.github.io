@@ -6,22 +6,22 @@ import Layout from "../layouts/Layout.astro";
   title="Page not found | Meezaan Davids"
   description="The requested page could not be found."
 >
-  <div class="mx-auto flex min-h-[82vh] max-w-[68rem] flex-col justify-center px-5 pb-24 pt-32 sm:px-8">
-    <div class="glass-panel rounded-lg p-6 md:p-8">
-      <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
+  <div class="not-found">
+    <div class="not-found__panel">
+      <p class="not-found__kicker">
         Error 404
       </p>
-      <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-20">
-        <h1 class="max-w-[36rem] text-[clamp(2.25rem,4.2vw,3.55rem)] font-semibold leading-[1.05] max-[700px]:max-w-[20.5rem] max-[700px]:text-[clamp(2.15rem,9.5vw,2.75rem)]">
+      <div class="not-found__grid">
+        <h1>
           This page is not part of the map.
         </h1>
-        <div class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted max-[700px]:max-w-[20rem]">
+        <div>
           <p>
             The address may have changed, or the thing you were looking for may
             no longer live here.
           </p>
           <a
-            class="glass-button mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-[0.78rem] uppercase tracking-[0.08em] transition-all duration-200 hover:-translate-y-0.5"
+            class="not-found__link"
             href="/"
           >
             Return home <span aria-hidden="true">→</span>

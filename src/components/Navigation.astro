@@ -1,10 +1,11 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro";
 import { site } from "../data/site";
 
 const pathname = Astro.url.pathname;
 const isActive = (href: string) =>
-  href === "/"
+  href.startsWith("/#")
+    ? pathname === "/" && href === "/#start"
+    : href === "/"
     ? pathname === "/"
     : href.startsWith("mailto:")
       ? false
@@ -12,30 +13,26 @@ const isActive = (href: string) =>
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/70 shadow-[0_10px_38px_rgba(15,23,42,0.08)] backdrop-blur-2xl"
+  class="site-nav"
 >
-  <nav class="mx-auto flex min-h-16 max-w-[68rem] items-center justify-between px-5 sm:px-8" aria-label="Primary navigation">
+  <nav class="site-nav__inner" aria-label="Primary navigation">
     <a href="/" class="inline-flex items-center" aria-label={site.domain}>
       <img
-        id="site-logo"
-        src={site.logo.lightMode}
-        data-light-src={site.logo.lightMode}
-        data-dark-src={site.logo.darkMode}
+        src="/meezaan-dev-logo.png"
         alt=""
-        class="h-14 w-auto"
+        class="site-nav__logo"
       />
     </a>
 
-    <div class="hidden items-center gap-2 lg:flex">
+    <div class="site-nav__links">
       {
         site.navigation.map((item) => (
           <a
             href={item.href}
+            data-nav-link={item.href.startsWith("/#") ? true : undefined}
             class:list={[
-              "glass-link rounded-full px-3 py-2 text-sm font-medium text-muted transition-all duration-200",
-              isActive(item.href)
-                ? "text-foreground"
-                : "hover:text-foreground",
+              "site-nav__link",
+              isActive(item.href) && "site-nav__link--active",
             ]}
             aria-current={isActive(item.href) ? "page" : undefined}
           >
@@ -43,12 +40,11 @@ const isActive = (href: string) =>
           </a>
         ))
       }
-      <ThemeToggle />
     </div>
 
     <button
       id="mobile-menu-btn"
-      class="glass-control fixed right-5 top-3 z-[60] flex h-10 items-center gap-2 rounded-full px-4 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-foreground transition-colors hover:text-primary lg:hidden"
+      class="site-nav__menu-button"
       aria-label="Open navigation"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -68,24 +64,22 @@ const isActive = (href: string) =>
     </button>
   </nav>
 
-  <div id="mobile-menu" class="hidden border-t border-border bg-background/80 backdrop-blur-2xl lg:hidden">
-    <div class="mx-auto flex max-w-[68rem] flex-col px-5 py-5 sm:px-8">
+  <div id="mobile-menu" class="site-nav__mobile hidden">
+    <div class="site-nav__mobile-inner">
       {
         site.navigation.map((item) => (
           <a
             href={item.href}
+            data-nav-link={item.href.startsWith("/#") ? true : undefined}
             class:list={[
-              "glass-link rounded-full px-3 py-3 text-sm font-medium transition-all",
-              isActive(item.href) ? "text-primary" : "text-muted",
+              "site-nav__mobile-link",
+              isActive(item.href) && "site-nav__mobile-link--active",
             ]}
           >
             {item.label}
           </a>
         ))
       }
-      <div class="pt-4">
-        <ThemeToggle />
-      </div>
     </div>
   </div>
 </header>
@@ -104,22 +98,12 @@ const isActive = (href: string) =>
     );
   });
 
-  const siteLogo = document.getElementById(
-    "site-logo",
-  ) as HTMLImageElement | null;
-  const updateSiteLogo = () => {
-    if (!siteLogo) return;
-
-    const isDark = document.documentElement.classList.contains("dark");
-    siteLogo.src = isDark
-      ? siteLogo.dataset.darkSrc || ""
-      : siteLogo.dataset.lightSrc || "";
-  };
-
-  updateSiteLogo();
-
-  new MutationObserver(updateSiteLogo).observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"],
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu?.classList.add("hidden");
+      menuButton?.setAttribute("aria-expanded", "false");
+      menuButton?.setAttribute("aria-label", "Open navigation");
+    });
   });
+
 </script>

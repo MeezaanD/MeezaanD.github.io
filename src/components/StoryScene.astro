@@ -1,0 +1,20 @@
+---
+interface Props {
+  id: string;
+  align?: "left" | "right" | "center";
+  class?: string;
+}
+
+const { id, align = "left", class: className = "" } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={["story-scene", `story-scene--${align}`, className]}
+  data-story-scene
+  aria-labelledby={`${id}-heading`}
+>
+  <div class="story-scene__body">
+    <slot />
+  </div>
+</section>

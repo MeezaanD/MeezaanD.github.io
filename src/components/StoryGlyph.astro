@@ -1,0 +1,43 @@
+---
+interface Props {
+  variant?: "orbit" | "stack" | "thread" | "signal";
+  label?: string;
+  class?: string;
+}
+
+const { variant = "orbit", label = "", class: className = "" } = Astro.props;
+---
+
+<figure class:list={["story-glyph", `story-glyph--${variant}`, className]} aria-label={label || undefined} aria-hidden={label ? undefined : "true"}>
+  {variant === "orbit" && (
+    <svg viewBox="0 0 240 240" role="img">
+      <circle cx="120" cy="120" r="76"></circle>
+      <circle cx="120" cy="120" r="28"></circle>
+      <path d="M48 122c33-30 72-44 119-31 17 5 30 13 39 24"></path>
+      <path d="M58 155c38 13 78 10 120-12"></path>
+    </svg>
+  )}
+  {variant === "stack" && (
+    <svg viewBox="0 0 240 240" role="img">
+      <path d="M52 78h124l18 26H70z"></path>
+      <path d="M42 112h124l18 26H60z"></path>
+      <path d="M64 146h124l18 26H82z"></path>
+      <path d="M88 63l52 130"></path>
+    </svg>
+  )}
+  {variant === "thread" && (
+    <svg viewBox="0 0 240 240" role="img">
+      <path d="M38 136c32-66 76-82 132-49 44 26 34 82-12 86-39 3-60-30-42-58 16-25 55-22 75 6"></path>
+      <circle cx="52" cy="135" r="10"></circle>
+      <circle cx="190" cy="124" r="10"></circle>
+    </svg>
+  )}
+  {variant === "signal" && (
+    <svg viewBox="0 0 240 240" role="img">
+      <path d="M56 162c16-24 37-36 64-36s48 12 64 36"></path>
+      <path d="M34 126c24-34 53-51 86-51s62 17 86 51"></path>
+      <path d="M82 194c10-12 23-18 38-18s28 6 38 18"></path>
+      <circle cx="120" cy="208" r="8"></circle>
+    </svg>
+  )}
+</figure>

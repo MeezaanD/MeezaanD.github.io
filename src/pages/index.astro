@@ -1,184 +1,134 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import ScrollProgress from "../components/ScrollProgress.astro";
+import StoryGlyph from "../components/StoryGlyph.astro";
+import StoryScene from "../components/StoryScene.astro";
 import { site } from "../data/site";
 
 const now = await getEntry("now", "index");
+if (!now) throw new Error("Now content is missing");
 
-const nowItems = now
-  ? [now.data.work, now.data.learning, now.data.curiosity]
-  : [];
-const updated = now
-  ? new Intl.DateTimeFormat("en", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "UTC",
-    }).format(now.data.updatedDate)
-  : "";
+const nowItems = [
+  { title: now.data.work.title, text: "Frontend at Yoyo." },
+  { title: now.data.learning.title, text: "IT. Management. Better judgment." },
+  { title: now.data.curiosity.title, text: "AI, taste, constraint." },
+];
+const experience = (await getCollection("experience")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const education = (await getCollection("education")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const featuredProjects = (await getCollection("projects"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 2);
+const currentRole = experience[0];
+const latestLearning = education[0];
 ---
 
-<Layout title="Meezaan Davids | Software, systems, and learning">
-  <section class="mx-auto max-w-[68rem] px-5 pb-16 pt-[8.5rem] sm:px-8 md:pb-20 md:pt-[9.5rem]">
-    <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
-      {site.name}
-    </p>
-    <div class="reveal glass-panel mt-6 rounded-lg p-6 lg:p-8">
-      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-16">
-      <div class="max-w-[42rem]">
-        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.02] max-[700px]:text-[clamp(2.3rem,11vw,3rem)]">
-          <span class="max-[700px]:block">Building</span>{" "}
-          <span class="max-[700px]:block">software</span>{" "}
-          <span class="max-[700px]:block">with</span>{" "}
-          <em class="font-display font-medium italic max-[700px]:block">judgment</em>{" "}
-          <em class="font-display font-medium italic max-[700px]:block">and intention.</em>
-        </h1>
-      </div>
-      <div class="max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted">
-        <p>
-          I am a software developer interested in the whole system: the
-          interface, the architecture beneath it, and the decisions that make
-          technology useful to people.
-        </p>
-        <a
-          class="glass-button mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-[0.78rem] uppercase tracking-[0.08em] transition-all duration-200 hover:-translate-y-0.5"
-          href="/now"
-        >
-          What I am focused on now <span aria-hidden="true">→</span>
-        </a>
-      </div>
-      </div>
-    </div>
-  </section>
+<Layout title="Meezaan Davids | A living notebook">
+  <ScrollProgress />
 
-  <section
-    class="mx-auto max-w-[68rem] px-5 py-16 sm:px-8 md:py-20"
-    aria-labelledby="now-heading"
-  >
-    <div class="reveal mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
-          Current state
-        </p>
-        <h2
-          class="mt-2 text-[clamp(1.95rem,3.7vw,2.55rem)] font-semibold"
-          id="now-heading"
-        >
-          Now
-        </h2>
+  <div class="story-page">
+    <StoryScene id="start" align="center" class="story-scene--opening">
+      <div class="story-opening">
+        <h1 id="start-heading" class="sr-only">Meezaan Dev</h1>
+        <img
+          class="story-opening__logo"
+          src="/meezaan-dev-logo.png"
+          alt="Meezaan Dev"
+          draggable="false"
+        />
+        <p class="story-opening__caption">Build it.</p>
+        <p class="story-opening__meta">interfaces / judgment / taste</p>
       </div>
-      {updated && (
-        <p class="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-subtle">
-          Updated {updated}
-        </p>
-      )}
-    </div>
-    <div class="space-y-3">
-      {
-        nowItems.map((item) => (
-          <article class="reveal glass-card rounded-lg p-5 transition-transform duration-200 hover:-translate-y-0.5 md:p-6">
-            <div class="grid gap-3 lg:grid-cols-[9rem_minmax(0,1fr)] lg:items-center">
-              <h3 class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight">
-                {item.title}
-              </h3>
-              <p class="text-sm leading-[1.7] text-muted lg:whitespace-nowrap">
-                {item.text}
-              </p>
-            </div>
-          </article>
-        ))
-      }
-    </div>
-    <div class="pt-8">
-      <a
-        class="inline-flex items-center gap-2 font-mono text-[0.72rem] text-primary underline decoration-transparent underline-offset-[0.28em] transition-[text-decoration-color] duration-[160ms] hover:decoration-current"
-        href="/now"
-      >
-        The full update <span aria-hidden="true">→</span>
-      </a>
-    </div>
-  </section>
+    </StoryScene>
 
-  <section
-    class="mx-auto max-w-[68rem] border-t border-border px-5 py-16 sm:px-8 md:py-20"
-    aria-labelledby="elsewhere-heading"
-  >
-    <div class="reveal mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
-          Tools I built and use
-        </p>
-        <h2
-          class="mt-2 text-[clamp(1.95rem,3.7vw,2.55rem)] font-semibold"
-          id="elsewhere-heading"
-        >
-          Built for myself
-        </h2>
+    <StoryScene id="now" align="left">
+      <div class="story-split">
+        <div>
+          <h2 id="now-heading">Current gravity</h2>
+          <div class="story-orbit" aria-label="Current focus">
+            {nowItems.map((item) => (
+              <article class="story-orbit__item">
+                <span>{item.title}</span>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <StoryGlyph variant="thread" class="story-glyph--anchored" />
       </div>
-      <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
-        Product notes
-      </p>
-    </div>
-    <div class="space-y-3">
-      {
-        [...site.products].map(
-          (item) => (
+    </StoryScene>
+
+    <StoryScene id="profile" align="right">
+      <div class="story-split story-split--reverse">
+        <StoryGlyph variant="stack" class="story-glyph--anchored" />
+        <div>
+          <h2 id="profile-heading">Built by repetition</h2>
+          <div class="story-timeline">
+            {currentRole && (
+              <article>
+                <span>{currentRole.data.date}</span>
+                <strong>{currentRole.data.title}</strong>
+                <p>{currentRole.data.company}</p>
+              </article>
+            )}
+            {latestLearning && (
+              <article>
+                <span>{latestLearning.data.date}</span>
+                <strong>{latestLearning.data.title}</strong>
+                <p>{latestLearning.data.institution}</p>
+              </article>
+            )}
+          </div>
+        </div>
+      </div>
+    </StoryScene>
+
+    <StoryScene id="tools" align="left">
+      <div class="story-showcase">
+        <div class="story-showcase__head">
+          <h2 id="tools-heading">Made, not listed.</h2>
+          <p>Two small systems. Real edges. Real use.</p>
+        </div>
+
+        <div class="story-showcase__pieces">
+          {featuredProjects.map((project, index) => (
             <a
-              class="reveal glass-card group block rounded-lg p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary md:p-6"
-              href={item.href}
+              class:list={["story-piece", index === 0 ? "story-piece--primary" : "story-piece--secondary"]}
+              href={project.data.liveLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                <span>
-                  <span class="font-display text-[clamp(1.35rem,2.6vw,1.7rem)] font-medium leading-tight transition-colors group-hover:text-primary">
-                    {item.label}
-                  </span>
-                  <span class="mt-2 block font-mono text-[0.74rem] text-primary">
-                    External tool <span aria-hidden="true">↗</span>
-                  </span>
-                </span>
-                <span class="max-w-[45rem] text-[1rem] leading-[1.7] text-muted md:text-right">
-                  {item.description}
-                </span>
+              <span class="story-piece__number">0{index + 1}</span>
+              <span class="story-piece__title">{project.data.title}</span>
+              <span class="story-piece__description">
+                {project.data.title === "Cash Flow"
+                  ? "Money, made visible."
+                  : "Taste, queued up."}
               </span>
+              <span class="story-piece__detail">{project.data.description}</span>
             </a>
-          ),
-        )
-      }
-    </div>
-  </section>
+          ))}
+        </div>
 
-  <section
-    class="mx-auto max-w-[68rem] border-t border-border px-5 pb-32 pt-16 sm:px-8 md:pt-20"
-    id="contact"
-    aria-labelledby="contact-heading"
-  >
-    <div class="reveal mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
-          Contact
-        </p>
-        <h2
-          class="mt-2 text-[clamp(1.95rem,3.7vw,2.55rem)] font-semibold"
-          id="contact-heading"
-        >
-          Say hello.
-        </h2>
+        <div class="story-showcase__secondary" aria-label="Other places">
+          {site.products.slice(2).map((item) => (
+            <a href={item.href} target="_blank" rel="noopener noreferrer">
+              {item.label}
+            </a>
+          ))}
+        </div>
       </div>
-      <p class="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-[var(--accent-secondary)]">
-        Open inbox
-      </p>
-    </div>
-    <p class="mb-7 max-w-[36rem] text-[1.04rem] leading-[1.7] text-muted">
-      For thoughtful conversations about software, systems, and the work around
-      them.
-    </p>
-    <a
-      class="glass-button inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-[0.78rem] uppercase tracking-[0.08em] transition-all duration-200 hover:-translate-y-0.5"
-      href={`mailto:${site.email}`}
-    >
-      {site.email} <span aria-hidden="true">→</span>
-    </a>
-  </section>
+    </StoryScene>
+
+    <StoryScene id="contact" align="center">
+      <div class="story-ending">
+        <h2 id="contact-heading">Make something clear.</h2>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+    </StoryScene>
+  </div>
 </Layout>
