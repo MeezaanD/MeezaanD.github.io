@@ -187,12 +187,14 @@ const grouped = sectionOrder
     >
       <span aria-hidden="true">×</span>
     </button>
+    <div id="cert-modal-loading" class="certificate-modal__loading">
+      Loading certificate
+    </div>
     <img
       id="cert-modal-image"
       src=""
       alt=""
       class="certificate-modal__image"
-      loading="lazy"
     />
   </div>
 </div>
@@ -200,32 +202,53 @@ const grouped = sectionOrder
 <script>
   const modal = document.getElementById("cert-modal");
   const modalImage = document.getElementById("cert-modal-image");
+  const modalLoading = document.getElementById("cert-modal-loading");
   const closeButton = document.getElementById("cert-modal-close");
+  let activeCertificateButton = null;
+  let previousBodyOverflow = "";
 
-  function openModal(src, alt) {
+  if (modal?.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
+  function openModal(src, alt, trigger) {
     if (!modal || !modalImage) return;
+    activeCertificateButton = trigger;
+    previousBodyOverflow = document.body.style.overflow;
+    modalLoading?.classList.remove("certificate-modal__loading--done");
     modalImage.setAttribute("src", src);
     modalImage.setAttribute("alt", alt || "Certificate preview");
     modal.classList.remove("hidden");
     modal.classList.add("flex");
     document.body.style.overflow = "hidden";
+    closeButton?.focus();
   }
 
   function closeModal() {
     if (!modal || !modalImage) return;
+    if (modal.classList.contains("hidden")) return;
     modal.classList.add("hidden");
     modal.classList.remove("flex");
     modalImage.setAttribute("src", "");
     modalImage.setAttribute("alt", "");
-    document.body.style.overflow = "";
+    document.body.style.overflow = previousBodyOverflow;
+    activeCertificateButton?.focus();
+    activeCertificateButton = null;
   }
+
+  modalImage.addEventListener("load", () => {
+    modalLoading?.classList.add("certificate-modal__loading--done");
+  });
+  modalImage.addEventListener("error", () => {
+    modalLoading?.classList.add("certificate-modal__loading--done");
+  });
 
   document.querySelectorAll("[data-cert-image]").forEach((button) => {
     button.addEventListener("click", () => {
       const src = button.getAttribute("data-cert-image");
       const alt = button.getAttribute("data-cert-alt");
       if (!src) return;
-      openModal(src, alt || "Certificate preview");
+      openModal(src, alt || "Certificate preview", button);
     });
   });
 

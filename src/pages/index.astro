@@ -17,14 +17,23 @@ const nowItems = [
 const experience = (await getCollection("experience")).sort(
   (a, b) => a.data.order - b.data.order,
 );
-const education = (await getCollection("education")).sort(
-  (a, b) => a.data.order - b.data.order,
-);
 const featuredProjects = (await getCollection("projects"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 2);
-const currentRole = experience[0];
-const latestLearning = education[0];
+
+const experienceNotes: Record<string, string> = {
+  yoyo: "Current work: frontend systems, product edges, and the small details users actually feel.",
+  flash: "WordPress builds, maintenance rhythm, SEO, analytics, and keeping client sites steady.",
+  qtz: "Internal tools, company websites, and the useful bridge between design and operations.",
+  imqs: "Golang, TypeScript, Vue, PostgreSQL, Docker, CI/CD, and agile software muscle.",
+  "life-choices": "Teaching, debugging with people, and learning how to make technical ideas click.",
+};
+
+const experienceTrail = experience.map((entry, index) => ({
+  ...entry,
+  note: experienceNotes[entry.id] ?? entry.body.trim(),
+  isCurrent: index === 0 || entry.data.date.toLowerCase().includes("present"),
+}));
 ---
 
 <Layout title="Meezaan Davids | A living notebook">
@@ -63,25 +72,24 @@ const latestLearning = education[0];
     </StoryScene>
 
     <StoryScene id="profile" align="right">
-      <div class="story-split story-split--reverse">
+      <div class="story-split story-split--reverse story-split--profile">
         <StoryGlyph variant="stack" class="story-glyph--anchored" />
         <div>
           <h2 id="profile-heading">Built by repetition</h2>
           <div class="story-timeline">
-            {currentRole && (
-              <article>
-                <span>{currentRole.data.date}</span>
-                <strong>{currentRole.data.title}</strong>
-                <p>{currentRole.data.company}</p>
+            {experienceTrail.map((role) => (
+              <article class:list={[role.isCurrent && "story-timeline__current"]}>
+                <span>
+                  {role.isCurrent ? "Current" : role.data.date}
+                </span>
+                <strong>{role.data.title}</strong>
+                <p>{role.data.company}</p>
+                <p class="story-timeline__note">{role.note}</p>
+                {role.isCurrent && (
+                  <small>{role.data.date}</small>
+                )}
               </article>
-            )}
-            {latestLearning && (
-              <article>
-                <span>{latestLearning.data.date}</span>
-                <strong>{latestLearning.data.title}</strong>
-                <p>{latestLearning.data.institution}</p>
-              </article>
-            )}
+            ))}
           </div>
         </div>
       </div>
