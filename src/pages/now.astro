@@ -1,0 +1,45 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const now = await getEntry("now", "index");
+if (!now) throw new Error("Now content is missing");
+
+const nowItems = [now.data.work, now.data.learning, now.data.curiosity];
+---
+
+<Layout
+  title="Now | Meezaan Davids"
+  description="What currently has Meezaan Davids's attention."
+>
+  <div class="content-page" aria-labelledby="now-heading">
+    <header class="content-page__header">
+      <p class="page-kicker">Current focus</p>
+      <h1 id="now-heading">Current gravity.</h1>
+      <p>{now.body}</p>
+      <time datetime={now.data.updatedDate.toISOString()}>
+        Updated {now.data.updatedDate.toLocaleDateString("en-ZA", {
+          month: "long",
+          year: "numeric",
+        })}
+      </time>
+    </header>
+
+    <div class="content-list">
+      {nowItems.map((item) => (
+        <article class="content-list__item">
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+
+    {now.data.links && (
+      <nav class="content-page__links" aria-label="Related pages">
+        {now.data.links.map((link) => (
+          <a class="text-link" href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
+        ))}
+      </nav>
+    )}
+  </div>
+</Layout>

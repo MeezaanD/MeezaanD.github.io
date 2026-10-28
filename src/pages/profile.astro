@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+const experience = (await getCollection("experience")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Layout
+  title="Profile | Meezaan Davids"
+  description="The work and experience behind Meezaan Davids's frontend practice."
+>
+  <div class="content-page" aria-labelledby="profile-heading">
+    <header class="content-page__header">
+      <p class="page-kicker">Background</p>
+      <h1 id="profile-heading">Built by repetition.</h1>
+      <p>Frontend systems, product edges, and the small details users actually feel.</p>
+    </header>
+
+    <div class="profile-list">
+      {experience.map((role) => (
+        <article class="profile-list__item">
+          <div>
+            <p class="profile-list__date">{role.data.date}</p>
+            <h2>{role.data.title}</h2>
+            <p class="profile-list__company">{role.data.company}</p>
+          </div>
+          <p>{role.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>
