@@ -4,7 +4,7 @@ import { site } from "../data/site";
 const pathname = Astro.url.pathname;
 const isActive = (href: string) =>
   href.startsWith("/#")
-    ? pathname === "/" && href === "/#start"
+    ? pathname === "/" && href === "/#work"
     : href === "/"
     ? pathname === "/"
     : href.startsWith("mailto:")

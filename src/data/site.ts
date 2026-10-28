@@ -5,11 +5,9 @@ export const site = {
   description:
     "The digital home of Meezaan Davids: software, systems thinking, learning, and writing.",
   navigation: [
-    { href: "/#start", label: "Home" },
-    { href: "/#now", label: "Now" },
-    { href: "/#profile", label: "Profile" },
-    { href: "/#tools", label: "Tools" },
-    { href: "/transcript", label: "Transcript" },
+    { href: "/#work", label: "Work" },
+    { href: "/now", label: "Now" },
+    { href: "/profile", label: "Profile" },
     { href: "/#contact", label: "Contact" },
   ],
   social: [
